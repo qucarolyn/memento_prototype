@@ -16,7 +16,7 @@ export default function HomeFeedScreen({navigation}) {
 
           <Button
             onPress={() => navigation.navigate("VisionAdd")}
-            title="Click Here to Create a Vision"
+            title="Create a Vision"
           />
 
         <Button
