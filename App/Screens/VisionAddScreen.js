@@ -1,13 +1,17 @@
 import React from "react";
-import { View, Text, Button, TouchableOpacity } from "react-native";
+import { View, Text, Button, TouchableOpacity, StyleSheet, TextInput, KeyboardAvoidingView } from "react-native";
 
 export default function HomeFeedScreen({navigation}) {
     return (
         <View>
-          <View>
+          <KeyboardAvoidingView style={{alignItems: 'center', margin: 50,}}>
             <Text>Enter a title</Text>
-          </View>
-          <View>
+            <TextInput
+              style={styles.textinput}
+              onChangeText={(text) => setSearchText(text)}
+            />
+          </KeyboardAvoidingView>
+          <View style={{alignItems: 'center', margin: 30,}}>
             <Text>Choose a color</Text>
             <View style={{flexDirection: 'row', alignItems: 'center',}}>
             <TouchableOpacity style={{
@@ -44,3 +48,14 @@ export default function HomeFeedScreen({navigation}) {
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+  textinput: {
+    paddingLeft: 15,
+    height: 36,
+    width: '70%',
+    borderColor: 'lightgray',
+    borderWidth: 1,
+    borderRadius: 18,
+  },
+});
