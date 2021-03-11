@@ -3,6 +3,7 @@ import { StyleSheet, SafeAreaView , View, Text} from "react-native";
 import { Button } from 'react-native-elements';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
+import { HomeScreen } from './App/Screens/HomeScreen.js'
 
 const Stack = createStackNavigator();
       
