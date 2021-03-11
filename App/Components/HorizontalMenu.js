@@ -35,13 +35,18 @@ export default function HorizontalMenu() {
     return (
         <View>
             <VisionItem
-                title = "be happy"
+                title = "be healthy"
                 color = "red"
             />
 
             <VisionItem
                 title = "learn ukelele"
                 color = "blue"
+            />
+
+            <VisionItem
+                title = "friends & family"
+                color = "green"
             />
         </View>
     );
