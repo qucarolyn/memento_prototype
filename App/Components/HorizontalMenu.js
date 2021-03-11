@@ -16,28 +16,28 @@ visions: [
 
 export default function HorizontalMenu() {
 
-    function visionItem (props) {
+    function VisionItem (props) {
         return (
             <View> 
                 <Button
                     title = {props.title}
-                > 
-
-                </Button>
-                <Text>{props.title}</Text>
+                    color={props.color}
+                /> 
             </View>
-
         );
 
     }
     return (
         <View>
-            <Text> 
-                Be Happy
-            </Text>
-            <Text> 
-                Vision 2
-            </Text>
+            <VisionItem
+                title = "be happy"
+                color = "red"
+            />
+
+            <VisionItem
+                title = "learn ukelele"
+                color = "blue"
+            />
         </View>
     );
 }
