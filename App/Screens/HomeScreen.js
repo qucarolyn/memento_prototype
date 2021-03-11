@@ -8,5 +8,5 @@ export default function HomeScreen({navigation}) {
               Hello
           </Text>
         </View>
-      );
+    );
 }
