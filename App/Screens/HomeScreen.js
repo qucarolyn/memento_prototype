@@ -1,15 +1,12 @@
 import React from "react";
-import { StyleSheet, View, SafeAreaView, Image, Dimensions } from "react-native";
+import { View, Text } from "react-native";
 
-
-
-export default function HomeScreen() {
-    return(
-        <View> 
-            <Text>
-                Home Screen
-            </Text>
+export default function HomeScreen({navigation}) {
+    return (
+        <View>
+          <Text>
+              Hello
+          </Text>
         </View>
-
-    );
+      );
 }
