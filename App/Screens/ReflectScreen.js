@@ -3,11 +3,10 @@ import { View, Text, Button, TouchableOpacity, KeyboardAvoidingView, TextInput, 
 
 export default function ReflectScreen({navigation}) {
     return (
-        <View>
-          <Text>Reflect</Text>
-          <Text>What have you enjoyed most about the last week?</Text>
+        <View style={{alignItems: 'center'}}>
+          <Text style={{margin: 20}}>What have you enjoyed most about the last week?</Text>
           <TouchableOpacity>
-            <Text>I want a new prompt</Text>
+            <Text style={styles.newprompt}>I want a new prompt</Text>
           </TouchableOpacity>
           <KeyboardAvoidingView style={{alignItems: 'center', margin: 50,}}>
             <TextInput
