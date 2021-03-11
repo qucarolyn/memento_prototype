@@ -3,8 +3,6 @@ import { View, Text, Button } from "react-native";
 import HorizontalMenu from '../Components/HorizontalMenu.js';
 
 
-
-
 export default function HomeFeedScreen({navigation}) {
     return (
         <View>
