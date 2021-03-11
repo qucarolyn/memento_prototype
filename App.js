@@ -1,6 +1,8 @@
 import React, { useState} from "react";
 import { StyleSheet, SafeAreaView , View, Text} from "react-native";
 import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 // import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import HomeFeedScreen  from './App/Screens/HomeFeedScreen.js';
@@ -11,6 +13,16 @@ import VisionAddScreen  from './App/Screens/VisionAddScreen.js';
 
 
 const Stack = createStackNavigator();
+const TabNav = createBottomTabNavigator();
+
+function HomeTabComponent () {
+  return (
+    <TabNav.Navigator headerMode="float">
+      <TabNav.Screen name = "Home" component={HomeScreen} />
+      <TabNav.Screen name = "UserProfile" component={UserProfileScreen} />
+    </TabNav.Navigator>
+  );
+}
       
 export default function App() {
   return (
@@ -19,6 +31,7 @@ export default function App() {
         initialRouteName="HomeFeed"
        >
          <Stack.Screen name="HomeFeed" component= {HomeFeedScreen} />
+         <Stack.Screen name="HomeTab" component= {HomeTabComponent} />
          <Stack.Screen name = "Memento" component = {MementoScreen} />
          <Stack.Screen name = "MementoEdit" component = {MementoEditScreen} />
          <Stack.Screen name = "VisionAdd" component = {VisionAddScreen} />
