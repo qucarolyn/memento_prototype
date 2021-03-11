@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Button, TouchableOpacity, StyleSheet, TextInput, KeyboardAvoidingView } from "react-native";
+import { View, Text, Button, TouchableOpacity, StyleSheet, TextInput, KeyboardAvoidingView, Alert} from "react-native";
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -10,13 +10,37 @@ export default function VisionAddScreen(props) {
 
   
   const addVision = () => {
-    console.log(visionText); 
-    console.log(visionColor);
-    // Deep copy of array avoids any state mutation instead of state update rerender issues
-    let newVisions = [...visions];
-    newVisions.push({title: visionText, color: visionColor});
-    navigation.popToTop();
+    if(visionText == ""){
+      textAlert();
+    }else if(visionColor == "") {
+      colorAlert();
+    }else {
+      console.log(visionText); 
+      console.log(visionColor);
+      // Deep copy of array avoids any state mutation instead of state update rerender issues
+      let newVisions = [...visions];
+      newVisions.push({title: visionText, color: visionColor});
+      navigation.popToTop();
+    }
+    
   };
+
+
+  const colorAlert = () =>
+    Alert.alert(
+      "No Color Selected",
+      "Please Select a Color"
+      [{ text: "OK", onPress: () => console.log("OK Pressed"),}
+      ],
+    );
+
+    const textAlert = () =>
+    Alert.alert(
+      "Vision is Empty",
+      "Please add a title for your Vision"
+      [{ text: "OK", onPress: () => console.log("OK Pressed"),}
+      ],
+    );
 
 
   const color_list = [
