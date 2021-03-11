@@ -7,7 +7,6 @@ export default function HomeFeedScreen({navigation}) {
     return (
         <View>
 
-
           <HorizontalMenu>
 
           </HorizontalMenu>

@@ -1,9 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, Button, TouchableOpacity, StyleSheet, TextInput, KeyboardAvoidingView } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 
-export default function HomeFeedScreen({navigation}) {
-  const [text, setText] = useState("");
-    const [choice, setChoice] = useState('');
+
+export default function VisionAddScreen(props) {
+  const [visionText, setVisionText] = useState("");
+  const [visionColor, setVisionColor] = useState("");
+  const navigation = useNavigation();
+
+  
+  const addVision = () => {
+    console.log(visionText); 
+    console.log(visionColor);
+    // Deep copy of array avoids any state mutation instead of state update rerender issues
+    let newVisions = [...visions];
+    newVisions.push({title: visionText, color: visionColor});
+    navigation.popToTop();
+  };
 
 
   const color_list = [
@@ -40,15 +53,16 @@ export default function HomeFeedScreen({navigation}) {
             <Text>Enter a title</Text>
             <TextInput
               placeholder='be healthy...'
-              maxLength={'20'}
+              value={visionText}
+              maxLength={20}
               style={styles.textinput}
-              value={text.length} 
-              onChangeText={(text) => setText(text)}
+              onChangeText={(visionText) => setVisionText(visionText)}
             />
             <Text>
-              {text.length}/20
+              {visionText.length}/20
             </Text>
           </KeyboardAvoidingView>
+
           <View style={{alignItems: 'center', margin: 30,}}>
             <Text>Choose a color</Text>
             <View style={{flexDirection: 'row', alignItems: 'center',}}>
@@ -56,33 +70,44 @@ export default function HomeFeedScreen({navigation}) {
               height: 30, width: 30, borderRadius: 15, margin: 5,
               backgroundColor: 'red',
             }}
-            />
+            onPress = {() => setVisionColor('red')}/>
             <TouchableOpacity style={{
               height: 30, width: 30, borderRadius: 15, margin: 5,
               backgroundColor: 'orange',
-            }}/>
+            }}
+            onPress = {() => setVisionColor('orange')}
+            />
             <TouchableOpacity style={{
               height: 30, width: 30, borderRadius: 15, margin: 5,
               backgroundColor: 'yellow',
-            }}/>
+            }}
+            onPress = {() => setVisionColor('yellow')}
+            />
             <TouchableOpacity style={{
               height: 30, width: 30, borderRadius: 15, margin: 5,
               backgroundColor: 'green',
-            }}/>
+            }}
+            onPress = {() => setVisionColor('green')}
+            />
             <TouchableOpacity style={{
               height: 30, width: 30, borderRadius: 15, margin: 5,
               backgroundColor: 'blue',
-            }}/>
+            }}
+            onPress = {() => setVisionColor('blue')}
+            />
             <TouchableOpacity style={{
               height: 30, width: 30, borderRadius: 15, margin: 5,
               backgroundColor: 'purple',
-            }}/>
+            }}
+            onPress = {() => setVisionColor('purple')}
+            />
             </View>
           </View>
 
           <Button
             title="Finish"
             accessibilityLabel="Click Here to Publish Vision"
+            onPress={() => addVision()}
           />
         </View>
     );

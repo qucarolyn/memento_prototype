@@ -1,7 +1,9 @@
 import React from "react";
 import { StyleSheet, View, Text, Button } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 
-visions: [
+
+visions= [
     {
         title: "be healthy",
         color: "red",
@@ -15,6 +17,9 @@ visions: [
 ]
 
 export default function HorizontalMenu() {
+    const myVision = () => {
+
+    }
 
     function VisionItem (props) {
         return (
