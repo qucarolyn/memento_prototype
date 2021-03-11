@@ -1,7 +1,6 @@
 import React, { useState} from "react";
 import { StyleSheet, SafeAreaView , View, Text} from "react-native";
 import { createStackNavigator } from '@react-navigation/stack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import { NavigationContainer } from '@react-navigation/native';
 import HomeFeedScreen  from './App/Screens/HomeFeedScreen.js';
@@ -10,7 +9,6 @@ import MementoScreen  from './App/Screens/MementoScreen.js';
 
 
 const Stack = createStackNavigator();
-const Drawer = createDrawerNavigator(); 
       
 export default function App() {
   return (
