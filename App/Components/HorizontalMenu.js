@@ -19,6 +19,11 @@ export default function HorizontalMenu() {
     function visionItem (props) {
         return (
             <View> 
+                <Button
+                    title = {props.title}
+                > 
+
+                </Button>
                 <Text>{props.title}</Text>
             </View>
 

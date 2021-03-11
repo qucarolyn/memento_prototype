@@ -19,10 +19,10 @@ export default function App() {
        <Stack.Navigator
         initialRouteName="HomeFeed"
        >
-         <Stack.Screen name="HomeFeed" component= {HomeFeedScreen} />
+         <Stack.Screen name="HomeFeed" component= {HomeFeedScreen} options={{ title: 'memento' }} />
          <Stack.Screen name = "Memento" component = {MementoScreen} />
          <Stack.Screen name = "MementoEdit" component = {MementoEditScreen} />
-         <Stack.Screen name = "VisionAdd" component = {VisionAddScreen} />
+         <Stack.Screen name = "VisionAdd" component = {VisionAddScreen} options={{ title: 'Add a Vision' }}/>
        </Stack.Navigator>
       </NavigationContainer>
   );
