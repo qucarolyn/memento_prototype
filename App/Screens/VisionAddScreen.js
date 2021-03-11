@@ -8,7 +8,6 @@ export default function HomeFeedScreen({navigation}) {
             <Text>Enter a title</Text>
             <TextInput
               style={styles.textinput}
-              onChangeText={(text) => setSearchText(text)}
             />
           </KeyboardAvoidingView>
           <View style={{alignItems: 'center', margin: 30,}}>
