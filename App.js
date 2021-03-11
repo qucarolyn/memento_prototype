@@ -8,6 +8,8 @@ import HomeFeedScreen  from './App/Screens/HomeFeedScreen.js';
 import MementoEditScreen  from './App/Screens/MementoEditScreen.js';
 import MementoScreen  from './App/Screens/MementoScreen.js';
 import VisionAddScreen  from './App/Screens/VisionAddScreen.js';
+import ReflectScreen  from './App/Screens/ReflectScreen.js';
+
 
 
 
@@ -23,6 +25,7 @@ export default function App() {
          <Stack.Screen name = "Memento" component = {MementoScreen} />
          <Stack.Screen name = "MementoEdit" component = {MementoEditScreen} />
          <Stack.Screen name = "VisionAdd" component = {VisionAddScreen} options={{ title: 'Add a Vision' }}/>
+         <Stack.Screen name = "Reflect" component = {ReflectScreen} options={{ title: 'Reflect' }}/>
        </Stack.Navigator>
       </NavigationContainer>
   );

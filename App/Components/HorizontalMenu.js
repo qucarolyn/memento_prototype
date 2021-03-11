@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Button } from "react-native";
+import { StyleSheet, View, Text, Button } from "react-native";
 
 visions: [
     {
@@ -41,3 +41,7 @@ export default function HorizontalMenu() {
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+
+  });
