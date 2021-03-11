@@ -1,31 +1,31 @@
 import React from "react";
-import { StyleSheet, View, Text, Button } from "react-native";
+import { StyleSheet, View, Text, Button, FlatList} from "react-native";
 import { useNavigation } from '@react-navigation/native';
-
 
 visions= [
     {
-        title: "be healthy",
+        title: "be happy",
         color: "red",
     },
     {
         title: "learn ukelele",
-        color: "orange",
+        color: "green",
     }
-
-
 ]
 
-export default function HorizontalMenu() {
-    const myVision = () => {
+export default function HorizontalMenu(props) {
 
-    }
+    const renderVisionTitle = (props) => {
+        return <Vision props = {props} />;
+      };
 
-    function VisionItem (props) {
+      
+
+    function Vision (props) {
         return (
             <View> 
                 <Button
-                    title = {props.title}
+                    title = {visions[1].title}
                     color={props.color}
                 /> 
             </View>
@@ -34,19 +34,9 @@ export default function HorizontalMenu() {
     }
     return (
         <View>
-            <VisionItem
-                title = "be healthy"
-                color = "red"
-            />
-
-            <VisionItem
-                title = "learn ukelele"
-                color = "blue"
-            />
-
-            <VisionItem
-                title = "friends & family"
-                color = "green"
+             <FlatList
+                data={visions}
+                renderItem={renderVisionTitle}
             />
         </View>
     );

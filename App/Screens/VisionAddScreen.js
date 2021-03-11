@@ -21,6 +21,8 @@ export default function VisionAddScreen(props) {
       let newVisions = [...visions];
       newVisions.push({title: visionText, color: visionColor});
       navigation.popToTop();
+      visions = newVisions;
+      console.log(newVisions);
     }
     
   };
