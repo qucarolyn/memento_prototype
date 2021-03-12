@@ -8,14 +8,14 @@ export default function VisionAddScreen(props) {
   const [visionColor, setVisionColor] = useState("");
   const navigation = useNavigation();
 
-  
+
   const addVision = () => {
     if(visionText == ""){
       textAlert();
     }else if(visionColor == "") {
       colorAlert();
     }else {
-      console.log(visionText); 
+      console.log(visionText);
       console.log(visionColor);
       // Deep copy of array avoids any state mutation instead of state update rerender issues
       let newVisions = [...visions];
@@ -24,7 +24,7 @@ export default function VisionAddScreen(props) {
       visions = newVisions;
       console.log(newVisions);
     }
-    
+
   };
 
 
@@ -46,37 +46,37 @@ export default function VisionAddScreen(props) {
 
 
   const color_list = [
-    { label: "C1", 
-      value: "1", 
-      color: 'red'
+    { label: "C1",
+      value: "1",
+      color: '#FF7F96'
     },
-    { label: "C2", 
-      value: "2", 
-      color: 'orange'
+    { label: "C2",
+      value: "2",
+      color: '#FFAD80'
     },
-    { label: "C3", 
-      value: "3", 
-      color: 'yellow'
+    { label: "C3",
+      value: "3",
+      color: '#FFE380'
     },
-    { label: "C4", 
-      value: "4", 
-      color: 'green'
+    { label: "C4",
+      value: "4",
+      color: '#83E39E'
     },
-    { label: "C5", 
-      value: "5", 
-      color: 'blue'
+    { label: "C5",
+      value: "5",
+      color: '80C9FF'
     },
-    { label: "C6", 
-      value: "6", 
-      color: 'purple'
+    { label: "C6",
+      value: "6",
+      color: '#C0A2FF'
     },
   ];
-   
+
 
     return (
         <View>
           <KeyboardAvoidingView style={{alignItems: 'center', margin: 50,}}>
-            <Text>Enter a title</Text>
+            <Text style={styles.title}>Enter a title</Text>
             <TextInput
               placeholder='be healthy...'
               value={visionText}
@@ -90,51 +90,55 @@ export default function VisionAddScreen(props) {
           </KeyboardAvoidingView>
 
           <View style={{alignItems: 'center', margin: 30,}}>
-            <Text>Choose a color</Text>
+            <Text style={styles.title}>Choose a color</Text>
             <View style={{flexDirection: 'row', alignItems: 'center',}}>
             <TouchableOpacity style={{
               height: 30, width: 30, borderRadius: 15, margin: 5,
-              backgroundColor: 'red',
+              backgroundColor: '#FF7F96',
             }}
             onPress = {() => setVisionColor('red')}/>
             <TouchableOpacity style={{
               height: 30, width: 30, borderRadius: 15, margin: 5,
-              backgroundColor: 'orange',
+              backgroundColor: '#FFAD80',
             }}
             onPress = {() => setVisionColor('orange')}
             />
             <TouchableOpacity style={{
               height: 30, width: 30, borderRadius: 15, margin: 5,
-              backgroundColor: 'yellow',
+              backgroundColor: '#FFE380',
             }}
             onPress = {() => setVisionColor('yellow')}
             />
             <TouchableOpacity style={{
               height: 30, width: 30, borderRadius: 15, margin: 5,
-              backgroundColor: 'green',
+              backgroundColor: '#83E39E',
             }}
             onPress = {() => setVisionColor('green')}
             />
             <TouchableOpacity style={{
               height: 30, width: 30, borderRadius: 15, margin: 5,
-              backgroundColor: 'blue',
+              backgroundColor: '#80C9FF',
             }}
             onPress = {() => setVisionColor('blue')}
             />
             <TouchableOpacity style={{
               height: 30, width: 30, borderRadius: 15, margin: 5,
-              backgroundColor: 'purple',
+              backgroundColor: '#C0A2FF',
             }}
             onPress = {() => setVisionColor('purple')}
             />
             </View>
           </View>
 
-          <Button
-            title="Finish"
-            accessibilityLabel="Click Here to Publish Vision"
+          <View style={{alignItems: 'center', marginTop: 70}}>
+          <TouchableOpacity
+            style={styles.save}
             onPress={() => addVision()}
-          />
+          >
+            <Text style={{fontSize: 20, color: 'white'}}>finish</Text>
+          </TouchableOpacity>
+          </View>
+
         </View>
     );
 }
@@ -148,4 +152,23 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 18,
   },
+  title: {
+    color: '#3E71AE',
+    fontSize: 18,
+    marginBottom: 10,
+  },
+  save: {
+    backgroundColor: '#3E71AE',
+    height: 40,
+    borderRadius: 20,
+    width: 150,
+    margin: 5,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  buttonText: {
+    color: '#3E71AE',
+    fontSize: 14,
+    textDecorationLine: 'underline',
+  }
 });
