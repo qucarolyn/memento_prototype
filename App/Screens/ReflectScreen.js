@@ -7,17 +7,62 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   TextInput,
-  StyleSheet
+  StyleSheet,
 } from "react-native";
+
+const prompts=[
+  "What have I enjoyed most about the last week?",
+  "I am most grateful for...",
+  "What would I tell my future self",
+  "If I could do anything, what would it be?",
+  "What are my strengths right now?",
+  "What are my weaknesses right now?",
+  "What am I afraid of right now",
+  "Where do I want to be in a year?",
+  "Where do I want to be in 5 years?",
+  "What do I need more of in my life?",
+  "What do I need less of in my life?",
+  "What do I love about myself?",
+  "What drains my energy?",
+  "Who/what is inspiring me right now?",
+  "What is a quote that is particulary touching right now and why?",
+  "What motivates me?",
+  "What is something I'll never forget?",
+  "What is holding me back from making progress?",
+  "What am I passionate about?",
+  "What do I know today that I didn't know a year ago?",
+  "If today was my last day, what would I do?",
+  "If I couldn't fail, what would I do?",
+  "What does 'failure' mean to me?",
+  "What does 'success' mean to me?",
+  "List 15 things that made me smile this week",
+  "What is my biggest fear right now?",
+  "Is my morning routine currently supporting my goals?",
+  "Is my nighttime routine currently supporting my goals?",
+  "What can I do today to make progress?",
+  "If I had all the time in the world, what would I do?"
+]
+
+//const [prompt, setPrompt] = useState("");
+
+// const setRandom = () => {
+//   var prompt = prompts[Math.floor(Math.random() * (28))];
+//   setPrompt(prompt);
+// }
 
 export default function ReflectScreen({navigation}) {
     return (
         <View style={styles.container}>
           <View style={{justifyContent: 'center'}}>
-          <Text style={{margin: 20, fontSize: 20,}}>What have you enjoyed most about the last week?</Text>
+          <Text style={{margin: 20, fontSize: 20,}}>
+            {prompts[Math.floor(Math.random() * (28))]}
+          </Text>
           </View>
           <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity style={styles.newprompt}>
+            <TouchableOpacity
+              style={styles.newprompt}
+              onPress={() => {setRandom}}
+            >
               <Text style={styles.buttonText}>New prompt</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.newprompt}>
