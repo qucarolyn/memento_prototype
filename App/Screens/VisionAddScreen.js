@@ -84,7 +84,7 @@ export default function VisionAddScreen(props) {
               style={styles.textinput}
               onChangeText={(visionText) => setVisionText(visionText)}
             />
-            <Text>
+            <Text style={{color: '#A5A5A5', margin: 2,}}>
               {visionText.length}/20
             </Text>
           </KeyboardAvoidingView>
