@@ -48,7 +48,6 @@ export default function VisionAddScreen({route, navigation}) {
 
   };
 
-
   const colorAlert = () =>
     Alert.alert(
       "No Color Selected",
@@ -64,7 +63,6 @@ export default function VisionAddScreen({route, navigation}) {
       [{ text: "OK", onPress: () => console.log("OK Pressed"),}
       ],
     );
-
 
   const color_list = [
     { label: "red",

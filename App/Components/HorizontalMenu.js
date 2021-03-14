@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Text, Button, FlatList, TouchableHighlight} from "react-native";
+import { StyleSheet, View, Text, Button, FlatList, TouchableOpacity} from "react-native";
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -11,22 +11,32 @@ export default function HorizontalMenu(props) {
     const visionPressHandler = (props) => {
         setPress(props.title);
         console.log(props.title);
+        
     };
 
     function Vision (props) {
         return (
             <View>
-                <Button
-                    backgroundColor= "green"
+                <TouchableOpacity
                     style = {{
-                        backgroundColor: 'blue',
-                        // backgroundColor: pressed == props.title ? props.color : "white",
-                        color: pressed == props.title ? "white" : props.color,
+                        backgroundColor: pressed == props.title ? props.color : "white",
+                        borderRadius: 15, 
+                        margin: 2,
                     }}
-                    title = {props.title}
-                    color={props.color}
                     onPress={props.onPress}
-                />
+                >
+                    <Text
+                        style = {{
+                            margin: 5,
+                            color: pressed == props.title ? "white" : props.color,
+                        }}
+                    > 
+                        {props.title}
+                    </Text>
+
+                </TouchableOpacity>
+                
+
             </View>
         );
 
