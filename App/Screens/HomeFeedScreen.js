@@ -4,7 +4,11 @@ import HorizontalMenu from '../Components/HorizontalMenu.js';
 
 
 export default function HomeFeedScreen({navigation}) {
-  const visions= [
+  const addVision = (vision) => {
+    visions.push(vision);
+  }
+
+  var visions= [
     {
         title: "Be happy",
         color: 'red',
@@ -21,6 +25,7 @@ export default function HomeFeedScreen({navigation}) {
         title: "Stay healthy",
         color: 'orange',
     }];
+
     return (
         <View>
 
@@ -29,7 +34,7 @@ export default function HomeFeedScreen({navigation}) {
           </HorizontalMenu>
 
           <Button
-            onPress={() => navigation.navigate("VisionAdd")}
+            onPress={() => navigation.navigate("VisionAdd", {updateVision: {addVision}})}
             title="Create a Vision"
           />
 

@@ -3,12 +3,12 @@ import { View, Text, Button, TouchableOpacity, StyleSheet, TextInput, KeyboardAv
 import { useNavigation } from '@react-navigation/native';
 
 
-export default function VisionAddScreen(props) {
+export default function VisionAddScreen({route, navigation}) {
   const [visionText, setVisionText] = useState("");
   const [visionColor, setVisionColor] = useState("");
-  const navigation = useNavigation();
+  //const navigation = useNavigation();
 
-
+  const { updateVision } = route.params; //call with vision to be added when submit button is hit
   const addVision = () => {
     if(visionText == ""){
       textAlert();
@@ -18,11 +18,17 @@ export default function VisionAddScreen(props) {
       console.log(visionText);
       console.log(visionColor);
       // Deep copy of array avoids any state mutation instead of state update rerender issues
-      let newVisions = [...visions];
-      newVisions.push({title: visionText, color: visionColor});
-      navigation.popToTop();
-      visions = newVisions;
-      console.log(newVisions);
+      //let newVisions = [...visions];
+      //newVisions.push({title: visionText, color: visionColor});
+      const newVision = {
+        color: visionColor,
+        title: visionText,
+      };
+      console.log(updateVision);
+      updateVision.addVision(newVision);
+      navigation.popToTop(); // Do I need to force a re render?
+      //visions = newVisions;
+      //console.log(newVisions);
     }
 
   };
