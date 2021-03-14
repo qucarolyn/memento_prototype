@@ -1,24 +1,31 @@
-import React from "react";
-import { StyleSheet, View, Text, Button, FlatList} from "react-native";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, View, Text, Button, FlatList, TouchableHighlight} from "react-native";
 import { useNavigation } from '@react-navigation/native';
 
 
 
 export default function HorizontalMenu(props) {
-const visions = props.visions;
-    const renderVisionTitle = (props) => {
-        console.log(props);
-        return <Vision color = {props.item.color} title = {props.item.title}/>;
-      };
+    const [pressed, setPress] = useState(null);
+    const visions = props.visions;
 
-
+    const visionPressHandler = (props) => {
+        setPress(props.title);
+        console.log(props.title);
+    };
 
     function Vision (props) {
         return (
             <View>
                 <Button
+                    backgroundColor= "green"
+                    style = {{
+                        backgroundColor: 'blue',
+                        // backgroundColor: pressed == props.title ? props.color : "white",
+                        color: pressed == props.title ? "white" : props.color,
+                    }}
                     title = {props.title}
                     color={props.color}
+                    onPress={props.onPress}
                 />
             </View>
         );
@@ -28,9 +35,15 @@ const visions = props.visions;
     return (
         <View>
            <FlatList
-           horizontal = {true}
+              horizontal = {true}
               data={visions}
-              renderItem={renderVisionTitle}
+              renderItem = {({item}) => (
+                <Vision 
+                    color = {item.color} 
+                    title = {item.title}
+                    onPress = {() => visionPressHandler(item)}
+                />
+              )}
           />
         </View>
     );
@@ -38,4 +51,4 @@ const visions = props.visions;
 
 const styles = StyleSheet.create({
 
-  });
+});

@@ -1,22 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Button, TouchableOpacity, StyleSheet, TextInput, KeyboardAvoidingView, Alert} from "react-native";
+import { View, 
+          Text, 
+          Button, 
+          TouchableOpacity, 
+          StyleSheet, 
+          TextInput, 
+          KeyboardAvoidingView, 
+          Alert, 
+          FlatList} from "react-native";
 import { useNavigation } from '@react-navigation/native';
 
 
 export default function VisionAddScreen({route, navigation}) {
   const [visionText, setVisionText] = useState("");
   const [visionColor, setVisionColor] = useState("");
-  //const navigation = useNavigation();
+  const [pressed, setPress] = useState(null);
+
+  
+  const colorPressHandler = (props) => {
+    console.log(props);
+    setPress(props.color);
+    setVisionColor(props.color); 
+  };
 
   const { updateVision } = route.params; //call with vision to be added when submit button is hit
+  
   const addVision = () => {
     if(visionText == ""){
       textAlert();
     }else if(visionColor == "") {
       colorAlert();
     }else {
-      console.log(visionText);
-      console.log(visionColor);
+      // console.log(visionText);
+      // console.log(visionColor);
       // Deep copy of array avoids any state mutation instead of state update rerender issues
       //let newVisions = [...visions];
       //newVisions.push({title: visionText, color: visionColor});
@@ -27,7 +43,6 @@ export default function VisionAddScreen({route, navigation}) {
       console.log(updateVision);
       updateVision.addVision(newVision);
       navigation.popToTop(); // Do I need to force a re render?
-      //visions = newVisions;
       //console.log(newVisions);
     }
 
@@ -52,32 +67,31 @@ export default function VisionAddScreen({route, navigation}) {
 
 
   const color_list = [
-    { label: "C1",
+    { label: "red",
       value: "1",
       color: '#FF7F96'
     },
-    { label: "C2",
+    { label: "orange",
       value: "2",
       color: '#FFAD80'
     },
-    { label: "C3",
+    { label: "yellow",
       value: "3",
       color: '#FFE380'
     },
-    { label: "C4",
+    { label: "green",
       value: "4",
       color: '#83E39E'
     },
-    { label: "C5",
+    { label: "blue",
       value: "5",
-      color: '80C9FF'
+      color: '#80C9FF'
     },
-    { label: "C6",
+    { label: "purple",
       value: "6",
       color: '#C0A2FF'
     },
   ];
-
 
     return (
         <View>
@@ -95,44 +109,29 @@ export default function VisionAddScreen({route, navigation}) {
             </Text>
           </KeyboardAvoidingView>
 
+
           <View style={{alignItems: 'center', margin: 30,}}>
             <Text style={styles.title}>Choose a color</Text>
             <View style={{flexDirection: 'row', alignItems: 'center',}}>
-            <TouchableOpacity style={{
-              height: 30, width: 30, borderRadius: 15, margin: 5,
-              backgroundColor: '#FF7F96',
-            }}
-            onPress = {() => setVisionColor('red')}/>
-            <TouchableOpacity style={{
-              height: 30, width: 30, borderRadius: 15, margin: 5,
-              backgroundColor: '#FFAD80',
-            }}
-            onPress = {() => setVisionColor('orange')}
-            />
-            <TouchableOpacity style={{
-              height: 30, width: 30, borderRadius: 15, margin: 5,
-              backgroundColor: '#FFE380',
-            }}
-            onPress = {() => setVisionColor('yellow')}
-            />
-            <TouchableOpacity style={{
-              height: 30, width: 30, borderRadius: 15, margin: 5,
-              backgroundColor: '#83E39E',
-            }}
-            onPress = {() => setVisionColor('green')}
-            />
-            <TouchableOpacity style={{
-              height: 30, width: 30, borderRadius: 15, margin: 5,
-              backgroundColor: '#80C9FF',
-            }}
-            onPress = {() => setVisionColor('blue')}
-            />
-            <TouchableOpacity style={{
-              height: 30, width: 30, borderRadius: 15, margin: 5,
-              backgroundColor: '#C0A2FF',
-            }}
-            onPress = {() => setVisionColor('purple')}
-            />
+              <FlatList
+                horizontal = {true}
+                data={color_list}
+                // keyExtractor={item => item.id.toString()}
+                renderItem = {({item}) => (
+                  <TouchableOpacity 
+                    style={{
+                      height: 30, 
+                      width: 30, 
+                      borderRadius: 15, 
+                      margin: 5,
+                      backgroundColor: item.color,
+                      borderColor: "grey",
+                      borderWidth: pressed == item.color ? 2 : 0,
+                    }}
+                    onPress = {() => colorPressHandler(item)}
+                  />
+                )}
+              />
             </View>
           </View>
 
@@ -141,6 +140,7 @@ export default function VisionAddScreen({route, navigation}) {
             style={styles.save}
             onPress={() => addVision()}
           >
+
             <Text style={{fontSize: 20, color: 'white'}}>finish</Text>
           </TouchableOpacity>
           </View>
