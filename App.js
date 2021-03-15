@@ -1,5 +1,5 @@
 import React, { useState} from "react";
-import { StyleSheet, SafeAreaView , View, Text} from "react-native";
+import { StyleSheet, SafeAreaView , View, Text, Button} from "react-native";
 import { createStackNavigator } from '@react-navigation/stack';
 
 // import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -24,7 +24,17 @@ export default function App() {
          <Stack.Screen name="HomeFeed" component= {HomeFeedScreen} options={{ title: 'memento' }} />
          <Stack.Screen name = "Memento" component = {MementoScreen} />
          <Stack.Screen name = "MementoEdit" component = {MementoEditScreen} />
-         <Stack.Screen name = "VisionAdd" component = {VisionAddScreen} options={{ title: 'Add a Vision' }}/>
+         <Stack.Screen name = "VisionAdd" component = {VisionAddScreen} 
+            options={{ 
+              title: 'Add a Vision', 
+              headerLeft: () => (
+                <Button
+                  onPress={() => alert('This is a button!')}// incomplete: need options to "keep editing" or "delete vision"
+                  title="<"// incomplete: need to use expo vectors for this part 
+                />
+              ),
+            }}
+         />
          <Stack.Screen name = "Reflect" component = {ReflectScreen} options={{ title: 'Reflect' }}/>
        </Stack.Navigator>
       </NavigationContainer>

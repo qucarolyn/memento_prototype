@@ -22,6 +22,7 @@ export default function HomeFeedScreen({navigation}) {
       title: "All",
       color: 'grey',
     },
+
     {
       title: "Be happy",
       color: 'red',
@@ -45,7 +46,9 @@ export default function HomeFeedScreen({navigation}) {
 
           <HorizontalMenu visions={visions}/>
           <Text>{console.log(visions)}</Text>
-          {/* <MementoFeed></MementoFeed> */}
+          <MementoFeed
+            vision = {visions[1]}//for testing purposes 
+          ></MementoFeed>
 
           <Button
             onPress={() => navigation.navigate("VisionAdd", {updateVision: {addVision}})}
