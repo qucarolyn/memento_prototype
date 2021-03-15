@@ -12,9 +12,8 @@ export default function HomeFeedScreen({navigation}) {
     visions.push(vision);
   }
 
-  const setVision = () => {
-    
-
+  const setVision = (vision) => {
+    setActiveVision(vision);
   }
 
   var visions= [
@@ -23,10 +22,10 @@ export default function HomeFeedScreen({navigation}) {
       color: 'grey',
     },
 
-    {
-      title: "Be happy",
-      color: 'red',
-    },
+    // {
+    //   title: "Be happy",
+    //   color: 'red',
+    // },
     {
       title: "Learn ukelele",
       color: 'green',
@@ -44,10 +43,14 @@ export default function HomeFeedScreen({navigation}) {
     return (
         <View>
 
-          <HorizontalMenu visions={visions}/>
+          <HorizontalMenu 
+            visions={visions}
+            setVisionCallback = {setVision}
+          />
           <Text>{console.log(visions)}</Text>
           <MementoFeed
-            vision = {visions[1]}//for testing purposes 
+            vision = {activeVision}//for testing purposes 
+
           ></MementoFeed>
 
           <Button

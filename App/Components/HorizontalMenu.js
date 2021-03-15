@@ -11,6 +11,8 @@ export default function HorizontalMenu(props) {
     const visionPressHandler = (props) => {
         setPress(props.title);
         console.log(props.title);
+        props.setVisionCallback(props.title);
+        
         
     };
 
