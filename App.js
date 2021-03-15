@@ -10,9 +10,6 @@ import MementoScreen  from './App/Screens/MementoScreen.js';
 import VisionAddScreen  from './App/Screens/VisionAddScreen.js';
 import ReflectScreen  from './App/Screens/ReflectScreen.js';
 
-
-
-
 const Stack = createStackNavigator();
       
 export default function App() {
@@ -21,18 +18,31 @@ export default function App() {
        <Stack.Navigator
         initialRouteName="HomeFeed"
        >
-         <Stack.Screen name="HomeFeed" component= {HomeFeedScreen} options={{ title: 'memento' }} />
+         <Stack.Screen name="HomeFeed" component= {HomeFeedScreen} 
+          options={{
+            title: 'memento', 
+            headerLeft: () => (
+              <Button
+                  onPress={() => alert('This is where the menu should go!')}// incomplete: need options to "keep editing" or "delete vision"
+                  title="menu"// incomplete: need to use expo vectors for this part 
+              >
+
+              </Button>
+            ),
+             
+
+          }} />
          <Stack.Screen name = "Memento" component = {MementoScreen} />
          <Stack.Screen name = "MementoEdit" component = {MementoEditScreen} />
          <Stack.Screen name = "VisionAdd" component = {VisionAddScreen} 
             options={{ 
               title: 'Add a Vision', 
-              headerLeft: () => (
-                <Button
-                  onPress={() => alert('This is a button!')}// incomplete: need options to "keep editing" or "delete vision"
-                  title="<"// incomplete: need to use expo vectors for this part 
-                />
-              ),
+              headerRight: () => (
+                 <Button
+                   onPress={() => alert('This is a button!')}// incomplete: need options to "keep editing" or "delete vision"
+                   title="alert"// incomplete: need to use expo vectors for this part 
+                 />
+               ),
             }}
          />
          <Stack.Screen name = "Reflect" component = {ReflectScreen} options={{ title: 'Reflect' }}/>

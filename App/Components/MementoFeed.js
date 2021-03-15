@@ -18,6 +18,13 @@ export default function MementoFeed(props) {
         date: "1/19/2020", 
         caption: 'Learned a brand new chord progression!',
       }, 
+      {
+        title: "Reflection",
+        color: "blue", 
+        date: "1/19/2020", 
+        prompt: "what are you most proud of?",
+        caption: 'I am most proud of myself for keeping up with this vision consistently',
+      },
     ];
 
     function Memento (props) {
