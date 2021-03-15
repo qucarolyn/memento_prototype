@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Button, } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import { FontAwesome } from '@expo/vector-icons';
 
 
 export default function MementoDetailScreen(props) {
@@ -12,6 +13,7 @@ export default function MementoDetailScreen(props) {
 
         <View style={{
           marginTop: 20,
+          marginBottom: 20,
           borderRadius: 10,
           backgroundColor: 'white',
           width: 320,
@@ -22,7 +24,10 @@ export default function MementoDetailScreen(props) {
             borderTopRightRadius: 10,
             padding: 10,
           }}>
-            <Text style={styles.headerText}>{memento.title}</Text>
+            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              <Text style={styles.headerText}>{memento.title}</Text>
+              <FontAwesome name="heart" size={16} color="white" />
+            </View>
             <Text style={styles.headerText2}>{memento.date}</Text>
           </View>
 

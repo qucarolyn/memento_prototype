@@ -43,7 +43,7 @@ export default function HomeFeedScreen({navigation}) {
     return (
         <View>
 
-          <HorizontalMenu 
+          <HorizontalMenu
             visions={visions}
             setVisionCallback = {setVision}
           />
@@ -51,8 +51,13 @@ export default function HomeFeedScreen({navigation}) {
           {/* <Text>{console.log(visions)}</Text> */}
           <SafeAreaView>
             <MementoFeed
-              vision = {activeVision}//for testing purposes 
+              vision = {activeVision}//for testing purposes
             ></MementoFeed>
+
+            <Button
+              onPress={() => navigation.navigate("MementoAdd")}
+              title="Create a Memento"
+            />
 
             <Button
               onPress={() => navigation.navigate("VisionAdd", {updateVision: {addVision}})}
@@ -65,7 +70,7 @@ export default function HomeFeedScreen({navigation}) {
             />
 
           </SafeAreaView>
-          
+
 
         </View>
     );
