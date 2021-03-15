@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 // import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import HomeFeedScreen  from './App/Screens/HomeFeedScreen.js';
-import MementoEditScreen  from './App/Screens/MementoEditScreen.js';
+import MementoDetailScreen  from './App/Screens/MementoDetailScreen.js';
 import MementoScreen  from './App/Screens/MementoScreen.js';
 import VisionAddScreen  from './App/Screens/VisionAddScreen.js';
 import ReflectScreen  from './App/Screens/ReflectScreen.js';
@@ -33,7 +33,7 @@ export default function App() {
 
           }} />
          <Stack.Screen name = "Memento" component = {MementoScreen} />
-         <Stack.Screen name = "MementoEdit" component = {MementoEditScreen} />
+         <Stack.Screen name = "MementoDetail" component = {MementoDetailScreen} />
          <Stack.Screen name = "VisionAdd" component = {VisionAddScreen} 
             options={{ 
               title: 'Add a Vision', 

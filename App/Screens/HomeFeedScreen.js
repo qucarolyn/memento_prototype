@@ -6,7 +6,7 @@ import MementoFeed from '../Components/MementoFeed.js';
 
 
 export default function HomeFeedScreen({navigation}) {
-  const [activeVision, setActiveVision] = useState("");
+  const [activeVision, setActiveVision] = useState("All");
 
   const addVision = (vision) => {
     visions.push(vision);
@@ -28,15 +28,15 @@ export default function HomeFeedScreen({navigation}) {
     // },
     {
       title: "Learn ukelele",
-      color: 'green',
+      color: '#83E39E',
     },
     {
       title: "Spend time with fam",
-      color: 'blue',
+      color: '#80C9FF'
     },
     {
      title: "Stay healthy",
-     color: 'orange',
+     color: '#FFAD80'
     }
   ];
 
@@ -50,7 +50,6 @@ export default function HomeFeedScreen({navigation}) {
           <Text>{console.log(visions)}</Text>
           <MementoFeed
             vision = {activeVision}//for testing purposes 
-
           ></MementoFeed>
 
           <Button

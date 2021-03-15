@@ -7,20 +7,23 @@ import { useNavigation } from '@react-navigation/native';
 export default function MementoFeed(props) {
     const Mementos = [
       {
-        title: "Be happy",
-        color: "red",
+        title: "Stay healthy",
+        type: "memento",
+        color: '#FFAD80',
         date: "1/21/2020",
         caption: 'today I went on a run! Was very very fun'
       },
       {
         title: "Learn ukelele",
-        color: "green",
+        type: "memento",
+        color: '#83E39E',
         date: "1/19/2020",
         caption: 'Learned a brand new chord progression!',
       },
       {
-        title: "Reflection",
-        color: "blue",
+        title: "Stay healthy",
+        type: "reflection",
+        backgroundColor: '#3E71AE',
         date: "1/19/2020",
         prompt: "what are you most proud of?",
         caption: 'I am most proud of myself for keeping up with this vision consistently',
@@ -28,7 +31,6 @@ export default function MementoFeed(props) {
     ];
 
     function Memento (props) {
-      console.log(props.color);
       return (
         <TouchableOpacity
           style={{
@@ -48,7 +50,12 @@ export default function MementoFeed(props) {
             paddingLeft: 10,
             flexDirection: 'row',
             }}>
-            <Text style={styles.headerText}>{props.title}</Text>
+
+            <Text style={styles.headerText}>
+                {props.type == "reflection" ? "reflection":props.title
+                //not working right now...
+                }
+            </Text>
             <Text style={styles.headerText2}> - </Text>
             <Text style={styles.headerText2}>{props.date}</Text>
           </View>
@@ -61,10 +68,19 @@ export default function MementoFeed(props) {
     }
 
     function filterMementos(data, title){
+      console.log("title test");
+      console.log(title);
       if(title == "All"){
         //console.log("success");
         return data;
       }else{
+        console.log(title); 
+        let toReturn = data.filter(function(item){
+          return item.title == title;
+       }).map((item) => item);
+       return toReturn;
+
+
         console.log(title);
         // need to iterate through the array and find the ones with the proper title
 
@@ -76,9 +92,9 @@ export default function MementoFeed(props) {
     return (
 
     <SafeAreaView>
-        <Text>{props.vision}</Text>
+        {/* <Text>{props.vision}</Text> */}
         <FlatList
-          data = {filterMementos(Mementos, "All")}//need to filter mementos based on the click (callback function)
+          data = {filterMementos(Mementos, props.vision)}//need to filter mementos based on the click (callback function)
           renderItem = {({item}) => (
             <Memento
                 title = {item.title}
