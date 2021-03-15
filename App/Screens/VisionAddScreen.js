@@ -110,14 +110,16 @@ export default function VisionAddScreen({route, navigation}) {
 
           <View style={{alignItems: 'center', margin: 30,}}>
             <Text style={styles.title}>Choose a color</Text>
-            <View style={{flexDirection: 'row', alignItems: 'center',}}>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <FlatList
                 horizontal = {true}
                 data={color_list}
+                //justifyContent='space-between'
                 // keyExtractor={item => item.id.toString()}
                 renderItem = {({item}) => (
                   <TouchableOpacity 
                     style={{
+                      marginHorizontal: 11,
                       height: 30, 
                       width: 30, 
                       borderRadius: 15, 
