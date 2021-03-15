@@ -76,6 +76,7 @@ export default function MementoFeed(props) {
     return (
 
     <SafeAreaView>
+        <Text>{props.vision}</Text>
         <FlatList
           data = {filterMementos(Mementos, "All")}//need to filter mementos based on the click (callback function)
           renderItem = {({item}) => (
