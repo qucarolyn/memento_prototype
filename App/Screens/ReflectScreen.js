@@ -58,10 +58,10 @@ export default function ReflectScreen({navigation}) {
   }
     return (
         <View style={styles.container}>
-          <View style={{justifyContent: 'center'}}>
-          <Text style={{margin: 20, fontSize: 20,}}>
-            {prompt}
-          </Text>
+          <View style={{justifyContent: 'center', height: 100}}>
+            <Text style={{margin: 20, fontSize: 20,}}>
+              {prompt}
+            </Text>
           </View>
           <View style={{flexDirection: 'row'}}>
             <TouchableOpacity
@@ -84,7 +84,7 @@ export default function ReflectScreen({navigation}) {
             <FontAwesome name="microphone" size={24} color="white" />
           </TouchableOpacity>
 
-          <TouchableOpacity 
+          <TouchableOpacity
             style={styles.save}
             // onPress={}
           >
