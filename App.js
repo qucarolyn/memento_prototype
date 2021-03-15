@@ -3,12 +3,13 @@ import { StyleSheet, SafeAreaView , View, Text, Button} from "react-native";
 import { createStackNavigator } from '@react-navigation/stack';
 
 // import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import HomeFeedScreen  from './App/Screens/HomeFeedScreen.js';
 import MementoDetailScreen  from './App/Screens/MementoDetailScreen.js';
 import MementoAddScreen  from './App/Screens/MementoAddScreen.js';
 import VisionAddScreen  from './App/Screens/VisionAddScreen.js';
 import ReflectScreen  from './App/Screens/ReflectScreen.js';
+import VisionDrawerScreen from './App/Screens/VisionDrawerScreen.js';
 
 const Stack = createStackNavigator();
 
@@ -23,7 +24,11 @@ export default function App() {
             title: 'memento',
             headerLeft: () => (
               <Button
-                  onPress={() => alert('This is where the menu should go!')}// incomplete: need options to "keep editing" or "delete vision"
+                  onPress={() => {
+                    alert('This is where the menu should go!');
+                    //const navigation = useNavigation();
+                    //navigation.navigate("VisionDrawer");
+                  }}// incomplete: need options to "keep editing" or "delete vision"
                   title="menu"// incomplete: need to use expo vectors for this part
               >
 
@@ -39,13 +44,16 @@ export default function App() {
               title: 'Add a Vision',
               headerRight: () => (
                  <Button
-                   onPress={() => alert('This is a button!')}// incomplete: need options to "keep editing" or "delete vision"
+                   onPress={() => {
+                     alert('This is a button!');
+                    }}// incomplete: need options to "keep editing" or "delete vision"
                    title="alert"// incomplete: need to use expo vectors for this part
                  />
                ),
             }}
          />
          <Stack.Screen name = "Reflect" component = {ReflectScreen} options={{ title: 'Reflect' }}/>
+         <Stack.Screen name = "VisionDrawer" component = {VisionDrawerScreen} options={{ title: 'Reflect' }}/>
        </Stack.Navigator>
       </NavigationContainer>
   );
