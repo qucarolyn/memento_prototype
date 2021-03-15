@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesome } from '@expo/vector-icons';
 import {
   View,
@@ -51,17 +51,22 @@ const prompts=[
 // }
 
 export default function ReflectScreen({navigation}) {
+  const [prompt, setPrompt] = useState(prompts[Math.floor(Math.random() * (28))]);
+  function randomPrompt() {
+    setPrompt(prompts[Math.floor(Math.random() * (28))]);
+    console.log(prompt);
+  }
     return (
         <View style={styles.container}>
           <View style={{justifyContent: 'center'}}>
           <Text style={{margin: 20, fontSize: 20,}}>
-            {prompts[Math.floor(Math.random() * (28))]}
+            {prompt}
           </Text>
           </View>
           <View style={{flexDirection: 'row'}}>
             <TouchableOpacity
               style={styles.newprompt}
-              //onPress={() => {setRandom}}
+              onPress={() => {setPrompt(prompts[Math.floor(Math.random() * (28))])}}
             >
               <Text style={styles.buttonText}>New prompt</Text>
             </TouchableOpacity>
@@ -78,7 +83,11 @@ export default function ReflectScreen({navigation}) {
           <TouchableOpacity style={styles.voicememo}>
             <FontAwesome name="microphone" size={24} color="white" />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.save}>
+
+          <TouchableOpacity 
+            style={styles.save}
+            // onPress={}
+          >
             <Text style={{fontSize: 20, color: 'white'}}>save</Text>
           </TouchableOpacity>
         </View>
