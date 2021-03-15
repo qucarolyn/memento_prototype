@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text, Button, FlatList, TouchableOpacity} from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { ListItem } from "react-native-elements/dist/list/ListItem";
+import { FontAwesome } from '@expo/vector-icons';
 
 
 
@@ -96,7 +97,7 @@ export default function MementoFeed(props) {
           <TouchableOpacity
             style={{
             backgroundColor: '#E5E5E5',
-            borderRadius: 20,
+            borderRadius: 10,
             //padding: 10,
             margin: 5,
             }}
@@ -108,16 +109,25 @@ export default function MementoFeed(props) {
               backgroundColor: props.color,
 
               // backgroundColor: '#3E71AE',
-              borderTopLeftRadius: 20,
-              borderTopRightRadius: 20,
+              borderTopLeftRadius: 10,
+              borderTopRightRadius: 10,
               padding: 7,
               paddingLeft: 10,
               flexDirection: 'row',
+              display: 'flex',
+              justifyContent: 'space-between',
               }}>
-              <Text style={styles.headerText}>{props.title}</Text>
-              <Text style={styles.headerText}>{" - Reflection"}</Text>
-              <Text style={styles.headerText2}> - </Text>
-              <Text style={styles.headerText2}>{props.date}</Text>
+
+              <View style={{flexDirection: 'row'}}>
+                <Text style={styles.headerText}>{props.title}</Text>
+                <Text style={styles.headerText}>{" - Reflection"}</Text>
+                <Text style={styles.headerText2}> - </Text>
+                <Text style={styles.headerText2}>{props.date}</Text>
+              </View>
+
+              <TouchableOpacity>
+              <FontAwesome name="heart" size={16} color="white" />
+              </TouchableOpacity>
             </View>
 
             <View style={{padding: 10}}>
@@ -133,7 +143,7 @@ export default function MementoFeed(props) {
         <TouchableOpacity
           style={{
           backgroundColor: '#E5E5E5',
-          borderRadius: 20,
+          borderRadius: 10,
           //padding: 10,
           margin: 5,
           }}
@@ -143,16 +153,24 @@ export default function MementoFeed(props) {
           <View
             style = {{
             backgroundColor: props.color,
-            borderTopLeftRadius: 20,
-            borderTopRightRadius: 20,
+            borderTopLeftRadius: 10,
+            borderTopRightRadius: 10,
             padding: 7,
             paddingLeft: 10,
             flexDirection: 'row',
+            display: 'flex',
+            justifyContent: 'space-between',
             }}>
 
-            <Text style={styles.headerText}>{props.title}</Text>
-            <Text style={styles.headerText2}> - </Text>
-            <Text style={styles.headerText2}>{props.date}</Text>
+            <View style={{flexDirection: 'row'}}>
+              <Text style={styles.headerText}>{props.title}</Text>
+              <Text style={styles.headerText2}> - </Text>
+              <Text style={styles.headerText2}>{props.date}</Text>
+            </View>
+
+            <TouchableOpacity>
+            <FontAwesome name="heart-o" size={16} color="white" />
+            </TouchableOpacity>
           </View>
 
           <View style={{padding: 10}}>
