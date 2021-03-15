@@ -17,7 +17,7 @@ const prompts=[
   "If I could do anything, what would it be?",
   "What are my strengths right now?",
   "What are my weaknesses right now?",
-  "What am I afraid of right now",
+  "What am I afraid of right now?",
   "Where do I want to be in a year?",
   "Where do I want to be in 5 years?",
   "What do I need more of in my life?",
@@ -61,7 +61,7 @@ export default function ReflectScreen({navigation}) {
           <View style={{flexDirection: 'row'}}>
             <TouchableOpacity
               style={styles.newprompt}
-              onPress={() => {setRandom}}
+              //onPress={() => {setRandom}}
             >
               <Text style={styles.buttonText}>New prompt</Text>
             </TouchableOpacity>
