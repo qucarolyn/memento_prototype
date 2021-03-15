@@ -30,7 +30,8 @@ export default function MementoDetailScreen(props) {
             borderRadius: 10,
             padding: 10,
           }}>
-            <Text>{memento.caption}</Text>
+            <Text style={styles.prompt}>{memento.prompt}</Text>
+            <Text style={styles.caption}>{memento.caption}</Text>
           </View>
 
         </View>
@@ -53,5 +54,11 @@ const styles = StyleSheet.create({
     },
     headerText2: {
       color: 'white',
+    },
+    prompt: {
+      fontWeight: 'bold'
+    },
+    caption: {
+      color: 'black',
     }
   });

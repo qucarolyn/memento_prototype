@@ -6,7 +6,7 @@ import { ListItem } from "react-native-elements/dist/list/ListItem";
 
 
 export default function MementoFeed(props) {
-    let navigation = useNavigation(); 
+    let navigation = useNavigation();
     const MementosAndReflections = [
       {
         title: "Stay healthy",
@@ -29,7 +29,7 @@ export default function MementoFeed(props) {
         reflection: true,
         color: '#FFAD80',
         date: "1/19/2020",
-        prompt: "what are you most proud of?",
+        prompt: "What are you most proud of?",
         caption: 'I am most proud of myself for keeping up with this vision consistently',
         favorite: false,
       },
@@ -66,7 +66,7 @@ export default function MementoFeed(props) {
         reflection: true,
         color: '#83E39E',
         date: "1/19/2020",
-        prompt: "what are you most proud of?",
+        prompt: "What are you most proud of?",
         caption: 'I am most proud of myself for keeping up with this vision consistently',
         favorite: true,
       },
@@ -88,7 +88,7 @@ export default function MementoFeed(props) {
         caption: 'Filler',
         favorite: false,
       },
-      
+
     ];
 
     function ReflectionThumbnail (props) {
@@ -102,7 +102,7 @@ export default function MementoFeed(props) {
             }}
             onPress={() => navigation.navigate("MementoDetail", props)}
             >
-  
+
             <View
               style = {{
               backgroundColor: props.color,
@@ -114,15 +114,14 @@ export default function MementoFeed(props) {
               paddingLeft: 10,
               flexDirection: 'row',
               }}>
-  
-              <Text style={styles.headerText}>{"Reflection"}</Text>
+              <Text style={styles.headerText}>{props.title}</Text>
+              <Text style={styles.headerText}>{" - Reflection"}</Text>
               <Text style={styles.headerText2}> - </Text>
               <Text style={styles.headerText2}>{props.date}</Text>
             </View>
-  
+
             <View style={{padding: 10}}>
-              <Text>{props.title}</Text>
-              <Text>{props.prompt}</Text>
+              <Text style={styles.prompt}>{props.prompt}</Text>
               <Text>{shortenText(props.caption)}</Text>
             </View>
           </TouchableOpacity>
@@ -192,7 +191,7 @@ export default function MementoFeed(props) {
       if(title == "All"){
         return data;
       }else{
-        console.log(title); 
+        console.log(title);
         let toReturn = data.filter(function(item){
           return item.title == title;
        }).map((item) => item);
@@ -240,5 +239,8 @@ const styles = StyleSheet.create({
     },
     headerText2: {
       color: 'white',
-    }
+    },
+    prompt: {
+      fontWeight: 'bold'
+    },
   });
