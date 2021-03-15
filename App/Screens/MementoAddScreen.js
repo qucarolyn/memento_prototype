@@ -1,39 +1,86 @@
 import React from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet, Button, TouchableOpacity } from "react-native";
+import { FontAwesome } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 
 export default function MementoAddScreen({navigation}) {
     return (
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
 
+        <TouchableOpacity style={{flexDirection: 'row', margin: 20,}}>
+          <FontAwesome name="heart" size={16} color="black" />
+          <Text style={{fontSize: 15}}>  Add to Favorites</Text>
+        </TouchableOpacity>
+
         <View style={{
-          marginTop: 20,
           borderRadius: 10,
           backgroundColor: 'white',
           width: 320,
+          marginBottom: 20,
         }}>
-          <View style={{
+          <TouchableOpacity style={{
             backgroundColor: 'blue',
             borderTopLeftRadius: 10,
             borderTopRightRadius: 10,
             padding: 10,
+            justifyContent: 'space-between',
+            flexDirection: 'row'
           }}>
             <Text style={styles.headerText}>Title</Text>
-            <Text style={styles.headerText2}>Date</Text>
-          </View>
+            <AntDesign name="down" size={20} color="white" />
+          </TouchableOpacity>
 
           <View style={{
             borderRadius: 10,
             padding: 10,
+            height: 330,
           }}>
-            <Text style={styles.prompt}>Prompt</Text>
-            <Text style={styles.caption}>Caption</Text>
+          </View>
+
+          <View style={{
+            backgroundColor: 'blue',
+            borderBottomLeftRadius: 10,
+            borderBottomRightRadius: 10,
+            padding: 10,
+            paddingLeft: 30,
+            paddingRight: 30,
+            justifyContent: 'space-between',
+            flexDirection: 'row'
+          }}>
+            <TouchableOpacity>
+            <FontAwesome name="photo" size={25} color="white" />
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+            <MaterialCommunityIcons name="format-text" size={26} color="white" />
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+            <FontAwesome name="microphone" size={25} color="white" />
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+            <Entypo name="location" size={23} color="white" />
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+            <MaterialIcons name="insert-emoticon" size={26} color="white" />
+            </TouchableOpacity>
           </View>
 
         </View>
 
         <Button
           //onPress={() => navigation.navigate("MementoScreen")}
-          title="Edit this Memento"
+          title="Save"
+        />
+
+        <Button
+          //onPress={() => navigation.navigate("MementoScreen")}
+          title="Cancel"
         />
 
       </View>
