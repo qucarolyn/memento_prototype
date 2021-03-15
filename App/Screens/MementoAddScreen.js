@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
 
-export default function HomeFeedScreen({navigation}) {
+export default function MementoAddScreen({navigation}) {
     return (
         <View>
           <Text>
