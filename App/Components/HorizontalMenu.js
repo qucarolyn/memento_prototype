@@ -11,7 +11,7 @@ export default function HorizontalMenu(props) {
     const visionPressHandler = (props) => {
         setPress(props.title);
         console.log(props.title);
-        
+
     };
 
     function Vision (props) {
@@ -20,7 +20,7 @@ export default function HorizontalMenu(props) {
                 <TouchableOpacity
                     style = {{
                         backgroundColor: pressed == props.title ? props.color : "white",
-                        borderRadius: 15, 
+                        borderRadius: 15,
                         margin: 2,
                     }}
                     onPress={props.onPress}
@@ -30,12 +30,12 @@ export default function HorizontalMenu(props) {
                             margin: 5,
                             color: pressed == props.title ? "white" : props.color,
                         }}
-                    > 
+                    >
                         {props.title}
                     </Text>
 
                 </TouchableOpacity>
-                
+
 
             </View>
         );
@@ -47,9 +47,10 @@ export default function HorizontalMenu(props) {
            <FlatList
               horizontal = {true}
               data={visions}
+              style={{padding: 10}}
               renderItem = {({item}) => (
-                <Vision 
-                    color = {item.color} 
+                <Vision
+                    color = {item.color}
                     title = {item.title}
                     onPress = {() => visionPressHandler(item)}
                 />
