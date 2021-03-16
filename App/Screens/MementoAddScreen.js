@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Button, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Button, TouchableOpacity, TextInput } from "react-native";
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -16,12 +16,48 @@ export default function MementoAddScreen(props) {
 
   const [liked, setLiked] = useState(false);
   const [currentVision, setCurrentVision] = useState(visionList.find(element => element.title == currentVisionTitle));
+  const [media, setMedia] = useState([]);
+
+  /*media [
+    {
+      type: text
+      value: "today I went on a run... dodod"
+    }
+    {
+      type: location
+      value: "the Dish, Stanford"
+    }
+    {
+      type: recording
+      value: "audio waveform"
+    }
+    {
+      type: image
+      value: [(array of images) 
+
+      ]
+    }
+
+  ]*/
 
   // const [currentVisionColor, setCurrentVisionColor] = useState(currentVision.color);
 
   const titleToVision = (currentVision) => {
     setCurrentVisionTitle(currentVision.value);
     setCurrentVision(visionList.find(element => element.title == currentVisionTitle));
+  }
+
+  const addText = () => {
+    return(
+      <TextInput
+              placeholder='be healthy...'
+              maxLength={20}
+      />
+
+    )
+    
+
+
   }
 
 
@@ -33,7 +69,7 @@ export default function MementoAddScreen(props) {
         item.label = vision.title 
         item.value = vision.title
         item.selected = vision.title == currentVisionTitle ? true :false
-        console.log(item);
+        // console.log(item);
         return item
       }))
 
@@ -80,6 +116,11 @@ export default function MementoAddScreen(props) {
             padding: 10,
             height: 330,
           }}>
+            {/* {media.find(type == text) */}
+            <TextInput
+              placeholder='add a caption to this memento'
+              maxLength={20}
+            />}
           </View>
 
           <View style={{
@@ -97,7 +138,12 @@ export default function MementoAddScreen(props) {
             </TouchableOpacity>
 
             <TouchableOpacity>
-            <MaterialCommunityIcons name="format-text" size={26} color="white" />
+            <MaterialCommunityIcons 
+              name="format-text" 
+              size={26} 
+              color="white" 
+              onPress = {() => addText}
+            />
             </TouchableOpacity>
 
             <TouchableOpacity>
