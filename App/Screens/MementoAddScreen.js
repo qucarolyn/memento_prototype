@@ -22,21 +22,30 @@ export default function MementoAddScreen(props) {
   const titleToVision = (currentVision) => {
     setCurrentVisionTitle(currentVision.value);
     setCurrentVision(visionList.find(element => element.title == currentVisionTitle));
-
   }
 
-    const dropdownItems = (visions) => {
+  function filterReflections(data) {
+    let toReturn = data.filter(function(item){
+      //need to filter so that the archived ones are not here 
+      return item.reflection == true;
+    }).map((item) => item);
+    return toReturn;
+  }
+
+  const dropdownItems = (visions) => {
     return(
-      // newVisions = visions.filter(vision)
-      visions.map(vision => {
+      visions.filter(vision => vision.title != "All" && !vision.archived)
+      .map((vision) => {
         let item = {}
         item.label = vision.title 
         item.value = vision.title
         item.selected = vision.title == currentVisionTitle ? true :false
+        console.log(item);
         return item
       }))
 
     }
+
 
     console.log(dropdownItems(visionList));
 
@@ -59,7 +68,7 @@ export default function MementoAddScreen(props) {
           marginBottom: 20,
         }}>
           <DropDownPicker
-          items={dropdownItems(visionList).slice(1)}
+          items={dropdownItems(visionList)}
           style={{
             backgroundColor: currentVision.color,
             color: "white"

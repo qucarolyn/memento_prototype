@@ -141,13 +141,13 @@ export default function MementoFeed(props) {
     function MementoThumbnail (props) {
       const [favoriteStatus, setFavoriteStatus] = useState(props.favorite);
       const editFavorite = () => {
-        console.log("editfavorites");
+        // console.log("editfavorites");
         if(favoriteStatus == true) {
           setFavoriteStatus(false);//do it with a callback function
         }else {
           setFavoriteStatus(true);
         }
-        console.log(props);
+        // console.log(props);
 
       }
 
@@ -203,6 +203,13 @@ export default function MementoFeed(props) {
       }
     }
 
+    function filterActive(data) {
+      let toReturn = data.filter(function(item){
+        return item.archived == false;
+      }).map((item) => item);
+      return toReturn;
+    }
+
     function filterFavorites(data) {
       let toReturn = data.filter(function(item){
         return item.favorite == true;
@@ -212,18 +219,21 @@ export default function MementoFeed(props) {
 
     function filterReflections(data) {
       let toReturn = data.filter(function(item){
+        //need to filter so that the archived ones are not here 
         return item.reflection == true;
       }).map((item) => item);
       return toReturn;
     }
 
     function filterMementos(data, title){
-      console.log("title test");
-      console.log(title);
+      // console.log("title test");
+      // console.log(title);
       if(title == "All"){
         return data;
+        // return filterReflections(data);
+        // should use this instead: to hide the archived visions 
       }else{
-        console.log(title);
+        // console.log(title);
         let toReturn = data.filter(function(item){
           return item.title == title;
        }).map((item) => item);

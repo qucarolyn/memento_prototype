@@ -14,6 +14,13 @@ export default function HorizontalMenu(props) {
         visionCallback(props.title); 
     };
 
+    function filterActive(data) {
+        let toReturn = data.filter(function(item){
+          return item.archived == false;
+        }).map((item) => item);
+        return toReturn;
+      }
+
     function Vision (props) {
         return (
             <View>
@@ -46,7 +53,7 @@ export default function HorizontalMenu(props) {
         <View>
            <FlatList
               horizontal = {true}
-              data={visions}
+              data={filterActive(visions)}
               style={{padding: 10}}
               renderItem = {({item}) => (
                 <Vision

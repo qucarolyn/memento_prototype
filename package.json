@@ -22,6 +22,7 @@
     "react-native-dropdown-picker": "^4.0.2",
     "react-native-elements": "^3.3.0",
     "react-native-gesture-handler": "^1.10.3",
+    "react-native-image-crop-picker": "^0.36.0",
     "react-native-reanimated": "^2.0.0",
     "react-native-screens": "^2.18.1",
     "react-native-triple-state-switch": "^1.0.0",
