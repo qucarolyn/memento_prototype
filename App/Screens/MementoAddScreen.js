@@ -5,7 +5,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-//import DropDownPicker from 'react-native-dropdown-picker';
+import DropDownPicker from 'react-native-dropdown-picker';
 import Icon from 'react-native-vector-icons/Feather';
 
 
@@ -120,7 +120,7 @@ export default function MementoAddScreen(props) {
             <TextInput
               placeholder='add a caption to this memento'
               maxLength={20}
-            />}
+            />
           </View>
 
           <View style={{
