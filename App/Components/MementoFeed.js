@@ -218,6 +218,7 @@ export default function MementoFeed(props) {
     }
 
     function filterReflections(data) {
+      
       let toReturn = data.filter(function(item){
         //need to filter so that the archived ones are not here 
         return item.reflection == true;

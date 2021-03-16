@@ -24,13 +24,6 @@ export default function MementoAddScreen(props) {
     setCurrentVision(visionList.find(element => element.title == currentVisionTitle));
   }
 
-  function filterReflections(data) {
-    let toReturn = data.filter(function(item){
-      //need to filter so that the archived ones are not here 
-      return item.reflection == true;
-    }).map((item) => item);
-    return toReturn;
-  }
 
   const dropdownItems = (visions) => {
     return(
