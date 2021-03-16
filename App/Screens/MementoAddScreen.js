@@ -49,14 +49,14 @@ export default function MementoAddScreen(props) {
 
   const addText = () => {
     return(
-      <TextInput
-              placeholder='be healthy...'
+      <View>
+        <TextInput
+              placeholder='add a caption for this memento...'
               maxLength={20}
-      />
+        />
 
+      </View>
     )
-
-
 
   }
 
@@ -117,10 +117,7 @@ export default function MementoAddScreen(props) {
             height: 330,
           }}>
             {/* {media.find(type == text) */}
-            <TextInput
-              placeholder='add a caption to this memento'
-              maxLength={20}
-            />
+            {addText()}
           </View>
 
           <View style={{

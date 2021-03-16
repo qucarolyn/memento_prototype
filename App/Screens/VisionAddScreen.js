@@ -14,7 +14,7 @@ import { useNavigation } from '@react-navigation/native';
 export default function VisionAddScreen({route, navigation}) {
   const [visionText, setVisionText] = useState("");
   const [visionColor, setVisionColor] = useState("");
-  const [pressed, setPress] = useState(null);
+  const [pressed, setPress] = useState("null");
 
 
   const colorPressHandler = (props) => {
