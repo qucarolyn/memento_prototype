@@ -59,7 +59,7 @@ export default function ReflectScreen({navigation}) {
     return (
         <View style={styles.container}>
           <View style={{justifyContent: 'center', height: 100}}>
-            <Text style={{margin: 20, fontSize: 20,}}>
+            <Text style={{margin: 20, fontSize: 20, fontFamily: 'Futura',}}>
               {prompt}
             </Text>
           </View>
@@ -88,7 +88,7 @@ export default function ReflectScreen({navigation}) {
             style={styles.save}
             // onPress={}
           >
-            <Text style={{fontSize: 20, color: 'white'}}>save</Text>
+            <Text style={{fontSize: 20, color: 'white', fontFamily: 'Futura',}}>save</Text>
           </TouchableOpacity>
         </View>
     );
@@ -99,6 +99,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 5,
+    height: '100%',
+    backgroundColor: 'white',
   },
   save: {
     backgroundColor: '#3E71AE',
@@ -141,6 +143,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#3E71AE',
     fontSize: 14,
+    fontFamily: 'Futura',
     textDecorationLine: 'underline',
   }
 });

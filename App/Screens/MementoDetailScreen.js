@@ -56,14 +56,18 @@ const styles = StyleSheet.create({
       color: 'white',
       fontWeight: 'bold',
       fontSize: 16,
+      fontFamily: 'Futura'
     },
     headerText2: {
       color: 'white',
+      fontFamily: 'Futura'
     },
     prompt: {
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      fontFamily: 'Futura'
     },
     caption: {
       color: 'black',
+      fontFamily: 'Futura'
     }
   });

@@ -132,7 +132,7 @@ export default function MementoFeed(props) {
 
             <View style={{padding: 10}}>
               <Text style={styles.prompt}>{props.prompt}</Text>
-              <Text>{shortenText(props.caption)}</Text>
+              <Text style={styles.body}>{shortenText(props.caption)}</Text>
             </View>
           </TouchableOpacity>
         );
@@ -189,7 +189,7 @@ export default function MementoFeed(props) {
           </View>
 
           <View style={{padding: 10}}>
-          <Text>{shortenText(props.caption)}</Text>
+          <Text style={styles.body}>{shortenText(props.caption)}</Text>
           </View>
         </TouchableOpacity>
       );
@@ -281,12 +281,17 @@ const styles = StyleSheet.create({
     headerText: {
       color: 'white',
       fontWeight: 'bold',
-      //fontFamily: 'Verdana',
+      fontFamily: 'Futura',
     },
     headerText2: {
       color: 'white',
+      fontFamily: 'Futura',
+    },
+    body: {
+      fontFamily: 'Futura',
     },
     prompt: {
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      fontFamily: 'Futura',
     },
   });
