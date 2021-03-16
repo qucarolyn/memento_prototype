@@ -20,14 +20,13 @@ export default function App() {
         initialRouteName="HomeFeed"
        >
          <Stack.Screen name="HomeFeed" component= {HomeFeedScreen}
-          options={{
+          options={({navigation}) => ({
             title: 'memento',
             headerLeft: () => (
               <Button
                   onPress={() => {
-                    alert('This is where the menu should go!');
                     //const navigation = useNavigation();
-                    //navigation.navigate("VisionDrawer");
+                    navigation.navigate("VisionDrawer");
                   }}// incomplete: need options to "keep editing" or "delete vision"
                   title="menu"// incomplete: need to use expo vectors for this part
               >
@@ -36,7 +35,7 @@ export default function App() {
             ),
 
 
-          }} />
+          })} />
          <Stack.Screen name = "MementoAdd" component = {MementoAddScreen} />
          <Stack.Screen name = "MementoDetail" component = {MementoDetailScreen} />
          <Stack.Screen name = "VisionAdd" component = {VisionAddScreen}
@@ -53,7 +52,7 @@ export default function App() {
             }}
          />
          <Stack.Screen name = "Reflect" component = {ReflectScreen} options={{ title: 'Reflect' }}/>
-         <Stack.Screen name = "VisionDrawer" component = {VisionDrawerScreen} options={{ title: 'Reflect' }}/>
+         <Stack.Screen name = "VisionDrawer" component = {VisionDrawerScreen} options={{ title: 'Visions' }}/>
        </Stack.Navigator>
       </NavigationContainer>
   );

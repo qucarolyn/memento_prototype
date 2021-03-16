@@ -4,6 +4,29 @@ import HorizontalMenu from '../Components/HorizontalMenu.js';
 import MementoFeed from '../Components/MementoFeed.js';
 // import TripleToggleSwitch from 'react-triple-toggle-switch';
 
+var visions= [
+  {
+    title: "All",
+    color: 'grey',
+  },
+
+  // {
+  //   title: "Be happy",
+  //   color: 'red',
+  // },
+  {
+    title: "Learn ukelele",
+    color: '#83E39E',
+  },
+  {
+    title: "Spend time with fam",
+    color: '#80C9FF'
+  },
+  {
+   title: "Stay healthy",
+   color: '#FFAD80'
+  }
+];
 
 export default function HomeFeedScreen({navigation}) {
   const [activeVision, setActiveVision] = useState("All");
@@ -15,30 +38,6 @@ export default function HomeFeedScreen({navigation}) {
   const setVision = (vision) => {
     setActiveVision(vision);
   }
-
-  var visions= [
-    {
-      title: "All",
-      color: 'grey',
-    },
-
-    // {
-    //   title: "Be happy",
-    //   color: 'red',
-    // },
-    {
-      title: "Learn ukelele",
-      color: '#83E39E',
-    },
-    {
-      title: "Spend time with fam",
-      color: '#80C9FF'
-    },
-    {
-     title: "Stay healthy",
-     color: '#FFAD80'
-    }
-  ];
 
     return (
         <View>
