@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Button, SafeAreaView} from "react-native";
+import { View, Text, Button, SafeAreaView, TouchableOpacity} from "react-native";
 import HorizontalMenu from '../Components/HorizontalMenu.js';
 import MementoFeed from '../Components/MementoFeed.js';
 // import TripleToggleSwitch from 'react-triple-toggle-switch';
@@ -46,10 +46,18 @@ export default function HomeFeedScreen({navigation}) {
     return (
         <View style={{backgroundColor: 'white'}}>
 
+          <View style={{flexDirection: 'row', alignItems: 'center', paddingLeft: 14}}>
+
+          <TouchableOpacity onPress={() => navigation.navigate("VisionAdd", {updateVision: {addVision}})}>
+            <Text style={{fontSize: 20}}>+</Text>
+          </TouchableOpacity>
+
           <HorizontalMenu
             visions={visions}
             setVisionCallback = {setVision}
           />
+
+          </View>
 
           {/* <Text>{console.log(visions)}</Text> */}
           <SafeAreaView>

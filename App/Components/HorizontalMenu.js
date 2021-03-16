@@ -53,13 +53,8 @@ export default function HorizontalMenu(props) {
     }
 
     return (
-        <View style={{flexDirection: 'row', alignItems: 'center', paddingLeft: 15,}}>
+        <View >
 
-        <TouchableOpacity
-          onPress={() => navigation.navigate("VisionAdd", {updateVision: {addVision}})}
-        >
-        <Text style={{fontSize: 20}}>+</Text>
-        </TouchableOpacity>
            <FlatList
               horizontal = {true}
               data={filterActive(visions)}

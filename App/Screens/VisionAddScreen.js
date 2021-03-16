@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { View, 
-          Text, 
-          Button, 
-          TouchableOpacity, 
-          StyleSheet, 
-          TextInput, 
-          KeyboardAvoidingView, 
-          Alert, 
+import { View,
+          Text,
+          Button,
+          TouchableOpacity,
+          StyleSheet,
+          TextInput,
+          KeyboardAvoidingView,
+          Alert,
           FlatList} from "react-native";
 import { useNavigation } from '@react-navigation/native';
 
@@ -16,15 +16,15 @@ export default function VisionAddScreen({route, navigation}) {
   const [visionColor, setVisionColor] = useState("");
   const [pressed, setPress] = useState(null);
 
-  
+
   const colorPressHandler = (props) => {
     console.log(props);
     setPress(props.color);
-    setVisionColor(props.color); 
+    setVisionColor(props.color);
   };
 
   const { updateVision } = route.params; //call with vision to be added when submit button is hit
-  
+
   const addVision = () => {
     if(visionText == ""){
       textAlert();
@@ -92,7 +92,7 @@ export default function VisionAddScreen({route, navigation}) {
   ];
 
     return (
-        <View>
+        <View style={{backgroundColor: 'white', height: '100%', paddingBottom: 100, justifyContent: 'space-between'}}>
           <KeyboardAvoidingView style={{alignItems: 'center', margin: 50,}}>
             <Text style={styles.title}>Enter a title</Text>
             <TextInput
@@ -108,21 +108,21 @@ export default function VisionAddScreen({route, navigation}) {
           </KeyboardAvoidingView>
 
 
-          <View style={{alignItems: 'center', margin: 30,}}>
+          <View style={{alignItems: 'center', margin: 30, marginBottom: 150,}}>
             <Text style={styles.title}>Choose a color</Text>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <View style={{flexDirection: 'row', alignItems: 'center',}}>
               <FlatList
                 horizontal = {true}
                 data={color_list}
                 //justifyContent='space-between'
                 // keyExtractor={item => item.id.toString()}
                 renderItem = {({item}) => (
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={{
                       marginHorizontal: 11,
-                      height: 30, 
-                      width: 30, 
-                      borderRadius: 15, 
+                      height: 30,
+                      width: 30,
+                      borderRadius: 15,
                       margin: 5,
                       backgroundColor: item.color,
                       borderColor: "grey",
@@ -135,7 +135,7 @@ export default function VisionAddScreen({route, navigation}) {
             </View>
           </View>
 
-          <View style={{alignItems: 'center', marginTop: 70}}>
+          <View style={{alignItems: 'center',}}>
           <TouchableOpacity
             style={styles.save}
             onPress={() => addVision()}
