@@ -5,31 +5,42 @@ import VerticalMenu from '../Components/VerticalMenu.js';
 //work on actually getting the data structure rather than defining it here, may not have to for prototype
 var visions= [
     {
-      title: "All",
-      color: 'grey',
-    },
-
-    // {
-    //   title: "Be happy",
-    //   color: 'red',
-    // },
-    {
-      title: "Learn ukelele",
-      color: '#83E39E',
-    },
-    {
-      title: "Spend time with fam",
-      color: '#80C9FF'
-    },
-    {
-     title: "Stay healthy",
-     color: '#FFAD80'
-    }
-  ];
-
+        title: "All",
+        color: 'grey',
+        archived: false,
+      },
+    
+      // {
+      //   title: "Be happy",
+      //   color: 'red',
+      // },
+      {
+        title: "Learn ukelele",
+        color: '#83E39E',
+        archived: false,
+      },
+      {
+        title: "Spend time with fam",
+        color: '#80C9FF',
+        archived: true,
+      },
+      {
+       title: "Stay healthy",
+       color: '#FFAD80',
+       archived: false,
+      }
+    ];
+    var archived = visions.filter(vision => vision.archived);
+    var active = visions.filter(vision => !vision.archived)
 export default function VisionDrawerScreen({route, navigation}) {
     const addVision = (vision) => {
         visions.push(vision);
+    }
+    const setVisionArchived = (vision) => {
+        var newVisions = visions.filter(currVision => currVision.title !== vision.title)
+        vision.archived = !vision.archived;
+        newVisions.push(vision);
+        visions = newVisions;
     }
     return(
         <SafeAreaView>
@@ -63,7 +74,8 @@ export default function VisionDrawerScreen({route, navigation}) {
             </View>
             <View>
                 <VerticalMenu
-                    visions={visions}
+                    visions={active}
+                    archiveFunction={setVisionArchived}
                 />
             </View>
             <View style={{alignItems: "center"}}>
@@ -71,7 +83,7 @@ export default function VisionDrawerScreen({route, navigation}) {
             </View>
             <View>
                 <VerticalMenu
-                    visions={visions}
+                    visions={archived}
                 />
             </View>
 

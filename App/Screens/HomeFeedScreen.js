@@ -8,6 +8,7 @@ var visions= [
   {
     title: "All",
     color: 'grey',
+    archived: false,
   },
 
   // {
@@ -17,14 +18,17 @@ var visions= [
   {
     title: "Learn ukelele",
     color: '#83E39E',
+    archived: false,
   },
   {
     title: "Spend time with fam",
-    color: '#80C9FF'
+    color: '#80C9FF',
+    archived: true,
   },
   {
    title: "Stay healthy",
-   color: '#FFAD80'
+   color: '#FFAD80',
+   archived: false,
   }
 ];
 

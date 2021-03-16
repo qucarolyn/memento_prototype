@@ -7,10 +7,12 @@ import { useNavigation } from '@react-navigation/native';
 export default function VerticalMenu(props) {
     const [pressed, setPress] = useState(null);
     const visions = props.visions;
+    const archive = props.archiveFunction;
     //const visionCallback = props.setVisionCallback;
     const visionPressHandler = (props) => {
         setPress(props.title);
         console.log(props.title);
+        //archive(props)
         //visionCallback(props.title); 
     };
 
