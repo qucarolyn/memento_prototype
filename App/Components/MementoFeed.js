@@ -92,7 +92,114 @@ export default function MementoFeed(props) {
       },
 
     ];
+<<<<<<< HEAD
     
+=======
+
+    function ReflectionThumbnail (props) {
+        return (
+          <TouchableOpacity
+            style={{
+            backgroundColor: '#F1F1F1',
+            borderRadius: 10,
+            //padding: 10,
+            margin: 5,
+            }}
+            onPress={() => navigation.navigate("MementoDetail", props)}
+            >
+
+            <View
+              style = {{
+              backgroundColor: props.color,
+
+              // backgroundColor: '#3E71AE',
+              borderTopLeftRadius: 10,
+              borderTopRightRadius: 10,
+              padding: 7,
+              paddingLeft: 10,
+              flexDirection: 'row',
+              display: 'flex',
+              justifyContent: 'space-between',
+              }}>
+
+              <View style={{flexDirection: 'row'}}>
+                <Text style={styles.headerText}>{props.title}</Text>
+                <Text style={styles.headerText}>{" - Reflection"}</Text>
+                <Text style={styles.headerText2}> - </Text>
+                <Text style={styles.headerText2}>{props.date}</Text>
+              </View>
+
+              <TouchableOpacity>
+              <FontAwesome name="heart" size={16} color="white" />
+              </TouchableOpacity>
+            </View>
+
+            <View style={{padding: 10}}>
+              <Text style={styles.prompt}>{props.prompt}</Text>
+              <Text style={styles.body}>{shortenText(props.caption)}</Text>
+            </View>
+          </TouchableOpacity>
+        );
+
+    }
+    function MementoThumbnail (props) {
+      const [favoriteStatus, setFavoriteStatus] = useState(props.favorite);
+      const editFavorite = () => {
+        // console.log("editfavorites");
+        if(favoriteStatus == true) {
+          setFavoriteStatus(false);//do it with a callback function
+        }else {
+          setFavoriteStatus(true);
+        }
+        // console.log(props);
+
+      }
+
+      return (
+        <TouchableOpacity
+          style={{
+          backgroundColor: '#F1F1F1',
+          borderRadius: 10,
+          //padding: 10,
+          margin: 5,
+          }}
+          onPress={() => navigation.navigate("MementoDetail", props)}
+          >
+
+          <View
+            style = {{
+            backgroundColor: props.color,
+            borderTopLeftRadius: 10,
+            borderTopRightRadius: 10,
+            padding: 7,
+            paddingLeft: 10,
+            flexDirection: 'row',
+            display: 'flex',
+            justifyContent: 'space-between',
+            }}>
+
+            <View style={{flexDirection: 'row'}}>
+              <Text style={styles.headerText}>{props.title}</Text>
+              <Text style={styles.headerText2}> - </Text>
+              <Text style={styles.headerText2}>{props.date}</Text>
+            </View>
+
+            <TouchableOpacity
+              onPress = {() => editFavorite({props})}
+            >
+            {props.favorite == true ? <FontAwesome name="heart" size={16} color="white" /> : //doesnt fully work yet
+                                      <FontAwesome name="heart-o" size={16} color="white" /> }
+            </TouchableOpacity>
+          </View>
+
+          <View style={{padding: 10}}>
+          <Text style={styles.body}>{shortenText(props.caption)}</Text>
+          </View>
+        </TouchableOpacity>
+      );
+    }
+
+>>>>>>> c4967ea8f05ca6457a85ac101c9707a217de6718
     function shortenText (text){
       if(text.length <= 50) {
         return text;
@@ -179,12 +286,17 @@ const styles = StyleSheet.create({
     headerText: {
       color: 'white',
       fontWeight: 'bold',
-      //fontFamily: 'Verdana',
+      fontFamily: 'Futura',
     },
     headerText2: {
       color: 'white',
+      fontFamily: 'Futura',
+    },
+    body: {
+      fontFamily: 'Futura',
     },
     prompt: {
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      fontFamily: 'Futura',
     },
   });

@@ -38,6 +38,7 @@ export default function HorizontalMenu(props) {
                             marginRight: 10,
                             margin: 5,
                             fontSize: 16,
+                            fontFamily: 'Futura',
                             color: pressed == props.title ? "white" : props.color,
                         }}
                     >

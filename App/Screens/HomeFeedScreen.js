@@ -68,14 +68,14 @@ export default function HomeFeedScreen({navigation}) {
               onPress={() => navigation.navigate("MementoAdd", {currentVision: activeVision, visions: visions})}
               style={styles.button}
             >
-            <Text style={{color: 'white'}}>Add a Memento</Text>
+            <Text style={styles.buttonText}>Add a Memento</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={() => navigation.navigate("Reflect")}
               style={styles.button}
             >
-              <Text style={{color: 'white'}}>Add a Reflection</Text>
+              <Text style={styles.buttonText}>Add a Reflection</Text>
             </TouchableOpacity>
 
           </View>
@@ -103,5 +103,9 @@ const styles = StyleSheet.create({
       width: 150,
       padding: 5,
       margin: 5,
+    },
+    buttonText: {
+      color: 'white',
+      fontFamily: 'Futura',
     }
   });
