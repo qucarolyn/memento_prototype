@@ -96,7 +96,7 @@ export default function MementoFeed(props) {
         return (
           <TouchableOpacity
             style={{
-            backgroundColor: '#E5E5E5',
+            backgroundColor: '#F1F1F1',
             borderRadius: 10,
             //padding: 10,
             margin: 5,
@@ -154,7 +154,7 @@ export default function MementoFeed(props) {
       return (
         <TouchableOpacity
           style={{
-          backgroundColor: '#E5E5E5',
+          backgroundColor: '#F1F1F1',
           borderRadius: 10,
           //padding: 10,
           margin: 5,
@@ -218,9 +218,9 @@ export default function MementoFeed(props) {
     }
 
     function filterReflections(data) {
-      
+
       let toReturn = data.filter(function(item){
-        //need to filter so that the archived ones are not here 
+        //need to filter so that the archived ones are not here
         return item.reflection == true;
       }).map((item) => item);
       return toReturn;
@@ -232,7 +232,7 @@ export default function MementoFeed(props) {
       if(title == "All"){
         return data;
         // return filterReflections(data);
-        // should use this instead: to hide the archived visions 
+        // should use this instead: to hide the archived visions
       }else{
         // console.log(title);
         let toReturn = data.filter(function(item){
@@ -281,6 +281,7 @@ const styles = StyleSheet.create({
     headerText: {
       color: 'white',
       fontWeight: 'bold',
+      //fontFamily: 'Verdana',
     },
     headerText2: {
       color: 'white',

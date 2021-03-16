@@ -5,7 +5,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-import DropDownPicker from 'react-native-dropdown-picker';
+//import DropDownPicker from 'react-native-dropdown-picker';
 import Icon from 'react-native-vector-icons/Feather';
 
 
@@ -33,7 +33,7 @@ export default function MementoAddScreen(props) {
     }
     {
       type: image
-      value: [(array of images) 
+      value: [(array of images)
 
       ]
     }
@@ -55,7 +55,7 @@ export default function MementoAddScreen(props) {
       />
 
     )
-    
+
 
 
   }
@@ -66,7 +66,7 @@ export default function MementoAddScreen(props) {
       visions.filter(vision => vision.title != "All" && !vision.archived)
       .map((vision) => {
         let item = {}
-        item.label = vision.title 
+        item.label = vision.title
         item.value = vision.title
         item.selected = vision.title == currentVisionTitle ? true :false
         // console.log(item);
@@ -81,11 +81,11 @@ export default function MementoAddScreen(props) {
     return (
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
 
-        <TouchableOpacity 
+        <TouchableOpacity
           style={{flexDirection: 'row', margin: 20,}}
           onPress={() => liked ? setLiked(false) : setLiked(true)}
         >
-          {liked ? <FontAwesome name="heart" size={16} color={currentVision.color} /> : 
+          {liked ? <FontAwesome name="heart" size={16} color={currentVision.color} /> :
                    <FontAwesome name="heart-o" size={16} color={currentVision.color} />}
           <Text style={{fontSize: 15}}>  {liked ? "Added to Favorites!":"Add to Favorites"}</Text>
         </TouchableOpacity>
@@ -138,10 +138,10 @@ export default function MementoAddScreen(props) {
             </TouchableOpacity>
 
             <TouchableOpacity>
-            <MaterialCommunityIcons 
-              name="format-text" 
-              size={26} 
-              color="white" 
+            <MaterialCommunityIcons
+              name="format-text"
+              size={26}
+              color="white"
               onPress = {() => addText}
             />
             </TouchableOpacity>

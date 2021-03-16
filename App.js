@@ -1,5 +1,5 @@
 import React, { useState} from "react";
-import { StyleSheet, SafeAreaView , View, Text, Button} from "react-native";
+import { StyleSheet, SafeAreaView , View, Text, Button, TouchableOpacity} from "react-native";
 import { createStackNavigator } from '@react-navigation/stack';
 
 // import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -10,6 +10,8 @@ import MementoAddScreen  from './App/Screens/MementoAddScreen.js';
 import VisionAddScreen  from './App/Screens/VisionAddScreen.js';
 import ReflectScreen  from './App/Screens/ReflectScreen.js';
 import VisionDrawerScreen from './App/Screens/VisionDrawerScreen.js';
+
+import { Octicons } from '@expo/vector-icons';
 
 const Stack = createStackNavigator();
 
@@ -22,16 +24,20 @@ export default function App() {
          <Stack.Screen name="HomeFeed" component= {HomeFeedScreen}
           options={({navigation}) => ({
             title: 'memento',
+            headerStyle: {
+              //backgroundColor: '#f4511e',
+              borderColor: 'white'
+            },
             headerLeft: () => (
-              <Button
+              <TouchableOpacity
                   onPress={() => {
                     //const navigation = useNavigation();
                     navigation.navigate("VisionDrawer");
                   }}// incomplete: need options to "keep editing" or "delete vision"
-                  title="menu"// incomplete: need to use expo vectors for this part
+                  style={{paddingLeft: 15, paddingTop: 5}}
               >
-
-              </Button>
+              <Octicons name="three-bars" size={24} color="black" />
+              </TouchableOpacity>
             ),
 
 

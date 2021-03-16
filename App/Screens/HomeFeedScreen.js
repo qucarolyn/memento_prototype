@@ -44,7 +44,7 @@ export default function HomeFeedScreen({navigation}) {
   }
 
     return (
-        <View>
+        <View style={{backgroundColor: 'white'}}>
 
           <HorizontalMenu
             visions={visions}

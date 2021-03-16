@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text, Button, FlatList, TouchableOpacity} from "react-native";
-import { useNavigation } from '@react-navigation/native';
-
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
+//import VisionAddScreen  from './App/Screens/VisionAddScreen.js';
 
 
 export default function HorizontalMenu(props) {
@@ -11,7 +11,7 @@ export default function HorizontalMenu(props) {
     const visionPressHandler = (props) => {
         setPress(props.title);
         console.log(props.title);
-        visionCallback(props.title); 
+        visionCallback(props.title);
     };
 
     function filterActive(data) {
@@ -34,7 +34,10 @@ export default function HorizontalMenu(props) {
                 >
                     <Text
                         style = {{
+                            marginLeft: 10,
+                            marginRight: 10,
                             margin: 5,
+                            fontSize: 16,
                             color: pressed == props.title ? "white" : props.color,
                         }}
                     >
@@ -50,7 +53,13 @@ export default function HorizontalMenu(props) {
     }
 
     return (
-        <View>
+        <View style={{flexDirection: 'row', alignItems: 'center', paddingLeft: 15,}}>
+
+        <TouchableOpacity
+          onPress={() => navigation.navigate("VisionAdd", {updateVision: {addVision}})}
+        >
+        <Text style={{fontSize: 20}}>+</Text>
+        </TouchableOpacity>
            <FlatList
               horizontal = {true}
               data={filterActive(visions)}
