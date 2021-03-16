@@ -8,7 +8,10 @@ import {
   KeyboardAvoidingView,
   TextInput,
   StyleSheet,
+  Alert,
 } from "react-native";
+import DropDownPicker from 'react-native-dropdown-picker';
+
 
 const prompts=[
   "What have I enjoyed most about the last week?",
@@ -50,43 +53,126 @@ const prompts=[
 //   setPrompt(prompt);
 // }
 
-export default function ReflectScreen({navigation}) {
+export default function ReflectScreen(props) {
+  console.log(props)
+  const visionList = props.route.params.visions;
+  const [currentVision, setCurrentVision] = useState(props.route.params.currentVision);
+  const [isCustom, setIsCustom] = useState(false);
   const [prompt, setPrompt] = useState(prompts[Math.floor(Math.random() * (28))]);
-  function randomPrompt() {
-    setPrompt(prompts[Math.floor(Math.random() * (28))]);
-    console.log(prompt);
+  const [reflectionText, setReflectionText] = useState("");
+  
+
+  const dropdownItems = (visions) => {
+    return(
+      visions.filter(vision => vision.title != "All" && !vision.archived)
+      .map((vision) => {
+        let item = {}
+        item.label = vision.title
+        item.value = vision.title
+        item.selected = vision.title == currentVision.title ? true :false
+        // console.log(item);
+        return item
+      }))
+
+    }
+
+  const addReflection = () => {
+    if(reflectionText == ""){
+      textAlert();
+    }else {
+      const newReflection = {
+        title: currentVision.title,
+        prompt: prompt,
+        reflection: true,
+        color: currentVision.color,
+        date: "1/19/2020",
+        caption: reflectionText,
+        favorite: false,
+      };
+    }
   }
+
+
+  const textAlert = () =>
+    Alert.alert(
+      "Reflection cannot be empty",
+      "Please type a reflection to submit"
+      [{ text: "OK", onPress: () => console.log("OK Pressed"),}
+      ],
+    );
+
+    const randomPrompt = () => {
+      setIsCustom(false);
+      setPrompt(prompts[Math.floor(Math.random() * (28))])
+    }
+
+    const customPrompt = () => {
+      setIsCustom(true);
+      setPrompt("");
+    }
+  
     return (
         <View style={styles.container}>
           <View style={{justifyContent: 'center', height: 100}}>
-            <Text style={{margin: 20, fontSize: 20, fontFamily: 'Futura',}}>
-              {prompt}
-            </Text>
+            {isCustom ? 
+              <TextInput
+                placeholder='(optional) Enter Prompt...'
+                value={prompt}
+                style={{margin: 20, fontSize: 20, fontFamily: 'Futura',}}
+              onChangeText={(reflectionPrompt) => setPrompt(reflectionPrompt)}
+              />:
+              <Text style={{margin: 20, fontSize: 20, fontFamily: 'Futura',}}>{prompt}</Text> 
+            }
           </View>
+
           <View style={{flexDirection: 'row'}}>
             <TouchableOpacity
               style={styles.newprompt}
-              onPress={() => {setPrompt(prompts[Math.floor(Math.random() * (28))])}}
+              onPress={() => {randomPrompt()}}
             >
               <Text style={styles.buttonText}>New prompt</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.newprompt}>
+
+            <TouchableOpacity 
+              style={styles.newprompt}
+              onPress={() => {customPrompt()}}
+            >
               <Text style={styles.buttonText}>Custom prompt</Text>
             </TouchableOpacity>
           </View>
+          <DropDownPicker
+          items={dropdownItems(visionList)}
+          style={{
+            backgroundColor: currentVision.color,
+            color: "white"
+          }}
+          containerStyle={{height: 40}}
+          itemStyle={{
+            justifyContent: 'flex-start'
+          }}
+          onChangeItem= 
+            {item => setCurrentVision(visionList.find(element => element.title == item.label))}
+
+        />
           <KeyboardAvoidingView style={{alignItems: 'center', margin: 10,}}>
             <TextInput
               multiline
+              placeholder='Start Reflecting...'
+              value={reflectionText}
               style={styles.textinput}
+              onChangeText={(reflectionText) => setReflectionText(reflectionText)}
             />
           </KeyboardAvoidingView>
-          <TouchableOpacity style={styles.voicememo}>
+          <TouchableOpacity 
+            style={styles.voicememo}
+            onPress = {() => setReflectionText("Voice Memo Added!")}
+          >
             <FontAwesome name="microphone" size={24} color="white" />
           </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.save}
-            // onPress={}
+            onPress={() => addReflection()}
           >
             <Text style={{fontSize: 20, color: 'white', fontFamily: 'Futura',}}>save</Text>
           </TouchableOpacity>

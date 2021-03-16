@@ -42,19 +42,27 @@ export default function App() {
 
 
           })} />
-         <Stack.Screen name = "MementoAdd" component = {MementoAddScreen} />
-         <Stack.Screen name = "MementoDetail" component = {MementoDetailScreen} />
+         <Stack.Screen name = "MementoAdd" component = {MementoAddScreen} 
+          options = {{
+            title: "Add Memento",
+          }}
+         />
+         <Stack.Screen name = "MementoDetail" component = {MementoDetailScreen} 
+         options = {{
+          title: "Details",
+        }}
+         />
          <Stack.Screen name = "VisionAdd" component = {VisionAddScreen}
             options={{
               title: 'Add a Vision',
-              headerRight: () => (
-                 <Button
-                   onPress={() => {
-                     alert('This is a button!');
-                    }}// incomplete: need options to "keep editing" or "delete vision"
-                   title="alert"// incomplete: need to use expo vectors for this part
-                 />
-               ),
+              // headerRight: () => (
+              //    <Button
+              //      onPress={() => {
+              //        alert('This is a button!');
+              //       }}// incomplete: need options to "keep editing" or "delete vision"
+              //      title="alert"// incomplete: need to use expo vectors for this part
+              //    />
+              //  ),
             }}
          />
          <Stack.Screen name = "Reflect" component = {ReflectScreen} options={{ title: 'Reflect' }}/>

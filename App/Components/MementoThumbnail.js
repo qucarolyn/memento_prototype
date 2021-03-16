@@ -5,6 +5,7 @@ import { ListItem } from "react-native-elements/dist/list/ListItem";
 import { FontAwesome } from '@expo/vector-icons';
 
 export default function MementoThumbnail (props) {
+    let navigation = useNavigation();
     const [favoriteStatus, setFavoriteStatus] = useState(props.favorite);
     const editFavorite = (status) => {
       if(status){

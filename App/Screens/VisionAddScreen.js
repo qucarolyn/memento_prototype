@@ -18,13 +18,14 @@ export default function VisionAddScreen({route, navigation}) {
 
 
   const colorPressHandler = (props) => {
-    console.log(props);
+    //console.log(props);
     setPress(props.color);
     setVisionColor(props.color);
   };
 
   const { updateVision } = route.params; //call with vision to be added when submit button is hit
-
+  console.log (route); 
+  
   const addVision = () => {
     if(visionText == ""){
       textAlert();
@@ -39,9 +40,11 @@ export default function VisionAddScreen({route, navigation}) {
       const newVision = {
         color: visionColor,
         title: visionText,
+        archived: false,
       };
-      console.log(updateVision);
+      //console.log(updateVision);
       updateVision.addVision(newVision);
+      //console.log(updateVision);
       navigation.popToTop(); // Do I need to force a re render?
       //console.log(newVisions);
     }
