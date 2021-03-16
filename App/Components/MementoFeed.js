@@ -139,6 +139,18 @@ export default function MementoFeed(props) {
 
     }
     function MementoThumbnail (props) {
+      const [favoriteStatus, setFavoriteStatus] = useState(props.favorite);
+      const editFavorite = () => {
+        console.log("editfavorites");
+        if(favoriteStatus == true) {
+          setFavoriteStatus(false);//do it with a callback function
+        }else {
+          setFavoriteStatus(true);
+        }
+        console.log(props);
+
+      }
+
       return (
         <TouchableOpacity
           style={{
@@ -168,8 +180,11 @@ export default function MementoFeed(props) {
               <Text style={styles.headerText2}>{props.date}</Text>
             </View>
 
-            <TouchableOpacity>
-            <FontAwesome name="heart-o" size={16} color="white" />
+            <TouchableOpacity
+              onPress = {() => editFavorite({props})}
+            >
+            {props.favorite == true ? <FontAwesome name="heart" size={16} color="white" /> : //doesnt fully work yet
+                                      <FontAwesome name="heart-o" size={16} color="white" /> }
             </TouchableOpacity>
           </View>
 
@@ -187,7 +202,6 @@ export default function MementoFeed(props) {
         return text.substring(0, 47) + "...";
       }
     }
-
 
     function filterFavorites(data) {
       let toReturn = data.filter(function(item){
@@ -230,6 +244,7 @@ export default function MementoFeed(props) {
              caption = {item.caption}
              date = {item.date == null? "No Date Available" :item.date}
              color = {item.color}
+             favorite = {item.favorite}
           />
           );
         }else {
@@ -240,6 +255,7 @@ export default function MementoFeed(props) {
              date = {item.date == null? "No Date Available" :item.date}
              color = {item.color}
              prompt = {item.prompt}
+             favorite = {item.favorite}
             />
           );}
       }

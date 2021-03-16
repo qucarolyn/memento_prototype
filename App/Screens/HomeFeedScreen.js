@@ -55,7 +55,7 @@ export default function HomeFeedScreen({navigation}) {
             ></MementoFeed>
 
             <Button
-              onPress={() => navigation.navigate("MementoAdd")}
+              onPress={() => navigation.navigate("MementoAdd", {currentVision: activeVision, visions: visions})}
               title="Create a Memento"
             />
 

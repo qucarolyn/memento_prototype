@@ -1,18 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Button, TouchableOpacity } from "react-native";
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+import DropDownPicker from 'react-native-dropdown-picker';
+import Icon from 'react-native-vector-icons/Feather';
 
-export default function MementoAddScreen({navigation}) {
+
+
+export default function MementoAddScreen(props) {
+  const [currentVisionTitle, setCurrentVisionTitle] = useState(props.route.params.currentVision);
+  const visionList = props.route.params.visions;
+
+  const [liked, setLiked] = useState(false);
+  const [currentVision, setCurrentVision] = useState(visionList.find(element => element.title == currentVisionTitle));
+
+  // const [currentVisionColor, setCurrentVisionColor] = useState(currentVision.color);
+
+  const titleToVision = (currentVision) => {
+    setCurrentVisionTitle(currentVision.value);
+    setCurrentVision(visionList.find(element => element.title == currentVisionTitle));
+
+  }
+
+    const dropdownItems = (visions) => {
+    return(
+      // newVisions = visions.filter(vision)
+      visions.map(vision => {
+        let item = {}
+        item.label = vision.title 
+        item.value = vision.title
+        item.selected = vision.title == currentVisionTitle ? true :false
+        return item
+      }))
+
+    }
+
+    console.log(dropdownItems(visionList));
+
     return (
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
 
-        <TouchableOpacity style={{flexDirection: 'row', margin: 20,}}>
-          <FontAwesome name="heart" size={16} color="black" />
-          <Text style={{fontSize: 15}}>  Add to Favorites</Text>
+        <TouchableOpacity 
+          style={{flexDirection: 'row', margin: 20,}}
+          onPress={() => liked ? setLiked(false) : setLiked(true)}
+        >
+          {liked ? <FontAwesome name="heart" size={16} color={currentVision.color} /> : 
+                   <FontAwesome name="heart-o" size={16} color={currentVision.color} />}
+          <Text style={{fontSize: 15}}>  {liked ? "Added to Favorites!":"Add to Favorites"}</Text>
         </TouchableOpacity>
 
         <View style={{
@@ -21,17 +58,20 @@ export default function MementoAddScreen({navigation}) {
           width: 320,
           marginBottom: 20,
         }}>
-          <TouchableOpacity style={{
-            backgroundColor: 'blue',
-            borderTopLeftRadius: 10,
-            borderTopRightRadius: 10,
-            padding: 10,
-            justifyContent: 'space-between',
-            flexDirection: 'row'
-          }}>
-            <Text style={styles.headerText}>Title</Text>
-            <AntDesign name="down" size={20} color="white" />
-          </TouchableOpacity>
+          <DropDownPicker
+          items={dropdownItems(visionList).slice(1)}
+          style={{
+            backgroundColor: currentVision.color,
+            color: "white"
+          }}
+          containerStyle={{height: 40}}
+          itemStyle={{
+            justifyContent: 'flex-start'
+          }}
+
+          onChangeItem={item => titleToVision(item)}
+
+        />
 
           <View style={{
             borderRadius: 10,
@@ -41,7 +81,7 @@ export default function MementoAddScreen({navigation}) {
           </View>
 
           <View style={{
-            backgroundColor: 'blue',
+            backgroundColor: currentVision.color,
             borderBottomLeftRadius: 10,
             borderBottomRightRadius: 10,
             padding: 10,
