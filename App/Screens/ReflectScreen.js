@@ -13,7 +13,7 @@ import {
 const prompts=[
   "What have I enjoyed most about the last week?",
   "'I am most grateful for...''",
-  "What would I tell my future self",
+  "What would I tell my future self?",
   "If I could do anything, what would it be?",
   "What are my strengths right now?",
   "What are my weaknesses right now?",
@@ -124,7 +124,7 @@ const prompts=[
 export default function ReflectScreen({navigation}) {
   const [prompt, setPrompt] = useState(prompts[Math.floor(Math.random() * (28))]);
   function randomPrompt() {
-    setPrompt(prompts[Math.floor(Math.random() * (100))]);
+    setPrompt(prompts[Math.floor(Math.random() * (99))]);
     console.log(prompt);
   }
     return (

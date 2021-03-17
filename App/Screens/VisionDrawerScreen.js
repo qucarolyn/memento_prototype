@@ -9,7 +9,7 @@ var visions= [
         color: 'grey',
         archived: false,
       },
-    
+
       // {
       //   title: "Be happy",
       //   color: 'red',
@@ -45,41 +45,45 @@ export default function VisionDrawerScreen({route, navigation}) {
     return(
         <SafeAreaView>
         <View style={{display: 'flex', flexDirection: 'column'}}>
-        <TouchableOpacity
-                    style = {{
-                        backgroundColor: '#80C9FF', //replace color
-                        borderRadius: 25,
-                        margin: 2,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        marginVertical: 5,
-                        marginHorizontal: 25,
-                    }}
-                    onPress={() => navigation.navigate("VisionAdd", {updateVision: {addVision}})}
-                >
+          <TouchableOpacity
+              style = {{
+                backgroundColor: '#80C9FF', //replace color
+                borderRadius: 25,
+                margin: 2,
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginTop: 25,
+                marginHorizontal: 25,
+              }}
+              onPress={() => navigation.navigate("VisionAdd", {updateVision: {addVision}})}
+              >
                     <Text
                         style = {{
                             margin: 5,
                             fontSize: 20,
                             color: "white",
                             paddingVertical: 8,
+                            fontFamily: 'Futura',
                         }}
                     >
-                        Add a Vision +
+                        Add a Vision
                     </Text>
 
             </TouchableOpacity>
+
             <View style={{alignItems: "center"}}>
-                <Text style={{fontSize: 24, marginVertical: 10}}>Active visions</Text>
+                <Text style={{fontSize: 24, marginTop: 20, fontFamily: 'Futura',}}>Active visions</Text>
             </View>
+
             <View>
                 <VerticalMenu
                     visions={active}
                     archiveFunction={setVisionArchived}
                 />
             </View>
+
             <View style={{alignItems: "center"}}>
-                <Text style={{fontSize: 24, marginVertical: 10}}>Memory box</Text>
+                <Text style={{fontSize: 24, marginTop: 20, fontFamily: 'Futura',}}>Archived Visions</Text>
             </View>
             <View>
                 <VerticalMenu

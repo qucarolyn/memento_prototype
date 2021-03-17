@@ -13,7 +13,7 @@ export default function VerticalMenu(props) {
         setPress(props.title);
         console.log(props.title);
         //archive(props)
-        //visionCallback(props.title); 
+        //visionCallback(props.title);
     };
 
     function Vision (props) {
@@ -37,6 +37,7 @@ export default function VerticalMenu(props) {
                             fontWeight: pressed == props.title ? 'bold' : 'light',
                             color: pressed == props.title ? props.color : "black",
                             paddingVertical: 8,
+                            fontFamily: 'Futura',
                         }}
                     >
                         {props.title}

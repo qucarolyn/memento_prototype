@@ -45,7 +45,7 @@ export default function ReflectionThumbnail (props) {
             padding: 7,
             paddingLeft: 10,
             flexDirection: 'row',
-            display: 'flex',
+            display: 'flex', 
             justifyContent: 'space-between',
             }}>
 
