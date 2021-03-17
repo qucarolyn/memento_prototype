@@ -23,7 +23,7 @@ export default function VisionAddScreen({route, navigation}) {
   };
 
   const { updateVision } = route.params; //call with vision to be added when submit button is hit
-  console.log (route);
+  //console.log (route);
 
   const addVision = () => {
     if(visionText == ""){

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesome } from '@expo/vector-icons';
 import DropDownPicker from 'react-native-dropdown-picker';
+import { useNavigation } from '@react-navigation/native';
+
 
 import {
   View,
@@ -118,9 +120,12 @@ const prompts=[
 ]
 
 export default function ReflectScreen(props) {
+  let navigation = useNavigation();
+
   const [prompt, setPrompt] = useState(prompts[Math.floor(Math.random() * (28))]);
   const [isCustom, setCustomPrompt] = useState(false);
   const [reflection, setReflection] = useState("");
+  
 
   function randomPrompt() {
      setPrompt(prompts[Math.floor(Math.random() * (100))]);
@@ -151,6 +156,8 @@ export default function ReflectScreen(props) {
     }
 
     //creating reflection component
+    const updateReflections = props.route.params.updateReflections;
+    //console.log(props);
     const addReflection = () => {
       if(reflection == "") { //empty relection
         reflectionAlert();
@@ -158,11 +165,24 @@ export default function ReflectScreen(props) {
         visionAlert();
       }else {
         console.log("its working");
+        console.log(props);
+        const newReflection = {
+          title: currentVision.title,
+          reflection: true,
+          color: currentVision.color,
+          date: "1/19/2020",
+          prompt: prompt,
+          caption: reflection,
+          favorite: false,
+        };
+        updateReflections.addReflection(newReflection);
+        //console.log(updateVision);
+        navigation.popToTop();
+
       }
     }
 
     //alerts
-
     const reflectionAlert = () =>
     Alert.alert(
       "Reflection is Empty",
@@ -178,9 +198,6 @@ export default function ReflectScreen(props) {
       [{ text: "OK", onPress: () => console.log("OK Pressed"),}
       ],
     );
-
-
-
 
     return (
         <View style={styles.container}>
@@ -235,14 +252,15 @@ export default function ReflectScreen(props) {
 
               labelStyle={{fontFamily: 'Futura', color: 'white'}}
 
-              placeholder = <Text style={{fontFamily: 'Futura', color: 'white'}}>Select a vision...</Text>
+              placeholder = "Select a vision..."
 
-              dropDownStyle={{backgroundColor: currentVision.color}}
+              //placeholder = <Text style={{fontFamily: 'Futura', color: 'white'}}>Select a vision...</Text>
+
+              dropDownStyle={{backgroundColor: "grey"}}
 
               itemStyle={{justifyContent: 'flex-start',}}
 
-              value={reflection}
-              //onChangeText={() => setReflection(reflection)}
+              
               onChangeItem={item =>
                 setCurrentVision(visionList.find(element => element.title == item.label))}
 
@@ -251,6 +269,7 @@ export default function ReflectScreen(props) {
               multiline
               style={styles.textinput}
               placeholder='Start reflecting...'
+              onChangeText={(reflection) => setReflection(reflection)}
             />
 
             </View>

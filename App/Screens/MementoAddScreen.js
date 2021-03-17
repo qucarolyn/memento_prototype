@@ -95,9 +95,10 @@ export default function MementoAddScreen(props) {
             color: "white"
           }}
           labelStyle={{fontFamily: 'Futura', color: 'white'}}
-          placeholder = <Text style={{fontFamily: 'Futura', color: 'white'}}>Select a vision...</Text>
+          placeholder = "Select a vision..."
+          //placeholder = <Text style={{fontFamily: 'Futura', color: 'white'}}>Select a vision...</Text>
           containerStyle={{height: 40}}
-          dropDownStyle={{backgroundColor: currentVision.color}}
+          dropDownStyle={{backgroundColor: "grey"}}
           itemStyle={{justifyContent: 'flex-start',}}
           onChangeItem={item =>
             setCurrentVision(visionList.find(element => element.title == item.label))}
