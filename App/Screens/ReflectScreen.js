@@ -94,7 +94,7 @@ const prompts=[
   "What's one thing I've ahcieved that I never expected?",
   "How has my social circle had an impact on my life recently?",
   "What's something on my bucket list?",
-  "What habits/mindsets from my life do I most recommend for others to adopt?",
+  "What habits/mindsets from my life do I most recommend for others?",
   "What compliment would make me feel the best right now?",
   "What's my ideal day right now?",
   "What do I hope my normal day looks like in a year?",
@@ -124,7 +124,7 @@ const prompts=[
 export default function ReflectScreen({navigation}) {
   const [prompt, setPrompt] = useState(prompts[Math.floor(Math.random() * (28))]);
   function randomPrompt() {
-    setPrompt(prompts[Math.floor(Math.random() * (99))]);
+    setPrompt(prompts[Math.floor(Math.random() * (100))]);
     console.log(prompt);
   }
     return (
@@ -137,7 +137,7 @@ export default function ReflectScreen({navigation}) {
           <View style={{flexDirection: 'row'}}>
             <TouchableOpacity
               style={styles.newprompt}
-              onPress={() => {setPrompt(prompts[Math.floor(Math.random() * (28))])}}
+              onPress={() => {setPrompt(prompts[Math.floor(Math.random() * (100))])}}
             >
               <Text style={styles.buttonText}>New prompt</Text>
             </TouchableOpacity>
