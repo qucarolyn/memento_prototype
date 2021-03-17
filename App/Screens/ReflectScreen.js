@@ -123,25 +123,49 @@ const prompts=[
 
 export default function ReflectScreen({navigation}) {
   const [prompt, setPrompt] = useState(prompts[Math.floor(Math.random() * (28))]);
+  const [isCustom, setCustomPrompt] = useState(false);
+  //const [customPromptText, setCustomPromptText] = useState("");
+
   function randomPrompt() {
-    setPrompt(prompts[Math.floor(Math.random() * (100))]);
-    console.log(prompt);
+     setPrompt(prompts[Math.floor(Math.random() * (100))]);
+     setCustomPrompt(false);
+     console.log(prompt);
   }
+
+  function customPrompt() {
+    setPrompt("");
+    setCustomPrompt(true);
+  }
+
+
     return (
         <View style={styles.container}>
           <View style={{justifyContent: 'center', height: 100}}>
-            <Text style={{margin: 20, fontSize: 20, fontFamily: 'Futura',}}>
-              {prompt}
-            </Text>
+            {isCustom ? 
+              <TextInput
+                style={{margin: 20, fontSize: 20, fontFamily: 'Futura',}}
+                placeholder='(optional) Add your own prompt'
+                value={prompt}
+                onChangeText={(prompt) => setPrompt(prompt)}
+              /> :
+              <Text style={{margin: 20, fontSize: 20, fontFamily: 'Futura',}}>
+                {prompt}
+              </Text>
+            }
+
           </View>
           <View style={{flexDirection: 'row'}}>
             <TouchableOpacity
               style={styles.newprompt}
-              onPress={() => {setPrompt(prompts[Math.floor(Math.random() * (100))])}}
+              onPress={() => {randomPrompt()}}
             >
               <Text style={styles.buttonText}>New prompt</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.newprompt}>
+
+            <TouchableOpacity 
+              style={styles.newprompt}
+              onPress={() => {customPrompt()}}
+            >
               <Text style={styles.buttonText}>Custom prompt</Text>
             </TouchableOpacity>
           </View>
@@ -149,6 +173,8 @@ export default function ReflectScreen({navigation}) {
             <TextInput
               multiline
               style={styles.textinput}
+              placeholder='Start reflecting...'
+
             />
           </KeyboardAvoidingView>
           <TouchableOpacity style={styles.voicememo}>
