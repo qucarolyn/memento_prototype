@@ -11,11 +11,10 @@ import Icon from 'react-native-vector-icons/Feather';
 
 
 export default function MementoAddScreen(props) {
-  const [currentVisionTitle, setCurrentVisionTitle] = useState(props.route.params.currentVision);
   const visionList = props.route.params.visions;
 
   const [liked, setLiked] = useState(false);
-  const [currentVision, setCurrentVision] = useState(visionList.find(element => element.title == currentVisionTitle));
+  const [currentVision, setCurrentVision] = useState(props.route.params.currentVision);
   const [media, setMedia] = useState([]);
 
   /*media [
@@ -42,11 +41,6 @@ export default function MementoAddScreen(props) {
 
   // const [currentVisionColor, setCurrentVisionColor] = useState(currentVision.color);
 
-  const titleToVision = (currentVision) => {
-    setCurrentVisionTitle(currentVision.value);
-    setCurrentVision(visionList.find(element => element.title == currentVisionTitle));
-  }
-
   const addText = () => {
     return(
       <View>
@@ -68,7 +62,7 @@ export default function MementoAddScreen(props) {
         let item = {}
         item.label = vision.title
         item.value = vision.title
-        item.selected = vision.title == currentVisionTitle ? true :false
+        item.selected = vision.title == currentVision.title ? true :false
         // console.log(item);
         return item
       }))
@@ -107,7 +101,8 @@ export default function MementoAddScreen(props) {
             justifyContent: 'flex-start'
           }}
 
-          onChangeItem={item => titleToVision(item)}
+          onChangeItem={item => 
+            setCurrentVision(visionList.find(element => element.title == item.label))}
 
         />
 

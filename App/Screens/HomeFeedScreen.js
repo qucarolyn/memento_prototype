@@ -76,10 +76,8 @@ export default function HomeFeedScreen({navigation}) {
             <TouchableOpacity
               onPress={() => navigation.navigate(
                 "Reflect", 
-                {currentVision: activeVision, 
-                 color: visions.find(element => element.title == activeVision).color,
-                 visions:visions
-                })}
+                {currentVision: visions.find(element => element.title == activeVision), 
+                  visions: visions})}
               style={styles.button}
             >
               <Text style={styles.buttonText}>Add a Reflection</Text>
