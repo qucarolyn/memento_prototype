@@ -11,7 +11,7 @@ export default function MementoFeed(props) {
     let navigation = useNavigation();
     let feedItems = props.feedItems
     console.log(feedItems)
-    
+
     function shortenText (text){
       if(text.length <= 50) {
         return text;
@@ -64,6 +64,7 @@ export default function MementoFeed(props) {
     return (
       <FlatList
       data = {filterMementos(feedItems, props.vision)}//need to filter mementos based on the click (callback function)
+      inverted={true}
       renderItem = {({item}) => {
         if(item.reflection == false){
           return (
