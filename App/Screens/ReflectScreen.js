@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesome } from '@expo/vector-icons';
+import DropDownPicker from 'react-native-dropdown-picker';
+
 import {
   View,
   Text,
@@ -121,10 +123,11 @@ const prompts=[
 //   setPrompt(prompt);
 // }
 
-export default function ReflectScreen({navigation}) {
+export default function ReflectScreen(props) {
+
   const [prompt, setPrompt] = useState(prompts[Math.floor(Math.random() * (28))]);
   const [isCustom, setCustomPrompt] = useState(false);
-  //const [customPromptText, setCustomPromptText] = useState("");
+  const [reflection, setReflection] = useState("");
 
   function randomPrompt() {
      setPrompt(prompts[Math.floor(Math.random() * (100))]);
@@ -136,6 +139,25 @@ export default function ReflectScreen({navigation}) {
     setPrompt("");
     setCustomPrompt(true);
   }
+
+  //Dropdown Menu 
+  const visionList = props.route.params.visions;
+  const [currentVision, setCurrentVision] = useState(props.route.params.currentVision);
+
+  const dropdownItems = (visions) => {
+    return(
+      visions.filter(vision => vision.title != "All" && !vision.archived)
+      .map((vision) => {
+        let item = {}
+        item.label = vision.title
+        item.value = vision.title
+        item.selected = vision.title == currentVision.title ? true :false
+        // console.log(item);
+        return item
+      }))
+
+    }
+
 
 
     return (
@@ -165,17 +187,50 @@ export default function ReflectScreen({navigation}) {
             <TouchableOpacity 
               style={styles.newprompt}
               onPress={() => {customPrompt()}}
+              value={reflection}
+              onChangeText={(reflection) => setReflection(reflection)}
             >
               <Text style={styles.buttonText}>Custom prompt</Text>
             </TouchableOpacity>
           </View>
-          <KeyboardAvoidingView style={{alignItems: 'center', margin: 10,}}>
+
+          <KeyboardAvoidingView style={{
+            alignItems: 'center', 
+            margin: 10, 
+            //backgroundColor: 'white',
+            }}>
+            <View style={{
+              borderRadius: 10,
+              backgroundColor: 'white',
+              //width: 320,
+            }}>
+              <DropDownPicker
+              items={dropdownItems(visionList)}
+              style={{
+                backgroundColor: currentVision.color,
+                color: "white"
+              }}
+              containerStyle={{
+                height: 50,
+              }}
+
+              placeholder = "Select a vision to reflect on..."
+              itemStyle={{
+              //justifyContent: 'flex-start'
+            }}
+
+            onChangeItem={item => 
+            setCurrentVision(visionList.find(element => element.title == item.label))}
+
+          />
             <TextInput
               multiline
               style={styles.textinput}
               placeholder='Start reflecting...'
-
             />
+
+            </View>
+
           </KeyboardAvoidingView>
           <TouchableOpacity style={styles.voicememo}>
             <FontAwesome name="microphone" size={24} color="white" />
@@ -183,7 +238,7 @@ export default function ReflectScreen({navigation}) {
 
           <TouchableOpacity
             style={styles.save}
-            // onPress={}
+            //onPress={}
           >
             <Text style={{fontSize: 20, color: 'white', fontFamily: 'Futura',}}>save</Text>
           </TouchableOpacity>

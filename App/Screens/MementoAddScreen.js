@@ -38,9 +38,7 @@ export default function MementoAddScreen(props) {
     }
 
   ]*/
-
-  // const [currentVisionColor, setCurrentVisionColor] = useState(currentVision.color);
-
+  
   const addText = () => {
     return(
       <View>
@@ -96,7 +94,10 @@ export default function MementoAddScreen(props) {
             backgroundColor: currentVision.color,
             color: "white"
           }}
+
+          placeholder = "Select a vision..."
           containerStyle={{height: 40}}
+
           itemStyle={{
             justifyContent: 'flex-start'
           }}
