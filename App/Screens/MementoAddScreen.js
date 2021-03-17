@@ -38,7 +38,7 @@ export default function MementoAddScreen(props) {
     }
 
   ]*/
-  
+
   const addText = () => {
     return(
       <View>
@@ -79,7 +79,7 @@ export default function MementoAddScreen(props) {
         >
           {liked ? <FontAwesome name="heart" size={16} color={currentVision.color} /> :
                    <FontAwesome name="heart-o" size={16} color={currentVision.color} />}
-          <Text style={{fontSize: 15}}>  {liked ? "Added to Favorites!":"Add to Favorites"}</Text>
+          <Text style={{fontSize: 15, fontFamily: 'Futura'}}>  {liked ? "Added to Favorites!":"Add to Favorites"}</Text>
         </TouchableOpacity>
 
         <View style={{
@@ -94,15 +94,12 @@ export default function MementoAddScreen(props) {
             backgroundColor: currentVision.color,
             color: "white"
           }}
-
-          placeholder = "Select a vision..."
+          labelStyle={{fontFamily: 'Futura', color: 'white'}}
+          placeholder = <Text style={{fontFamily: 'Futura', color: 'white'}}>Select a vision...</Text>
           containerStyle={{height: 40}}
-
-          itemStyle={{
-            justifyContent: 'flex-start'
-          }}
-
-          onChangeItem={item => 
+          dropDownStyle={{backgroundColor: currentVision.color}}
+          itemStyle={{justifyContent: 'flex-start',}}
+          onChangeItem={item =>
             setCurrentVision(visionList.find(element => element.title == item.label))}
 
         />
@@ -154,15 +151,19 @@ export default function MementoAddScreen(props) {
 
         </View>
 
-        <Button
-          //onPress={() => navigation.navigate("MementoScreen")}
-          title="Save"
-        />
+        <TouchableOpacity
+          style={styles.save}
+          //onPress={() => addReflection()}
+        >
+          <Text style={{fontSize: 20, color: 'white', fontFamily: 'Futura',}}>save</Text>
+        </TouchableOpacity>
 
-        <Button
-          //onPress={() => navigation.navigate("MementoScreen")}
-          title="Cancel"
-        />
+        <TouchableOpacity
+          style={styles.newprompt}
+          //onPress={() => {randomPrompt()}}
+        >
+          <Text style={styles.buttonText}>Cancel</Text>
+        </TouchableOpacity>
 
       </View>
     );
@@ -173,14 +174,42 @@ const styles = StyleSheet.create({
       color: 'white',
       fontWeight: 'bold',
       fontSize: 16,
+      fontFamily: 'Futura'
     },
     headerText2: {
       color: 'white',
+      fontFamily: 'Futura'
     },
     prompt: {
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      fontFamily: 'Futura'
     },
     caption: {
       color: 'black',
+      fontFamily: 'Futura'
+    },
+    save: {
+      backgroundColor: '#3E71AE',
+      height: 40,
+      borderRadius: 20,
+      width: 150,
+      margin: 5,
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    newprompt: {
+      height: 24,
+      borderRadius: 12,
+      margin: 5,
+      paddingLeft: 15,
+      paddingRight: 15,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    buttonText: {
+      color: '#3E71AE',
+      fontSize: 14,
+      fontFamily: 'Futura',
+      textDecorationLine: 'underline',
     }
   });

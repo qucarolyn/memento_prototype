@@ -94,7 +94,7 @@ const prompts=[
   "What kind of person do I want to be?",
   "When do I feel the most alive?",
   "How am I feeling right now?",
-  "What's one thing I've ahcieved that I never expected?",
+  "What's one thing I've achieved that I never expected?",
   "How has my social circle had an impact on my life recently?",
   "What's something on my bucket list?",
   "What habits/mindsets from my life do I most recommend for others?",
@@ -133,7 +133,7 @@ export default function ReflectScreen(props) {
     setCustomPrompt(true);
   }
 
-  //Dropdown Menu 
+  //Dropdown Menu
   const visionList = props.route.params.visions;
   const [currentVision, setCurrentVision] = useState(props.route.params.currentVision);
 
@@ -159,7 +159,7 @@ export default function ReflectScreen(props) {
       }else {
         console.log("its working");
       }
-    } 
+    }
 
     //alerts
 
@@ -179,20 +179,21 @@ export default function ReflectScreen(props) {
       ],
     );
 
-    
+
 
 
     return (
         <View style={styles.container}>
-          <View style={{justifyContent: 'center', height: 100}}>
-            {isCustom ? 
+
+          <View style={{justifyContent: 'center', height: 100, marginTop: 50}}>
+            {isCustom ?
               <TextInput
                 style={{margin: 20, fontSize: 20, fontFamily: 'Futura',}}
                 placeholder='(optional) Add your own prompt'
                 value={prompt}
                 onChangeText={(prompt) => setPrompt(prompt)}
               /> :
-              <Text style={{margin: 20, fontSize: 20, fontFamily: 'Futura',}}>
+              <Text style={{fontSize: 20, fontFamily: 'Futura',}}>
                 {prompt}
               </Text>
             }
@@ -206,7 +207,7 @@ export default function ReflectScreen(props) {
               <Text style={styles.buttonText}>New prompt</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.newprompt}
               onPress={() => {customPrompt()}}
             >
@@ -215,8 +216,8 @@ export default function ReflectScreen(props) {
           </View>
 
           <KeyboardAvoidingView style={{
-            alignItems: 'center', 
-            margin: 10, 
+            alignItems: 'center',
+            margin: 10,
             //backgroundColor: 'white',
             }}>
             <View style={{
@@ -230,17 +231,20 @@ export default function ReflectScreen(props) {
                 backgroundColor: currentVision.color,
                 color: "white"
               }}
-              containerStyle={{
-                height: 50,
-              }}
+              containerStyle={{ height: 40,}}
 
-              placeholder = "Select a vision to reflect on..."
-              itemStyle={{
-              //justifyContent: 'flex-start'
-            }}
+              labelStyle={{fontFamily: 'Futura', color: 'white'}}
 
-            value={reflection}
-            onChangeText={() => setReflection(reflection)}
+              placeholder = <Text style={{fontFamily: 'Futura', color: 'white'}}>Select a vision...</Text>
+
+              dropDownStyle={{backgroundColor: currentVision.color}}
+
+              itemStyle={{justifyContent: 'flex-start',}}
+
+              value={reflection}
+              //onChangeText={() => setReflection(reflection)}
+              onChangeItem={item =>
+                setCurrentVision(visionList.find(element => element.title == item.label))}
 
           />
             <TextInput
@@ -252,7 +256,14 @@ export default function ReflectScreen(props) {
             </View>
 
           </KeyboardAvoidingView>
-          <TouchableOpacity style={styles.voicememo}>
+          <TouchableOpacity style={{alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: currentVision.color,
+          padding: 10,
+          marginBottom: 10,
+          width: 50,
+          height: 50,
+          borderRadius: 25,}}>
             <FontAwesome name="microphone" size={24} color="white" />
           </TouchableOpacity>
 
@@ -262,6 +273,14 @@ export default function ReflectScreen(props) {
           >
             <Text style={{fontSize: 20, color: 'white', fontFamily: 'Futura',}}>save</Text>
           </TouchableOpacity>
+
+          <TouchableOpacity
+            style={{marginBottom: 80}}
+            //onPress={() => {randomPrompt()}}
+          >
+            <Text style={styles.buttonText}>Cancel</Text>
+          </TouchableOpacity>
+
         </View>
     );
 }
@@ -286,12 +305,13 @@ const styles = StyleSheet.create({
   textinput: {
     padding: 15,
     paddingTop: 15,
-    height: 300,
+    height: 275,
     width: 300,
     alignItems: 'flex-start',
     borderColor: '#C5C5C5',
     borderWidth: 1,
-    borderRadius: 18,
+    borderBottomLeftRadius: 18,
+    borderBottomRightRadius: 18,
   },
   voicememo: {
     alignItems: 'center',
@@ -306,7 +326,7 @@ const styles = StyleSheet.create({
   newprompt: {
     height: 24,
     borderRadius: 12,
-    margin: 5,
+    //margin: 5,
     paddingLeft: 15,
     paddingRight: 15,
     alignItems: 'center',
@@ -317,5 +337,5 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: 'Futura',
     textDecorationLine: 'underline',
-  }
+  },
 });
