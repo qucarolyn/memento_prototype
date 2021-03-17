@@ -24,8 +24,8 @@ export default function VisionAddScreen({route, navigation}) {
   };
 
   const { updateVision } = route.params; //call with vision to be added when submit button is hit
-  console.log (route); 
-  
+  console.log (route);
+
   const addVision = () => {
     if(visionText == ""){
       textAlert();
@@ -144,7 +144,7 @@ export default function VisionAddScreen({route, navigation}) {
             onPress={() => addVision()}
           >
 
-            <Text style={{fontSize: 20, color: 'white'}}>finish</Text>
+            <Text style={{fontSize: 20, color: 'white', fontFamily: 'Futura',}}>finish</Text>
           </TouchableOpacity>
           </View>
 
@@ -165,6 +165,7 @@ const styles = StyleSheet.create({
     color: '#3E71AE',
     fontSize: 18,
     marginBottom: 10,
+    fontFamily: 'Futura',
   },
   save: {
     backgroundColor: '#3E71AE',
