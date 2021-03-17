@@ -18,7 +18,7 @@ const prompts=[
   "What are my strengths right now?",
   "What are my weaknesses right now?",
   "What am I afraid of right now?",
-  "Where do I want to be in a month?"
+  "Where do I want to be in a month?",
   "Where do I want to be in a year?",
   "Where do I want to be in 5 years?",
   "What do I need more of in my life?",

@@ -7,7 +7,7 @@ import { FontAwesome } from '@expo/vector-icons';
 export default function ReflectionThumbnail (props) {
     let navigation = useNavigation();
     const [favoriteStatus, setFavoriteStatus] = useState(props.favorite);
-    
+
     const editFavorite = (status) => {
       if(status){
         setFavoriteStatus(false);
@@ -66,7 +66,7 @@ export default function ReflectionThumbnail (props) {
 
           <View style={{padding: 10}}>
             <Text style={styles.prompt}>{props.prompt}</Text>
-            <Text>{shortenText(props.caption)}</Text>
+            <Text style={styles.caption}>{shortenText(props.caption)}</Text>
           </View>
         </TouchableOpacity>
       );
@@ -76,12 +76,17 @@ export default function ReflectionThumbnail (props) {
     headerText: {
       color: 'white',
       fontWeight: 'bold',
-      //fontFamily: 'Verdana',
+      fontFamily: 'Futura',
     },
     headerText2: {
       color: 'white',
+      fontFamily: 'Futura',
     },
     prompt: {
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      fontFamily: 'Futura',
     },
+    caption: {
+      fontFamily: 'Futura'
+    }
   });
