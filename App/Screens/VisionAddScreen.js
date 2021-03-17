@@ -18,7 +18,6 @@ export default function VisionAddScreen({route, navigation}) {
 
 
   const colorPressHandler = (props) => {
-    //console.log(props);
     setPress(props.color);
     setVisionColor(props.color);
   };

@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   TextInput,
+  Alert,
   StyleSheet,
 } from "react-native";
 
@@ -116,15 +117,7 @@ const prompts=[
   "What's a quantitative milestone I hope to reach and when?"
 ]
 
-//const [prompt, setPrompt] = useState("");
-
-// const setRandom = () => {
-//   var prompt = prompts[Math.floor(Math.random() * (28))];
-//   setPrompt(prompt);
-// }
-
 export default function ReflectScreen(props) {
-
   const [prompt, setPrompt] = useState(prompts[Math.floor(Math.random() * (28))]);
   const [isCustom, setCustomPrompt] = useState(false);
   const [reflection, setReflection] = useState("");
@@ -155,9 +148,38 @@ export default function ReflectScreen(props) {
         // console.log(item);
         return item
       }))
-
     }
 
+    //creating reflection component
+    const addReflection = () => {
+      if(reflection == "") { //empty relection
+        reflectionAlert();
+      }else if (currentVision.title == "All") {
+        visionAlert();
+      }else {
+        console.log("its working");
+      }
+    } 
+
+    //alerts
+
+    const reflectionAlert = () =>
+    Alert.alert(
+      "Reflection is Empty",
+      "Please type a reflection to save. To cancel, click the back button"
+      [{ text: "OK", onPress: () => console.log("OK Pressed"),}
+      ],
+    );
+
+    const visionAlert = () =>
+    Alert.alert(
+      "No Vision Selected",
+      "Please select a vision from the dropdown menu"
+      [{ text: "OK", onPress: () => console.log("OK Pressed"),}
+      ],
+    );
+
+    
 
 
     return (
@@ -187,8 +209,6 @@ export default function ReflectScreen(props) {
             <TouchableOpacity 
               style={styles.newprompt}
               onPress={() => {customPrompt()}}
-              value={reflection}
-              onChangeText={(reflection) => setReflection(reflection)}
             >
               <Text style={styles.buttonText}>Custom prompt</Text>
             </TouchableOpacity>
@@ -219,8 +239,8 @@ export default function ReflectScreen(props) {
               //justifyContent: 'flex-start'
             }}
 
-            onChangeItem={item => 
-            setCurrentVision(visionList.find(element => element.title == item.label))}
+            value={reflection}
+            onChangeText={() => setReflection(reflection)}
 
           />
             <TextInput
@@ -238,7 +258,7 @@ export default function ReflectScreen(props) {
 
           <TouchableOpacity
             style={styles.save}
-            //onPress={}
+            onPress={() => addReflection()}
           >
             <Text style={{fontSize: 20, color: 'white', fontFamily: 'Futura',}}>save</Text>
           </TouchableOpacity>

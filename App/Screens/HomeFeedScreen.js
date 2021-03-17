@@ -11,10 +11,6 @@ var visions= [
     archived: false,
   },
 
-  // {
-  //   title: "Be happy",
-  //   color: 'red',
-  // },
   {
     title: "Learn ukelele",
     color: '#83E39E',
