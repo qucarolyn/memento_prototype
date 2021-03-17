@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Text, Button, FlatList, TouchableOpacity} from "react-native";
+import { StyleSheet, View, Text, Button, FlatList, TouchableOpacity, Image} from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { ListItem } from "react-native-elements/dist/list/ListItem";
 import { FontAwesome } from '@expo/vector-icons';
 
 export default function MementoThumbnail (props) {
     let navigation = useNavigation();
+    let images = props.images;
+    console.log(props.title);
+
+    if(props.images != undefined) {
+      console.log(images[1].source);
+    }
+
     const [favoriteStatus, setFavoriteStatus] = useState(props.favorite);
     const editFavorite = (status) => {
       if(status){
@@ -14,6 +21,8 @@ export default function MementoThumbnail (props) {
         setFavoriteStatus(true);
       }
     }
+    // console.log("memento images");
+    // console.log(props.images);
 
     function shortenText (text){
         if(text.length <= 50) {
@@ -62,6 +71,28 @@ export default function MementoThumbnail (props) {
 
         <View style={{padding: 10}}>
         <Text style={styles.caption}>{shortenText(props.caption)}</Text>
+        
+        {//conditional rendering of images
+          images != undefined ?  
+          // <Text>Image here</Text>
+            <FlatList
+              horizontal={true} 
+              showsHorizontalScrollIndicator={false} 
+              data={images}
+              renderItem={ ({item, index}) => (
+              <Image source={item} 
+                key = {index}
+              style={{
+                width:75,
+                   height:75,
+                   borderWidth:1,
+                   //borderColor:'#d35647',
+                   resizeMode:'contain',
+                   margin:4
+               }}></Image>
+             )}
+           />
+        : <></>}
         </View>
       </TouchableOpacity>
     );

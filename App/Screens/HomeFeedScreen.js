@@ -37,6 +37,11 @@ var feedItems = [
     date: "1/21/2020",
     caption: 'today I went on a run! Was very very fun. Im trying to max out the character count but im not sure if it will work lets see how this goes!',
     favorite: true,
+    images: 
+      [
+        {source:require('../Components/Images/stanford.jpeg'), key:'1'},
+        {source:require('../Components/Images/stanford.jpeg'), key:'2'},
+      ]
   },
   {
     title: "Learn ukelele",

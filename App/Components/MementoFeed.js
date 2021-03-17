@@ -73,6 +73,7 @@ export default function MementoFeed(props) {
              date = {item.date == null? "No Date Available" :item.date}
              color = {item.color}
              favorite = {item.favorite}
+             images = {item.images}
           />
           );
         }else {
