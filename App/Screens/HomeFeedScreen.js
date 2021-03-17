@@ -53,6 +53,9 @@ export default function HomeFeedScreen({navigation}) {
             setVisionCallback = {setVision}
           />
 
+          <View style={{width: 200,}}>
+          </View>
+
           </View>
 
           {/* <Text>{console.log(visions)}</Text> */}
@@ -61,8 +64,8 @@ export default function HomeFeedScreen({navigation}) {
           <View style={{flexDirection: 'row', justifyContent: 'center'}}>
 
             <TouchableOpacity
-              onPress={() => navigation.navigate("MementoAdd", 
-              {currentVision: visions.find(element => element.title == activeVision), 
+              onPress={() => navigation.navigate("MementoAdd",
+              {currentVision: visions.find(element => element.title == activeVision),
                visions: visions})}
               style={styles.button}
             >
@@ -71,8 +74,8 @@ export default function HomeFeedScreen({navigation}) {
 
             <TouchableOpacity
               onPress={() => navigation.navigate(
-                "Reflect", 
-                {currentVision: visions.find(element => element.title == activeVision), 
+                "Reflect",
+                {currentVision: visions.find(element => element.title == activeVision),
                   visions: visions})}
               style={styles.button}
             >

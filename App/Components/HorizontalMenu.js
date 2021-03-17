@@ -48,7 +48,6 @@ export default function HorizontalMenu(props) {
 
                 </TouchableOpacity>
 
-
             </View>
         );
 
@@ -69,6 +68,7 @@ export default function HorizontalMenu(props) {
                 />
               )}
           />
+
         </View>
     );
 }
