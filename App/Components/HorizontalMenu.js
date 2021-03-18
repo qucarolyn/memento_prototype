@@ -5,13 +5,13 @@ import { NavigationContainer, useNavigation } from '@react-navigation/native';
 
 
 export default function HorizontalMenu(props) {
-    console.log(props.visions);
+    //console.log(props.visions);
     const [pressed, setPress] = useState("All");
     const visions = props.visions;
     const visionCallback = props.setVisionCallback;
     const visionPressHandler = (props) => {
         setPress(props.title);
-        console.log(props.title);
+        //console.log(props.title);
         visionCallback(props.title);
     };
 

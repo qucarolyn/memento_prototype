@@ -7,7 +7,7 @@ import { FontAwesome } from '@expo/vector-icons';
 export default function MementoThumbnail (props) {
     let navigation = useNavigation();
     let media = props.media;
-    console.log(props.title);
+    //console.log(props.title);
 
     // if(props.media != undefined) {
     //   console.log(media[1].source);

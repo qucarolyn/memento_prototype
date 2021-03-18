@@ -9,8 +9,8 @@ import ReflectionThumbnail from './ReflectionThumbnail.js';
 
 export default function MementoFeed(props) {
     let navigation = useNavigation();
-    let feedItems = props.feedItems
-    console.log(feedItems)
+    let feedItems = props.feedItems;
+    //console.log(feedItems);
 
     function shortenText (text){
       if(text.length <= 50) {
@@ -60,39 +60,50 @@ export default function MementoFeed(props) {
     }
 
     const nagivation = useNavigation();
+    // console.log("feed items");
+    // console.log(feedItems);
 
-    return (
-      <FlatList
-      data = {filterMementos(feedItems, props.vision)}//need to filter mementos based on the click (callback function)
-      inverted={true}
-      renderItem = {({item}) => {
-        if(item.reflection == false){
-          return (
-            <MementoThumbnail
-             title = {item.title}
-             caption = {item.caption}
-             date = {item.date == null? "No Date Available" :item.date}
-             color = {item.color}
-             favorite = {item.favorite}
-             media = {item.media}
-          />
-          );
-        }else {
-          return (
-            <ReflectionThumbnail
-             title = {item.title}
-             caption = {item.caption}
-             date = {item.date == null? "No Date Available" :item.date}
-             color = {item.color}
-             prompt = {item.prompt}
-             favorite = {item.favorite}
+    if(filterMementos(feedItems, props.vision).length == 0) {
+      return (
+        <View>
+          <Text>Vision is empty</Text>
+        </View>
+      );
+    }else {
+      //console.log(filterMementos(feedItems, props.vision));
+      return (
+        <FlatList
+        data = {filterMementos(feedItems, props.vision)}
+        inverted={true}
+        renderItem = {({item}) => {
+          if(item.reflection == false){
+            return (
+              <MementoThumbnail
+               title = {item.title}
+               caption = {item.caption}
+               date = {item.date == null? "No Date Available" :item.date}
+               color = {item.color}
+               favorite = {item.favorite}
+               media = {item.media}
             />
-          );}
+            );
+          }else {
+            return (
+              <ReflectionThumbnail
+               title = {item.title}
+               caption = {item.caption}
+               date = {item.date == null? "No Date Available" :item.date}
+               color = {item.color}
+               prompt = {item.prompt}
+               favorite = {item.favorite}
+              />
+            );}
+        }
       }
-    }
-    />
+      />
+    );
 
-  );
+    }
 
 }
 
