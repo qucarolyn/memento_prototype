@@ -1,5 +1,5 @@
-import React from "react";
-import { View, Text, StyleSheet, Button, } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Text, StyleSheet, Button, FlatList, Image, TouchableOpacity} from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome } from '@expo/vector-icons';
 
@@ -7,7 +7,20 @@ import { FontAwesome } from '@expo/vector-icons';
 export default function MementoDetailScreen(props) {
     let navigation = useNavigation();
     let memento = props.route.params;
-    console.log(memento);
+    let media = memento.media;
+
+    //favoriting a memento (not fully functional)
+    const [favoriteStatus, setFavoriteStatus] = useState(memento.favorite);
+
+    const editFavorite = (status) => {
+      if(status){
+        setFavoriteStatus(false);
+      }else {
+        setFavoriteStatus(true);
+      }
+    }
+
+
     return (
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
 
@@ -26,7 +39,12 @@ export default function MementoDetailScreen(props) {
           }}>
             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text style={styles.headerText}>{memento.title}</Text>
-              <FontAwesome name="heart" size={16} color="white" />
+              <TouchableOpacity
+                onPress = {() => editFavorite(favoriteStatus)}
+              >
+              {favoriteStatus == true ? <FontAwesome name="heart" size={16} color="white" /> : //doesnt fully work yet
+                                    <FontAwesome name="heart-o" size={16} color="white" /> }
+              </TouchableOpacity>
             </View>
             <Text style={styles.headerText2}>{memento.date}</Text>
           </View>
@@ -37,6 +55,22 @@ export default function MementoDetailScreen(props) {
           }}>
             <Text style={styles.prompt}>{memento.prompt}</Text>
             <Text style={styles.caption}>{memento.caption}</Text>
+            <FlatList
+              //horizontal={true} 
+              showsHorizontalScrollIndicator={false} 
+              data={media}
+              renderItem={ ({item, index}) => (
+              <Image source={item} 
+                key = {index}
+                style={{
+                  //width:600,
+                  height:100,
+                  borderWidth:1,
+                  //borderColor:'#d35647',
+                  //resizeMode:'contain',
+                  margin:4
+               }}></Image>
+             )}/>
           </View>
 
         </View>

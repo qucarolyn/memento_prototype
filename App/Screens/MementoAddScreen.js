@@ -16,6 +16,39 @@ export default function MementoAddScreen(props) {
   const [liked, setLiked] = useState(false);
   const [currentVision, setCurrentVision] = useState(props.route.params.currentVision);
   const [media, setMedia] = useState([]);
+  const [hasText, setHasText] = useState(false);
+  //const [hasAudio, setHasAudio] = useState(false);
+  const [hasImage, setHasImage] = useState(false);
+  const [hasLocation, setHasLocation] = useState(false);
+  const [caption, setCaption] = useState("");
+
+  //adding a reflection
+  const addMemento = () => {
+    if(false) {//need to account for errors
+
+    }else {
+      const newMemento = {
+        title: currentVision.title,
+        reflection: false,
+        color: currentVision.color,
+        date: "3/17/2020",
+        caption: caption,
+        favorite: liked,
+        media: media,
+      };
+    }
+  }
+
+  //check for image, audio, or location and add those to the list
+  const compileMedia = () => {
+
+  }
+
+  const [numAudio, setNumAudio] = useState(0);
+  const audio = [];
+  const setAudio = () => {
+
+  }
 
   /*media [
     {
@@ -38,19 +71,6 @@ export default function MementoAddScreen(props) {
     }
 
   ]*/
-
-  const addText = () => {
-    return(
-      <View>
-        <TextInput
-              placeholder='add a caption for this memento...'
-              maxLength={20}
-        />
-
-      </View>
-    )
-
-  }
 
 
   const dropdownItems = (visions) => {
@@ -89,14 +109,13 @@ export default function MementoAddScreen(props) {
           marginBottom: 20,
         }}>
           <DropDownPicker
-          items={dropdownItems(visionList)}
-          style={{
-            backgroundColor: currentVision.color,
-            color: "white"
-          }}
+            items={dropdownItems(visionList)}
+            style={{
+              backgroundColor: currentVision.color,
+              color: "white"
+            }}
           labelStyle={{fontFamily: 'Futura', color: 'white'}}
           placeholder = "Select a vision..."
-          //placeholder = <Text style={{fontFamily: 'Futura', color: 'white'}}>Select a vision...</Text>
           containerStyle={{height: 40}}
           dropDownStyle={{backgroundColor: "grey"}}
           itemStyle={{justifyContent: 'flex-start',}}
@@ -104,15 +123,43 @@ export default function MementoAddScreen(props) {
             setCurrentVision(visionList.find(element => element.title == item.label))}
 
         />
-
           <View style={{
             borderRadius: 10,
             padding: 10,
             height: 330,
           }}>
-            {/* {media.find(type == text) */}
-            {addText()}
-          </View>
+            
+            {hasImage? 
+            <View>
+            <Text>Images Here</Text>
+            </View> : <></>
+            }
+
+            {/*caption*/}
+            {hasText? 
+            <View>
+            <TextInput
+                  multiline
+                  placeholder='add a caption for this memento...'
+                  onChangeText={(caption) => setCaption(caption)}
+            />
+            </View> : <></>
+            }
+
+          {numAudio > 0? 
+            <TouchableOpacity
+              onPress = {() => setNumAudio(parseInt(numAudio) - 1)}
+            >
+              <Text>{numAudio} Audio Recordings</Text>
+            </TouchableOpacity> : <></>
+            }
+
+            {hasLocation? 
+            <View>
+              <Text>Location Information Here</Text>
+            </View> : <></>
+            }
+            </View>
 
           <View style={{
             backgroundColor: currentVision.color,
@@ -125,7 +172,12 @@ export default function MementoAddScreen(props) {
             flexDirection: 'row'
           }}>
             <TouchableOpacity>
-            <FontAwesome name="photo" size={25} color="white" />
+            <FontAwesome 
+              name="photo" 
+              size={25} 
+              color="white" 
+              onPress = {() => setHasImage(hasImage? false:true)}
+            />
             </TouchableOpacity>
 
             <TouchableOpacity>
@@ -133,28 +185,40 @@ export default function MementoAddScreen(props) {
               name="format-text"
               size={26}
               color="white"
-              onPress = {() => addText}
+              //if you want to change the color based on whether or not there is text, 
+              //you can use color = (hasText? "white":"grey")
+              onPress = {() => setHasText(hasText? false:true)}
             />
             </TouchableOpacity>
 
             <TouchableOpacity>
-            <FontAwesome name="microphone" size={25} color="white" />
+            <FontAwesome 
+              name="microphone" 
+              size={25} 
+              color="white" 
+              onPress = {() => setNumAudio(parseInt(numAudio) + 1)}
+            />
             </TouchableOpacity>
 
             <TouchableOpacity>
-            <Entypo name="location" size={23} color="white" />
+            <Entypo 
+              name="location" 
+              size={23} 
+              color="white" 
+              onPress = {() => setHasLocation(hasLocation? false:true)}
+            />
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            {/* <TouchableOpacity>
             <MaterialIcons name="insert-emoticon" size={26} color="white" />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
 
         </View>
 
         <TouchableOpacity
           style={styles.save}
-          //onPress={() => addReflection()}
+          onPress={() => addReflection()}
         >
           <Text style={{fontSize: 20, color: 'white', fontFamily: 'Futura',}}>save</Text>
         </TouchableOpacity>
