@@ -147,9 +147,11 @@ export default function MementoAddScreen(props) {
             }
 
           {numAudio > 0? 
-            <View>
-              <Text>Audio Information Here</Text>
-            </View> : <></>
+            <TouchableOpacity
+              onPress = {() => setNumAudio(parseInt(numAudio) - 1)}
+            >
+              <Text>{numAudio} Audio Recordings</Text>
+            </TouchableOpacity> : <></>
             }
 
             {hasLocation? 
@@ -194,7 +196,7 @@ export default function MementoAddScreen(props) {
               name="microphone" 
               size={25} 
               color="white" 
-              onPress = {() => setNumAudio(audio + 1)}
+              onPress = {() => setNumAudio(parseInt(numAudio) + 1)}
             />
             </TouchableOpacity>
 
