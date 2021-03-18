@@ -215,7 +215,7 @@ export default function MementoAddScreen(props) {
           }}>
 
             {(!hasImage && caption == "" && !hasAudio && !hasLocation) ?
-            <Text>No media yet. Tap the buttons at the bottom to get started!</Text>
+            <Text style={styles.emptytext}>No media yet. Tap the buttons at the bottom to get started!</Text>
             :
             <></>
             }
@@ -397,5 +397,8 @@ const styles = StyleSheet.create({
       fontSize: 14,
       fontFamily: 'Futura',
       textDecorationLine: 'underline',
+    },
+    emptytext: {
+      color: '#A5A5A5'
     }
   });

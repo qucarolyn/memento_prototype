@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Text, Button, FlatList, TouchableOpacity} from "react-native";
+import { StyleSheet, ScrollView, View, Text, Button, FlatList, TouchableOpacity} from "react-native";
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 //import VisionAddScreen  from './App/Screens/VisionAddScreen.js';
 
@@ -54,8 +54,7 @@ export default function HorizontalMenu(props) {
     }
 
     return (
-        <View >
-
+        <View style={{flexDirection: 'row', }}>
            <FlatList
               horizontal = {true}
               data={filterActive(visions)}

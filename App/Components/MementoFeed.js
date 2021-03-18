@@ -65,8 +65,9 @@ export default function MementoFeed(props) {
 
     if(filterMementos(feedItems, props.vision).length == 0) {
       return (
-        <View>
-          <Text>Vision is empty</Text>
+        <View style={{alignItems: 'center', paddingTop: 100}}>
+          <Text style={styles.emptytext}> No Mementos here yet!</Text>
+          <Text style={styles.emptytext}> Click above to start tracking your progress</Text>
         </View>
       );
     }else {
@@ -124,4 +125,7 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       fontFamily: 'Futura',
     },
+    emptytext: {
+      color: '#A5A5A5'
+    }
   });
