@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Button, SafeAreaView, TouchableOpacity} from "react-native";
+import { View, Text, Button, SafeAreaView, TouchableOpacity, ScrollView} from "react-native";
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import VerticalMenu from '../Components/VerticalMenu.js';
 //work on actually getting the data structure rather than defining it here, may not have to for prototype
@@ -57,55 +57,81 @@ export default function VisionDrawerScreen({route, navigation}) {
     }
     return(
         <SafeAreaView>
-        <View style={{display: 'flex', flexDirection: 'column'}}>
-          <TouchableOpacity
-              style = {{
-                backgroundColor: '#3E71AE',
-                borderRadius: 25,
-                margin: 2,
-                justifyContent: 'center',
-                alignItems: 'center',
-                marginTop: 25,
-                marginHorizontal: 25,
-              }}
-              onPress={() => navigation.navigate("VisionAdd", {updateVision: {addVision}})}
-              >
-                    <Text
-                        style = {{
-                            margin: 5,
-                            fontSize: 20,
-                            color: "white",
-                            paddingVertical: 8,
-                            fontFamily: 'Futura',
-                        }}
+            <ScrollView>
+                <View style={{display: 'flex', flexDirection: 'column'}}>
+                <TouchableOpacity
+                    style = {{
+                        backgroundColor: '#3E71AE',
+                        borderRadius: 25,
+                        margin: 2,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        marginTop: 25,
+                        marginHorizontal: 25,
+                    }}
+                    onPress={() => navigation.navigate("VisionAdd", {updateVision: {addVision}})}
                     >
-                        Add a Vision
-                    </Text>
+                            <Text
+                                style = {{
+                                    margin: 5,
+                                    fontSize: 20,
+                                    color: "white",
+                                    paddingVertical: 8,
+                                    fontFamily: 'Futura',
+                                }}
+                            >
+                                Add a Vision
+                            </Text>
 
-            </TouchableOpacity>
+                    </TouchableOpacity>
 
-            <View style={{alignItems: "center"}}>
-                <Text style={{fontSize: 24, marginTop: 20, fontFamily: 'Futura',}}>Active Visions</Text>
-            </View>
+                    <View style={{alignItems: "center"}}>
+                        <Text style={{fontSize: 24, marginTop: 20, fontFamily: 'Futura',}}>Active Visions</Text>
+                    </View>
 
-            <View>
-                <VerticalMenu
-                    visions={active}
-                    archiveFunction={setVisionArchived}
-                />
-            </View>
+                    <View>
+                        <VerticalMenu
+                            visions={active}
+                            archiveFunction={setVisionArchived}
+                        />
+                    </View>
 
-            <View style={{alignItems: "center"}}>
-                <Text style={{fontSize: 24, marginTop: 20, fontFamily: 'Futura',}}>Archived Visions</Text>
-            </View>
-            <View>
-                <VerticalMenu
-                    visions={archived}
-                    archiveFunction={setVisionArchived}
-                />
-            </View>
+                    <View style={{alignItems: "center"}}>
+                        <Text style={{fontSize: 24, marginTop: 20, fontFamily: 'Futura',}}>Archived Visions</Text>
+                    </View>
+                    <View>
+                        <VerticalMenu
+                            visions={archived}
+                            archiveFunction={setVisionArchived}
+                        />
+                    </View>
+                    <TouchableOpacity
+                    style = {{
+                        backgroundColor: '#3E71AE',
+                        borderRadius: 25,
+                        margin: 2,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        marginTop: 25,
+                        marginHorizontal: 25,
+                    }}
+                    onPress={() => navigation.navigate("HomeFeed")}
+                    >
+                            <Text
+                                style = {{
+                                    margin: 5,
+                                    fontSize: 20,
+                                    color: "white",
+                                    paddingVertical: 8,
+                                    fontFamily: 'Futura',
+                                }}
+                            >
+                                Home
+                            </Text>
 
-        </View>
+                    </TouchableOpacity>
+                </View>
+            </ScrollView>
         </SafeAreaView>
     );
 }
