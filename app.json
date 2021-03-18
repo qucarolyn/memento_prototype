@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "memento_prototype",
-    "slug": "memento_prototype",
+    "name": "memento",
+    "slug": "memento",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -27,6 +27,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "App for CS147: Intro to Human Computer Interaction (Stanford - Winter 2021). Created by Carolyn Q, Theo S, and Graciela S."
   }
 }
