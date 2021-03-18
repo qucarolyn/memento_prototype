@@ -157,7 +157,6 @@ export default function ReflectScreen(props) {
 
     //creating reflection component
     const updateReflections = props.route.params.updateReflections;
-    //console.log(props);
     const addReflection = () => {
       if(reflection == "") { //empty relection
         reflectionAlert();
@@ -181,6 +180,22 @@ export default function ReflectScreen(props) {
 
       }
     }
+
+    //displaying audio
+    const [hasAudio, setHasAudio] = useState(false);
+    const displayAudio = () => {
+      setHasAudio(true);
+      console.log("worked")
+    }
+
+    const deleteAudio = () => {
+      setHasAudio(false);
+      console.log("worked")
+
+    }
+
+
+
 
     //alerts
     const reflectionAlert = () =>
@@ -254,8 +269,6 @@ export default function ReflectScreen(props) {
 
               placeholder = "Select a vision..."
 
-              //placeholder = <Text style={{fontFamily: 'Futura', color: 'white'}}>Select a vision...</Text>
-
               dropDownStyle={{backgroundColor: "grey"}}
 
               itemStyle={{justifyContent: 'flex-start',}}
@@ -272,6 +285,21 @@ export default function ReflectScreen(props) {
               onChangeText={(reflection) => setReflection(reflection)}
             />
 
+            {hasAudio? 
+            <TouchableOpacity
+              style={{
+                backgroundColor: "blue",
+                height: 15,
+            }}
+            >
+              <Text>Audio Recording Added!</Text>
+              <FontAwesome 
+              name="cancel" 
+              size={24} 
+              onPress={() => {deleteAudio()}}
+            />
+            </TouchableOpacity> : <></>}
+
             </View>
 
           </KeyboardAvoidingView>
@@ -283,7 +311,12 @@ export default function ReflectScreen(props) {
           width: 50,
           height: 50,
           borderRadius: 25,}}>
-            <FontAwesome name="microphone" size={24} color="white" />
+            <FontAwesome 
+              name="microphone" 
+              size={24} 
+              color="white" 
+              onPress={() => {displayAudio()}}
+            />
           </TouchableOpacity>
 
           <TouchableOpacity
