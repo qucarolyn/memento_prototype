@@ -125,7 +125,7 @@ export default function ReflectScreen(props) {
   const [prompt, setPrompt] = useState(prompts[Math.floor(Math.random() * (28))]);
   const [isCustom, setCustomPrompt] = useState(false);
   const [reflection, setReflection] = useState("");
-  
+
 
   function randomPrompt() {
      setPrompt(prompts[Math.floor(Math.random() * (100))]);
@@ -222,8 +222,8 @@ export default function ReflectScreen(props) {
       [{
         text: "Keep Working",
       },
-      { text: "Delete Reflection", 
-        onPress: () => navigation.popToTop(), 
+      { text: "Delete Reflection",
+        onPress: () => navigation.popToTop(),
         style: "cancel"
       }
       ],
@@ -288,7 +288,7 @@ export default function ReflectScreen(props) {
 
               itemStyle={{justifyContent: 'flex-start',}}
 
-              
+
               onChangeItem={item =>
                 setCurrentVision(visionList.find(element => element.title == item.label))}
 
@@ -300,7 +300,7 @@ export default function ReflectScreen(props) {
               onChangeText={(reflection) => setReflection(reflection)}
             />
 
-            {hasAudio? 
+            {hasAudio?
             <TouchableOpacity
               style={{
                 //backgroundColor: "blue",
@@ -312,7 +312,8 @@ export default function ReflectScreen(props) {
                 source={require('../Components/Images/audioWav.png')}
                 style={{
                   width:300,
-                  height:60,
+                  //marginBottom: 50,
+                  //height:60,
                    //borderColor:'#d35647',
                    resizeMode:'contain',
                }}
@@ -322,21 +323,23 @@ export default function ReflectScreen(props) {
             </View>
 
           </KeyboardAvoidingView>
+
+          {hasAudio==false?
           <TouchableOpacity style={{alignItems: 'center',
           justifyContent: 'center',
           backgroundColor: currentVision.color,
           padding: 10,
-          marginBottom: 10,
+          //marginBottom: 10,
           width: 50,
           height: 50,
           borderRadius: 25,}}>
-            <FontAwesome 
-              name="microphone" 
-              size={24} 
-              color="white" 
+            <FontAwesome
+              name="microphone"
+              size={24}
+              color="white"
               onPress={() => {displayAudio()}}
             />
-          </TouchableOpacity>
+          </TouchableOpacity> : <></>}
 
           <TouchableOpacity
             style={styles.save}
@@ -361,9 +364,10 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 5,
+    padding: 30,
     height: '100%',
     backgroundColor: 'white',
+    //justifyContent: 'flex-start',
   },
   save: {
     backgroundColor: '#3E71AE',
@@ -371,13 +375,15 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     width: 150,
     margin: 5,
+    marginTop: 50,
     alignItems: 'center',
     justifyContent: 'center'
   },
   textinput: {
     padding: 15,
     paddingTop: 15,
-    height: 275,
+    //marginBottom: 70,
+    height: 200,
     width: 300,
     alignItems: 'flex-start',
     borderColor: '#C5C5C5',

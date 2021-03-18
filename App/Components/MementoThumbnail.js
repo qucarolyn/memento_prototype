@@ -71,22 +71,22 @@ export default function MementoThumbnail (props) {
 
         <View style={{padding: 10}}>
         <Text style={styles.caption}>{shortenText(props.caption)}</Text>
-        
+
         {//conditional rendering of images
           media != undefined ?
           // <Text>Image here</Text>
             <FlatList
-              horizontal={true} 
-              showsHorizontalScrollIndicator={false} 
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
               data={media}
               renderItem={ ({item, index}) => (
-                <Image 
-                  source={item.type == "audio"? 
-                    require('../Components/Images/audioIcon.png') : item.source} 
+                <Image
+                  source={item.type == "audio"?
+                    require('../Components/Images/audioIcon.png') : item.source}
                   key = {index}
                   style={{
-                  width:75,
-                    height:75,
+                  width:100,
+                    height:100,
                     //borderWidth:1,
                     //borderColor:'#d35647',
                     resizeMode: item.type != "audio"?'cover':'contain',
