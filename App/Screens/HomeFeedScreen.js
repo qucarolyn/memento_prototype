@@ -40,7 +40,7 @@ var feedItems = [
     media: 
       [
         {type: "image", source:require('../Components/Images/stanford.jpeg'), key:'1'},
-        {type: "image", source:require('../Components/Images/stanford.jpeg'), key:'2'},
+        {type: "image", source:require('../Components/Images/vegetables.jpeg'), key:'2'},
         {type: "image", source:require('../Components/Images/stanford.jpeg'), key:'3'},
         {type: "image", source:require('../Components/Images/stanford.jpeg'), key:'4'},
         {type: "image", source:require('../Components/Images/stanford.jpeg'), key:'5'},
