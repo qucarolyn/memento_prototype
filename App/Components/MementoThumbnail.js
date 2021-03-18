@@ -6,11 +6,11 @@ import { FontAwesome } from '@expo/vector-icons';
 
 export default function MementoThumbnail (props) {
     let navigation = useNavigation();
-    let images = props.images;
+    let media = props.media;
     console.log(props.title);
 
-    if(props.images != undefined) {
-      console.log(images[1].source);
+    if(props.media != undefined) {
+      console.log(media[1].source);
     }
 
     const [favoriteStatus, setFavoriteStatus] = useState(props.favorite);
@@ -73,12 +73,12 @@ export default function MementoThumbnail (props) {
         <Text style={styles.caption}>{shortenText(props.caption)}</Text>
         
         {//conditional rendering of images
-          images != undefined ?  
+          media != undefined ?  
           // <Text>Image here</Text>
             <FlatList
               horizontal={true} 
               showsHorizontalScrollIndicator={false} 
-              data={images}
+              data={media}
               renderItem={ ({item, index}) => (
               <Image source={item} 
                 key = {index}

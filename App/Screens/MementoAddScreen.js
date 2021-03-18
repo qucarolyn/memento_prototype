@@ -16,6 +16,7 @@ export default function MementoAddScreen(props) {
   const [liked, setLiked] = useState(false);
   const [currentVision, setCurrentVision] = useState(props.route.params.currentVision);
   const [media, setMedia] = useState([]);
+  const [caption, setCaption] = useState("");
 
   /*media [
     {

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Button, } from "react-native";
+import { View, Text, StyleSheet, Button, FlatList, Image} from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome } from '@expo/vector-icons';
 
@@ -7,6 +7,7 @@ import { FontAwesome } from '@expo/vector-icons';
 export default function MementoDetailScreen(props) {
     let navigation = useNavigation();
     let memento = props.route.params;
+    let media = memento.media;
     console.log(memento);
     return (
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -37,6 +38,22 @@ export default function MementoDetailScreen(props) {
           }}>
             <Text style={styles.prompt}>{memento.prompt}</Text>
             <Text style={styles.caption}>{memento.caption}</Text>
+            <FlatList
+              //horizontal={true} 
+              showsHorizontalScrollIndicator={false} 
+              data={media}
+              renderItem={ ({item, index}) => (
+              <Image source={item} 
+                key = {index}
+                style={{
+                  //width:600,
+                  height:100,
+                  borderWidth:1,
+                  //borderColor:'#d35647',
+                  //resizeMode:'contain',
+                  margin:4
+               }}></Image>
+             )}/>
           </View>
 
         </View>
