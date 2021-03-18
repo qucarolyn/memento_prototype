@@ -28,8 +28,18 @@ export default function App() {
           options={({navigation}) => ({
             title: 'memento',
             headerStyle: {
-              //backgroundColor: '#f4511e',
-              borderColor: 'white'
+              backgroundColor: '#3E71AE',
+              borderColor: 'white',
+            },
+            headerTitleStyle: {
+              color: 'white',
+              fontFamily: 'Futura' ,
+              fontSize: 20,
+            },
+            backTitle: null,
+            headerTintColor: '#FFFFFF',
+            headerBackTitleStyle: {
+              color: 'white',
             },
             headerLeft: () => (
               <TouchableOpacity
@@ -39,43 +49,131 @@ export default function App() {
                   }}// incomplete: need options to "keep editing" or "delete vision"
                   style={{paddingLeft: 15, paddingTop: 5}}
               >
-              <Octicons name="three-bars" size={24} color="black" />
+              <Octicons name="three-bars" size={24} color="white" />
               </TouchableOpacity>
             ),
 
 
           })} />
-         <Stack.Screen name = "MementoAdd" component = {MementoAddScreen} 
+         <Stack.Screen name = "MementoAdd" component = {MementoAddScreen}
           options = {{
-            title: "Add Memento",
+            title: "Add a Memento",
+            headerStyle: {
+              backgroundColor: '#3E71AE',
+              borderColor: 'white',
+            },
+            headerTitleStyle: {
+              color: 'white',
+              fontFamily: 'Futura' ,
+              fontSize: 18,
+            },
+            headerTintColor: 'white',
+            headerBackTitleStyle: {
+              color: '#3E71AE',
+            }
           }}
          />
-         <Stack.Screen name = "MementoDetail" component = {MementoDetailScreen} 
+         <Stack.Screen name = "MementoDetail" component = {MementoDetailScreen}
          options = {{
           title: "Details",
+          headerStyle: {
+            backgroundColor: '#3E71AE',
+            borderColor: 'white',
+          },
+          headerTitleStyle: {
+            color: 'white',
+            fontFamily: 'Futura' ,
+            fontSize: 18,
+          },
+          headerTintColor: 'white',
+          headerBackTitleStyle: {
+            color: '#3E71AE',
+          }
         }}
          />
          <Stack.Screen name = "VisionAdd" component = {VisionAddScreen}
             options={{
               title: 'Add a Vision',
-              // headerRight: () => (
-              //    <Button
-              //      onPress={() => {
-              //        alert('This is a button!');
-              //       }}// incomplete: need options to "keep editing" or "delete vision"
-              //      title="alert"// incomplete: need to use expo vectors for this part
-              //    />
-              //  ),
+              headerStyle: {
+                backgroundColor: '#3E71AE',
+                borderColor: 'white',
+              },
+              headerTitleStyle: {
+                color: 'white',
+                fontFamily: 'Futura' ,
+                fontSize: 18,
+              },
+              headerTintColor: 'white',
+              headerBackTitleStyle: {
+                color: '#3E71AE',
+              }
             }}
          />
-         <Stack.Screen name = "Reflect" component = {ReflectScreen} options={{ title: 'Reflect' }}/>
-         <Stack.Screen name = "Drawer" component = {DrawerScreen} options={{ title: 'Menu' }}/>
-         <Stack.Screen name = "VisionDrawer" component = {VisionDrawerScreen} 
-            options={{ title: 'Visions', 
-            //gestureDirection: inverted, doesnt work 
+         <Stack.Screen name = "Reflect" component = {ReflectScreen}
+          options={{
+            title: 'Add a Reflection',
+            headerStyle: {
+              backgroundColor: '#3E71AE',
+              borderColor: 'white',
+            },
+            headerTitleStyle: {
+              color: 'white',
+              fontFamily: 'Futura' ,
+              fontSize: 18,
+            },
+            headerTintColor: 'white',
+            headerBackTitleStyle: {
+              color: '#3E71AE',
+            }
+          }}/>
+         <Stack.Screen name = "Drawer" component = {DrawerScreen}
+          options={{
+            title: 'Menu' ,
+            headerStyle: {
+              backgroundColor: '#3E71AE',
+              borderColor: 'white',
+            },
+            headerTitleStyle: {
+              color: 'white',
+              fontFamily: 'Futura' ,
+              fontSize: 20,
+            },
+            headerTintColor: 'white',
+            headerBackTitleStyle: {
+              color: '#3E71AE',
+            }
+        }}/>
+         <Stack.Screen name = "VisionDrawer" component = {VisionDrawerScreen}
+            options={{ title: 'Visions', headerStyle: {
+              backgroundColor: '#3E71AE',
+              borderColor: 'white',
+            },
+            headerTitleStyle: {
+              color: 'white',
+              fontFamily: 'Futura' ,
+              fontSize: 20,
+            },
+            headerTintColor: 'white',
+            headerBackTitleStyle: {
+              color: '#3E71AE',
+            }
+            //gestureDirection: inverted, doesnt work
           }}/>
          <Stack.Screen name = "Help" component = {HelpScreen} options={{ title: 'Help' }}/>
-         <Stack.Screen name = "FAQ" component = {FAQScreen} options={{ title: 'FAQ' }}/>
+         <Stack.Screen name = "FAQ" component = {FAQScreen} options={{ title: 'FAQ', headerStyle: {
+           backgroundColor: '#3E71AE',
+           borderColor: 'white',
+         },
+         headerTitleStyle: {
+           color: 'white',
+           fontFamily: 'Futura' ,
+           fontSize: 20,
+         },
+         headerTintColor: 'white',
+         headerBackTitleStyle: {
+           color: '#3E71AE',
+         }
+       }}/>
 
        </Stack.Navigator>
       </NavigationContainer>

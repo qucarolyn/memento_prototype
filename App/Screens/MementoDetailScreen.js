@@ -23,7 +23,7 @@ export default function MementoDetailScreen(props) {
 
 
     return (
-      <ScrollView>
+
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
 
         <View style={{
@@ -51,6 +51,7 @@ export default function MementoDetailScreen(props) {
             <Text style={styles.headerText2}>{memento.date}</Text>
           </View>
 
+          <ScrollView style={{height: '80%'}}>
           <View style={{
             borderRadius: 10,
             padding: 10,
@@ -86,6 +87,7 @@ export default function MementoDetailScreen(props) {
                }}></Image>
              )}/>
           </View>
+          </ScrollView>
 
         </View>
 
@@ -95,7 +97,6 @@ export default function MementoDetailScreen(props) {
         />
 
       </View>
-      </ScrollView>
 
     );
 }

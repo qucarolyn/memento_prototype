@@ -74,6 +74,8 @@ var feedItems = [
     media: [
       {type: "image", source:require('../Components/Images/vegetables.jpeg'), key:'1'},
       {type: "image", source:require('../Components/Images/lunch.jpeg'), key:'2'},
+      {type: "image", source:require('../Components/Images/lunch.jpeg'), key:'2'},
+      {type: "image", source:require('../Components/Images/lunch.jpeg'), key:'2'},
       {type: "audio", source:require('../Components/Images/audioIcon.png'), key:'3'},
     ],
     favorite: false,
