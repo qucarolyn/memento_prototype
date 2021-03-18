@@ -8,7 +8,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Feather';
-import * as ImagePicker from 'expo-image-picker';
+import { AssetsSelector } from 'expo-images-picker'
 
 
 
