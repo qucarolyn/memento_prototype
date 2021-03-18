@@ -82,14 +82,14 @@ export default function MementoThumbnail (props) {
               renderItem={ ({item, index}) => (
               <Image source={item} 
                 key = {index}
-              style={{
+                style={{
                 width:75,
                    height:75,
                    borderWidth:1,
                    //borderColor:'#d35647',
                    resizeMode:'contain',
                    margin:4
-               }}></Image>
+               }}/>
              )}
            />
         : <></>}

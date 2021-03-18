@@ -11,6 +11,7 @@ export default function MementoDetailScreen(props) {
 
     //favoriting a memento (not fully functional)
     const [favoriteStatus, setFavoriteStatus] = useState(memento.favorite);
+    location = require('../Components/Images/location.png')
 
     const editFavorite = (status) => {
       if(status){

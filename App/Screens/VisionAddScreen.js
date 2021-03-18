@@ -53,7 +53,7 @@ export default function VisionAddScreen({route, navigation}) {
   const colorAlert = () =>
     Alert.alert(
       "No Color Selected",
-      "Please Select a Color"
+      "Please Select a Color",
       [{ text: "OK", onPress: () => console.log("OK Pressed"),}
       ],
     );
@@ -61,7 +61,7 @@ export default function VisionAddScreen({route, navigation}) {
     const textAlert = () =>
     Alert.alert(
       "Vision is Empty",
-      "Please add a title for your Vision"
+      "Please add a title for your Vision",
       [{ text: "OK", onPress: () => console.log("OK Pressed"),}
       ],
     );

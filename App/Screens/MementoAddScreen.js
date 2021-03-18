@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Button, TouchableOpacity, TextInput } from "react-native";
+import { View, Text, StyleSheet, Button, TouchableOpacity, TextInput, Image, Alert} from "react-native";
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -17,16 +17,22 @@ export default function MementoAddScreen(props) {
   const [currentVision, setCurrentVision] = useState(props.route.params.currentVision);
   const [media, setMedia] = useState([]);
   const [hasText, setHasText] = useState(false);
-  //const [hasAudio, setHasAudio] = useState(false);
+  const [numAudio, setNumAudio] = useState(0);
   const [hasImage, setHasImage] = useState(false);
   const [hasLocation, setHasLocation] = useState(false);
   const [caption, setCaption] = useState("");
 
+
   //adding a reflection
   const addMemento = () => {
-    if(false) {//need to account for errors
-
+    compileMedia();
+    if(currentVision.title == "All"){
+      visionAlert();
+    }else if(caption == "" || media.size == 0) {//need to account for errors
+      mementoAlert();
     }else {
+      compileMedia();
+      console.log("test");
       const newMemento = {
         title: currentVision.title,
         reflection: false,
@@ -41,14 +47,44 @@ export default function MementoAddScreen(props) {
 
   //check for image, audio, or location and add those to the list
   const compileMedia = () => {
+    let toReturn = []; 
+    let currKey = 1;
+    if(hasLocation) {
+      toReturn.push({
+        type: "location", 
+        source:require('../Components/Images/location.png'), 
+        key:currKey});
+      currKey++;
+    }
+    if(numAudio > 0){
+      for(let i = 0; i < numAudio; i++){
+        toReturn.push({
+          type: "audio", 
+          key:currKey});
+        currKey++;
+      }
+    }
+    setMedia(toReturn);
+    console.log(toReturn);
 
   }
 
-  const [numAudio, setNumAudio] = useState(0);
-  const audio = [];
-  const setAudio = () => {
+  const visionAlert = () =>
+    Alert.alert(
+      "No Vision Selected",
+      "Please select a vision from the dropdown menu",
+      [{ text: "OK", onPress: () => console.log("OK Pressed"),}
+      ],
+    );
 
-  }
+    const mementoAlert = () =>
+    Alert.alert(
+      "Empty Memento",
+      "Please add media!",
+      [{ text: "OK", onPress: () => console.log("OK Pressed"),}
+      ],
+    );
+
 
   /*media [
     {
@@ -88,7 +124,7 @@ export default function MementoAddScreen(props) {
     }
 
 
-    console.log(dropdownItems(visionList));
+    //console.log(dropdownItems(visionList));
 
     return (
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -155,9 +191,20 @@ export default function MementoAddScreen(props) {
             }
 
             {hasLocation? 
-            <View>
-              <Text>Location Information Here</Text>
-            </View> : <></>
+            <TouchableOpacity
+              onPress = {() => setHasLocation(false)}
+            
+            >
+              <Image 
+                source={require('../Components/Images/location.png')} 
+                style={{
+                    width:300,
+                     height:75,
+                     //borderColor:'#d35647',
+                     resizeMode:'cover',
+                 }}
+              />
+            </TouchableOpacity> : <></>
             }
             </View>
 
@@ -218,7 +265,7 @@ export default function MementoAddScreen(props) {
 
         <TouchableOpacity
           style={styles.save}
-          onPress={() => addReflection()}
+          onPress={() => addMemento()}
         >
           <Text style={{fontSize: 20, color: 'white', fontFamily: 'Futura',}}>save</Text>
         </TouchableOpacity>

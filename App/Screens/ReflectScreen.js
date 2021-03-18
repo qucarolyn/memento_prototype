@@ -201,7 +201,7 @@ export default function ReflectScreen(props) {
     const reflectionAlert = () =>
     Alert.alert(
       "Reflection is Empty",
-      "Please type a reflection to save. To cancel, click the back button"
+      "Please type a reflection to save. To cancel, click the back button",
       [{ text: "OK", onPress: () => console.log("OK Pressed"),}
       ],
     );
@@ -209,7 +209,7 @@ export default function ReflectScreen(props) {
     const visionAlert = () =>
     Alert.alert(
       "No Vision Selected",
-      "Please select a vision from the dropdown menu"
+      "Please select a vision from the dropdown menu",
       [{ text: "OK", onPress: () => console.log("OK Pressed"),}
       ],
     );
