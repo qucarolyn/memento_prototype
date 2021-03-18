@@ -11,6 +11,8 @@ import VisionAddScreen  from './App/Screens/VisionAddScreen.js';
 import ReflectScreen  from './App/Screens/ReflectScreen.js';
 import VisionDrawerScreen from './App/Screens/VisionDrawerScreen.js';
 import DrawerScreen from './App/Screens/DrawerScreen.js';
+import HelpScreen from './App/Screens/HelpScreen.js';
+import FAQScreen from './App/Screens/FAQScreen.js';
 
 import { Octicons } from '@expo/vector-icons';
 
@@ -69,6 +71,9 @@ export default function App() {
          <Stack.Screen name = "Reflect" component = {ReflectScreen} options={{ title: 'Reflect' }}/>
          <Stack.Screen name = "Drawer" component = {DrawerScreen} options={{ title: 'Menu' }}/>
          <Stack.Screen name = "VisionDrawer" component = {VisionDrawerScreen} options={{ title: 'Visions' }}/>
+         <Stack.Screen name = "Help" component = {HelpScreen} options={{ title: 'Help' }}/>
+         <Stack.Screen name = "FAQ" component = {FAQScreen} options={{ title: 'FAQ' }}/>
+
        </Stack.Navigator>
       </NavigationContainer>
   );
