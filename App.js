@@ -10,6 +10,7 @@ import MementoAddScreen  from './App/Screens/MementoAddScreen.js';
 import VisionAddScreen  from './App/Screens/VisionAddScreen.js';
 import ReflectScreen  from './App/Screens/ReflectScreen.js';
 import VisionDrawerScreen from './App/Screens/VisionDrawerScreen.js';
+import DrawerScreen from './App/Screens/DrawerScreen.js';
 
 import { Octicons } from '@expo/vector-icons';
 
@@ -32,7 +33,7 @@ export default function App() {
               <TouchableOpacity
                   onPress={() => {
                     //const navigation = useNavigation();
-                    navigation.navigate("VisionDrawer");
+                    navigation.navigate("Drawer");
                   }}// incomplete: need options to "keep editing" or "delete vision"
                   style={{paddingLeft: 15, paddingTop: 5}}
               >
@@ -66,6 +67,7 @@ export default function App() {
             }}
          />
          <Stack.Screen name = "Reflect" component = {ReflectScreen} options={{ title: 'Reflect' }}/>
+         <Stack.Screen name = "Drawer" component = {DrawerScreen} options={{ title: 'Menu' }}/>
          <Stack.Screen name = "VisionDrawer" component = {VisionDrawerScreen} options={{ title: 'Visions' }}/>
        </Stack.Navigator>
       </NavigationContainer>
