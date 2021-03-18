@@ -85,8 +85,8 @@ export default function MementoThumbnail (props) {
                     require('../Components/Images/audioIcon.png') : item.source}
                   key = {index}
                   style={{
-                  width:100,
-                    height:100,
+                  width:75,
+                    height:75,
                     //borderWidth:1,
                     //borderColor:'#d35647',
                     resizeMode: item.type != "audio"?'cover':'contain',

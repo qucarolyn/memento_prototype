@@ -30,9 +30,9 @@ export default function MementoAddScreen(props) {
 
 
   const plainSubmit = () => {
-    console.log("compiling media for " + currentVision.title)
-    console.log("audio" + hasAudio);
-    console.log("location" + hasLocation);
+    //console.log("compiling media for " + currentVision.title)
+    //console.log("audio" + hasAudio);
+    //console.log("location" + hasLocation);
     compileMedia();
       console.log(media);
       const newMemento = {
@@ -71,11 +71,10 @@ export default function MementoAddScreen(props) {
       currKey++;
     }
     if(hasLocation) {
-      const newMedia = {
+      media.push({
         type: "location",
         source:require('../Components/Images/location.png'),
-        key:currKey}
-      media.push(newMedia);
+        key:currKey});
       currKey++;
     }
     if(hasAudio){
@@ -213,6 +212,12 @@ export default function MementoAddScreen(props) {
             padding: 10,
             height: 330,
           }}>
+
+            {(!hasImage && caption == "" && !hasAudio && !hasLocation) ? 
+            <Text>No media yet. Tap the buttons at the bottom to get started!</Text>
+            :
+            <></>
+            }
 
             {hasImage?
             <View>

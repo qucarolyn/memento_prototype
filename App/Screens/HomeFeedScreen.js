@@ -35,15 +35,14 @@ var feedItems = [
     reflection: false,
     color: '#FFAD80',
     date: "1/21/2020",
-    caption: 'today I went on a run! Was very very fun. Im trying to max out the character count but im not sure if it will work lets see how this goes!',
+    caption: 'Today I went on a run! We went to the dish, and then got lunch at Coupa. I got a really yummy salad at Coupa afterwards!',
     favorite: true,
     media: 
       [
         {type: "image", source:require('../Components/Images/stanford.jpeg'), key:'1'},
-        {type: "image", source:require('../Components/Images/vegetables.jpeg'), key:'2'},
-        {type: "image", source:require('../Components/Images/stanford.jpeg'), key:'3'},
-        {type: "image", source:require('../Components/Images/stanford.jpeg'), key:'4'},
-        {type: "image", source:require('../Components/Images/stanford.jpeg'), key:'5'},
+        {type: "image", source:require('../Components/Images/stanford.jpeg'), key:'2'},
+        {type: "location", source:require('../Components/Images/location.png'), key:'5'}, 
+        {type: "audio", source:require('../Components/Images/audioIcon.png'), key:'6'},
       ]
   },
   {
@@ -51,7 +50,7 @@ var feedItems = [
     reflection: false,
     color: '#83E39E',
     date: "1/19/2020",
-    caption: 'Learned a brand new chord progression!',
+    caption: 'Today I learned a brand new chord progression! I can now play "riptide by Vance Joy. ',
     favorite: true,
   },
   {
@@ -60,7 +59,7 @@ var feedItems = [
     color: '#FFAD80',
     date: "1/19/2020",
     prompt: "What are you most proud of?",
-    caption: 'I am most proud of myself for keeping up with this vision consistently',
+    caption: 'I am most proud of myself for keeping up with this vision consistently. Some days, its been really challenging for me to motivate myself, but Im thankful to get a little bit of movement in every day!',
     favorite: false,
   },
 
@@ -69,7 +68,11 @@ var feedItems = [
     reflection: false,
     color: '#80C9FF',
     date: "1/19/2020",
-    caption: 'Got lunch with mom and dad today! it was SO SO SO much fun! ',
+    caption: 'Got lunch with mom and dad today! it was SO SO SO much fun!',
+    media: [
+      {type: "image", source:require('../Components/Images/vegetables.jpeg'), key:'1'},
+      {type: "audio", source:require('../Components/Images/audioIcon.png'), key:'2'},
+    ],
     favorite: false,
   },
 
@@ -78,7 +81,7 @@ var feedItems = [
     reflection: false,
     color: '#80C9FF',
     date: "1/19/2020",
-    caption: 'Family game night yeah-yuh!!! ',
+    caption: 'Family game night yeah-yuh!!! Theo and Gracielas team beat us terribly in hearts but we played just dance on the Wii afterwards, it was great!',
     favorite: false,
   },
 
