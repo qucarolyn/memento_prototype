@@ -37,10 +37,10 @@ var feedItems = [
     date: "1/21/2020",
     caption: 'Today I went on a run! We went to the dish, and then got lunch at Coupa. I got a really yummy salad at Coupa afterwards!',
     favorite: true,
-    media: 
+    media:
       [
         {type: "image", source:require('../Components/Images/stanford.jpeg'), key:'1'},
-        {type: "location", source:require('../Components/Images/location.png'), key:'2'}, 
+        {type: "location", source:require('../Components/Images/location.png'), key:'2'},
         {type: "audio", source:require('../Components/Images/audioIcon.png'), key:'3'},
       ]
   },
@@ -134,7 +134,7 @@ export default function HomeFeedScreen({navigation}) {
 
     return (
         <View style={{backgroundColor: 'white'}}>
-
+        <View>
           <View style={{flexDirection: 'row', alignItems: 'center', paddingLeft: 14}}>
 
           <TouchableOpacity onPress={() => navigation.navigate("VisionAdd", {updateVision: {addVision}})}>
@@ -145,8 +145,32 @@ export default function HomeFeedScreen({navigation}) {
             visions={visions}
             setVisionCallback = {setVision}
           />
+          </View>
 
-          <View style={{width: 200,}}>
+          <View style={{flexDirection: 'row', justifyContent: 'center', marginBottom: 5,}}>
+
+          <TouchableOpacity
+            onPress={() => navigation.navigate("MementoAdd",
+            {currentVision: visions.find(element => element.title == activeVision),
+             visions: visions,
+             updateMementos: {addMemento}
+            })}
+            style={styles.button}
+          >
+          <Text style={styles.buttonText}>Add a Memento</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => navigation.navigate(
+              "Reflect",
+              {currentVision: visions.find(element => element.title == activeVision),
+                visions: visions,
+                updateReflections: {addReflection}
+              })}
+            style={styles.button}
+          >
+            <Text style={styles.buttonText}>Add a Reflection</Text>
+          </TouchableOpacity>
           </View>
 
           </View>
@@ -155,29 +179,6 @@ export default function HomeFeedScreen({navigation}) {
           <ScrollView style={{paddingBottom: 100}}>
 
           <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-
-            <TouchableOpacity
-              onPress={() => navigation.navigate("MementoAdd",
-              {currentVision: visions.find(element => element.title == activeVision),
-               visions: visions,
-               updateMementos: {addMemento}
-              })}
-              style={styles.button}
-            >
-            <Text style={styles.buttonText}>Add a Memento</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={() => navigation.navigate(
-                "Reflect",
-                {currentVision: visions.find(element => element.title == activeVision),
-                  visions: visions,
-                  updateReflections: {addReflection}
-                })}
-              style={styles.button}
-            >
-              <Text style={styles.buttonText}>Add a Reflection</Text>
-            </TouchableOpacity>
 
           </View>
             <MementoFeed

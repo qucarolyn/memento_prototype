@@ -8,7 +8,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Feather';
-import { AssetsSelector } from 'expo-images-picker'
+//import { AssetsSelector } from 'expo-images-picker'
 
 
 
@@ -214,7 +214,7 @@ export default function MementoAddScreen(props) {
             height: 330,
           }}>
 
-            {(!hasImage && caption == "" && !hasAudio && !hasLocation) ? 
+            {(!hasImage && caption == "" && !hasAudio && !hasLocation) ?
             <Text>No media yet. Tap the buttons at the bottom to get started!</Text>
             :
             <></>
