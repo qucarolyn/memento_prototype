@@ -9,9 +9,9 @@ export default function MementoThumbnail (props) {
     let media = props.media;
     console.log(props.title);
 
-    if(props.media != undefined) {
-      console.log(media[1].source);
-    }
+    // if(props.media != undefined) {
+    //   console.log(media[1].source);
+    // }
 
     const [favoriteStatus, setFavoriteStatus] = useState(props.favorite);
     const editFavorite = (status) => {
@@ -80,18 +80,18 @@ export default function MementoThumbnail (props) {
               showsHorizontalScrollIndicator={false} 
               data={media}
               renderItem={ ({item, index}) => (
-                item.type == "image" ? 
-                <Image source={item} 
+                <Image 
+                  source={item.type == "audio"? 
+                    require('../Components/Images/audioIcon.png') : item.source} 
                   key = {index}
                   style={{
                   width:75,
                     height:75,
-                    borderWidth:1,
+                    //borderWidth:1,
                     //borderColor:'#d35647',
-                    resizeMode:'contain',
+                    resizeMode: item.type != "audio"?'cover':'contain',
                     margin:4
-                }}/> : 
-                <Text>{item.type}</Text>
+                }}/>
 
              )}
            />

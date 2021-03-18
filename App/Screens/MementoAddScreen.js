@@ -17,19 +17,24 @@ export default function MementoAddScreen(props) {
 
   const [liked, setLiked] = useState(false);
   const [currentVision, setCurrentVision] = useState(props.route.params.currentVision);
-  const [media, setMedia] = useState([]);
+  //const [media, setMedia] = useState([]);
   const [hasText, setHasText] = useState(false);
   const [hasAudio, setHasAudio] = useState(false);
   const [hasImage, setHasImage] = useState(false);
   const [hasLocation, setHasLocation] = useState(false);
   const [caption, setCaption] = useState("");
 
+  let media = [];
+
   const updateMementos = props.route.params.updateMementos;
 
 
   const plainSubmit = () => {
+    console.log("compiling media for " + currentVision.title)
+    console.log("audio" + hasAudio);
+    console.log("location" + hasLocation);
     compileMedia();
-      console.log("test");
+      console.log(media);
       const newMemento = {
         title: currentVision.title,
         reflection: false,
@@ -39,15 +44,13 @@ export default function MementoAddScreen(props) {
         favorite: liked,
         media: media,
       };
-
       updateMementos.addMemento(newMemento);
       navigation.popToTop();
-
   }
   //adding a reflection
   const addMemento = () => {
     compileMedia();
-    console.log(hasImage)
+    console.log(hasImage);
     if(currentVision.title == "All"){
       visionAlert();
     }else if(!hasImage && caption == "" && media.size == 0) {//need to account for errors
@@ -61,25 +64,32 @@ export default function MementoAddScreen(props) {
 
   //check for image, audio, or location and add those to the list
   const compileMedia = () => {
-    let toReturn = []; 
+    media = [];
     let currKey = 1;
-    if(hasLocation) {
-      toReturn.push({
-        type: "location", 
-        source:require('../Components/Images/location.png'), 
-        key:currKey});
+    if(hasImage) {
+      media.push({type: "image", source:require('../Components/Images/stanford.jpeg'), key:'1'})
       currKey++;
     }
-    if(hasAudio > 0){
-      toReturn.push({
+    if(hasLocation) {
+      const newMedia = {
+        type: "location", 
+        source:require('../Components/Images/location.png'), 
+        key:currKey}
+      media.push(newMedia);
+      currKey++;
+    }
+    if(hasAudio){
+      console.log("adding audio");
+      media.push({
         type: "audio", 
         source:require('../Components/Images/audioWav.png'), 
         key:currKey});
       currKey++;
+      //console.log(toReturn);
     }
-    setMedia(toReturn);
-    console.log(toReturn);
-
+    //console.log("toReturn " + toReturn);
+    //setMedia(toReturn);
+    console.log("media" + media);
   }
 
   const visionAlert = () =>
@@ -157,7 +167,7 @@ export default function MementoAddScreen(props) {
         item.value = vision.title
         item.selected = vision.title == currentVision.title ? true :false
         // console.log(item);
-        return item
+        return item;
       }))
 
     }
@@ -206,7 +216,15 @@ export default function MementoAddScreen(props) {
             
             {hasImage? 
             <View>
-            <Text>Images Here</Text>
+            <Image 
+                source={require('../Components/Images/stanford.jpeg')} 
+                style={{
+                    width:300,
+                    height:150,
+                     //borderColor:'#d35647',
+                     resizeMode:'cover',
+                 }}
+              />
             </View> : <></>
             }
 

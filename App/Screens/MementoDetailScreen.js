@@ -11,7 +11,7 @@ export default function MementoDetailScreen(props) {
 
     //favoriting a memento (not fully functional)
     const [favoriteStatus, setFavoriteStatus] = useState(memento.favorite);
-    location = require('../Components/Images/location.png')
+    let location = require('../Components/Images/location.png')
 
     const editFavorite = (status) => {
       if(status){
@@ -61,15 +61,25 @@ export default function MementoDetailScreen(props) {
               showsHorizontalScrollIndicator={false} 
               data={media}
               renderItem={ ({item, index}) => (
-              <Image source={item} 
+              item.type == "image" || item.type == "location" ? 
+              <Image source={item.source} 
                 key = {index}
                 style={{
                   //width:600,
-                  height:100,
-                  borderWidth:1,
+                  height:200,
+                  //borderWidth:1,
                   //borderColor:'#d35647',
                   //resizeMode:'contain',
                   margin:4
+               }}></Image> : 
+               <Image source={require('../Components/Images/audioWav.png')}
+                key = {index}
+                style={{
+                  width:300,
+                  //height:100,
+                  //borderColor:'#d35647',
+                  resizeMode:'contain',
+                  //margin:4
                }}></Image>
              )}/>
           </View>

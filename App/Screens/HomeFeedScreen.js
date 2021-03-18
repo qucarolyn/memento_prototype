@@ -170,12 +170,10 @@ export default function HomeFeedScreen({navigation}) {
             </TouchableOpacity>
 
           </View>
-
             <MementoFeed
               vision = {activeVision}//for testing purposes
               feedItems = {feedItems}
             ></MementoFeed>
-
           <View style={{height: 150}}/>
 
           </ScrollView>
