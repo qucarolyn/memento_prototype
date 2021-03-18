@@ -139,8 +139,8 @@ export default function MementoAddScreen(props) {
             {hasText? 
             <View>
             <TextInput
+                  multiline
                   placeholder='add a caption for this memento...'
-                  maxLength={20}
                   onChangeText={(caption) => setCaption(caption)}
             />
             </View> : <></>
