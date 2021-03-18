@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
         marginTop: "2%",
         alignSelf: 'flex-start',
         marginLeft: "5%",
+        marginRight: "3%",
     },
     answerTextLast: {
         color: "#36454f",
