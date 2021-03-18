@@ -7,12 +7,13 @@ import { useNavigation } from '@react-navigation/native';
 export default function VerticalMenu(props) {
     const [pressed, setPress] = useState(null);
     const visions = props.visions;
-    const archive = props.archiveFunction;
+    const archive = (vision) => {props.archiveFunction(vision)};
+
     //const visionCallback = props.setVisionCallback;
     const visionPressHandler = (props) => {
         setPress(props.title);
         console.log(props.title);
-        //archive(props)
+        archive(props);
         //visionCallback(props.title);
     };
 
@@ -34,8 +35,8 @@ export default function VerticalMenu(props) {
                         style = {{
                             margin: 5,
                             fontSize: 20,
-                            fontWeight: pressed == props.title ? 'bold' : 'light',
-                            color: pressed == props.title ? props.color : "black",
+                            fontWeight: 'light',
+                            color: !props.archived ? props.color : "black",
                             paddingVertical: 8,
                             fontFamily: 'Futura',
                         }}
@@ -52,6 +53,7 @@ export default function VerticalMenu(props) {
     }
 
     return (
+        visions.length !== 0 ?
         <View>
            <FlatList
               horizontal = {false}
@@ -61,11 +63,24 @@ export default function VerticalMenu(props) {
                 <Vision
                     color = {item.color}
                     title = {item.title}
+                    archived = {item.archived}
                     onPress = {() => visionPressHandler(item)}
                 />
               )}
           />
         </View>
+        :
+        <View alignItems="center">
+           <Text style = {{
+                            margin: 5,
+                            fontSize: 20,
+                            color: "gray",
+                            paddingVertical: 8,
+                            fontWeight: 'light',
+                            fontFamily: 'Futura',
+                        }}>no visions here yet</Text>
+        </View>
+
     );
 }
 

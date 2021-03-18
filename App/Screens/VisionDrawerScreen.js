@@ -33,21 +33,34 @@ var visions= [
     var archived = visions.filter(vision => vision.archived);
     var active = visions.filter(vision => !vision.archived)
 export default function VisionDrawerScreen({route, navigation}) {
+    const [update, setUpdate] = useState(0);
     const addVision = (vision) => {
         visions.push(vision);
+        archived = visions.filter(vision => vision.archived);
+        active = visions.filter(vision => !vision.archived);
     }
     const setVisionArchived = (vision) => {
-        var newVisions = visions.filter(currVision => currVision.title !== vision.title)
-        vision.archived = !vision.archived;
-        newVisions.push(vision);
+        var newVisions = visions.filter(currVision => currVision.title !== vision.title);
+        //console.log(newVisions)
+        console.log("Vision to be (un) archived: " + vision.title);
+        console.log("Before: ")
+        console.log(vision);
+        console.log("After: ")
+        var newVision = vision
+        newVision.archived = !vision.archived;
+        newVisions.push(newVision);
+        console.log(newVision);
         visions = newVisions;
+        archived = newVisions.filter(vision => vision.archived);
+        active = newVisions.filter(vision => !vision.archived);
+        setUpdate(archived.length);
     }
     return(
         <SafeAreaView>
         <View style={{display: 'flex', flexDirection: 'column'}}>
           <TouchableOpacity
               style = {{
-                backgroundColor: '#80C9FF', //replace color
+                backgroundColor: '#3E71AE',
                 borderRadius: 25,
                 margin: 2,
                 justifyContent: 'center',
@@ -72,7 +85,7 @@ export default function VisionDrawerScreen({route, navigation}) {
             </TouchableOpacity>
 
             <View style={{alignItems: "center"}}>
-                <Text style={{fontSize: 24, marginTop: 20, fontFamily: 'Futura',}}>Active visions</Text>
+                <Text style={{fontSize: 24, marginTop: 20, fontFamily: 'Futura',}}>Active Visions</Text>
             </View>
 
             <View>
@@ -88,6 +101,7 @@ export default function VisionDrawerScreen({route, navigation}) {
             <View>
                 <VerticalMenu
                     visions={archived}
+                    archiveFunction={setVisionArchived}
                 />
             </View>
 
