@@ -328,6 +328,7 @@ export default function ReflectScreen(props) {
 
           <TouchableOpacity
             style={{marginBottom: 80}}
+            //need to be able to cancel reflection or memento
             //onPress={() => {randomPrompt()}}
           >
             <Text style={styles.buttonText}>Cancel</Text>
