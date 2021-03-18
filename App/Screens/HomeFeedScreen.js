@@ -114,6 +114,10 @@ export default function HomeFeedScreen({navigation}) {
     feedItems.push(reflection);
   }
 
+  const addMemento = (memento) => {
+    feedItems.push(memento);
+  }
+
   const setVision = (vision) => {
     setActiveVision(vision);
   }
@@ -146,6 +150,7 @@ export default function HomeFeedScreen({navigation}) {
               onPress={() => navigation.navigate("MementoAdd",
               {currentVision: visions.find(element => element.title == activeVision),
                visions: visions,
+               updateMementos: {addMemento}
               })}
               style={styles.button}
             >

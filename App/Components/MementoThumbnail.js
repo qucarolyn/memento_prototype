@@ -73,23 +73,26 @@ export default function MementoThumbnail (props) {
         <Text style={styles.caption}>{shortenText(props.caption)}</Text>
         
         {//conditional rendering of images
-          media != undefined ?  
+          media != undefined ?
           // <Text>Image here</Text>
             <FlatList
               horizontal={true} 
               showsHorizontalScrollIndicator={false} 
               data={media}
               renderItem={ ({item, index}) => (
-              <Image source={item} 
-                key = {index}
-                style={{
-                width:75,
-                   height:75,
-                   borderWidth:1,
-                   //borderColor:'#d35647',
-                   resizeMode:'contain',
-                   margin:4
-               }}/>
+                item.type == "image" ? 
+                <Image source={item} 
+                  key = {index}
+                  style={{
+                  width:75,
+                    height:75,
+                    borderWidth:1,
+                    //borderColor:'#d35647',
+                    resizeMode:'contain',
+                    margin:4
+                }}/> : 
+                <Text>{item.type}</Text>
+
              )}
            />
         : <></>}

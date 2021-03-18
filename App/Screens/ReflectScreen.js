@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
+
 import { FontAwesome } from '@expo/vector-icons';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { useNavigation } from '@react-navigation/native';
-
-
 import {
   View,
   Text,
@@ -13,6 +12,7 @@ import {
   TextInput,
   Alert,
   StyleSheet,
+  Image
 } from "react-native";
 
 const prompts=[
@@ -168,6 +168,7 @@ export default function ReflectScreen(props) {
         const newReflection = {
           title: currentVision.title,
           reflection: true,
+          audio: hasAudio,
           color: currentVision.color,
           date: "1/19/2020",
           prompt: prompt,
@@ -200,8 +201,8 @@ export default function ReflectScreen(props) {
     //alerts
     const reflectionAlert = () =>
     Alert.alert(
-      "Reflection is Empty",
-      "Please type a reflection to save. To cancel, click the back button",
+      "Empty Reflection",
+      "Please type a reflection",
       [{ text: "OK", onPress: () => console.log("OK Pressed"),}
       ],
     );
@@ -211,6 +212,20 @@ export default function ReflectScreen(props) {
       "No Vision Selected",
       "Please select a vision from the dropdown menu",
       [{ text: "OK", onPress: () => console.log("OK Pressed"),}
+      ],
+    );
+
+    const cancelAlert = () =>
+    Alert.alert(
+      "Delete Reflection?",
+      "Continuing will delete the reflection you're working on.",
+      [{
+        text: "Keep Working",
+      },
+      { text: "Delete Reflection", 
+        onPress: () => navigation.popToTop(), 
+        style: "cancel"
+      }
       ],
     );
 
@@ -288,16 +303,20 @@ export default function ReflectScreen(props) {
             {hasAudio? 
             <TouchableOpacity
               style={{
-                backgroundColor: "blue",
+                //backgroundColor: "blue",
                 height: 15,
             }}
+              onPress = {() => setHasAudio(false)}
             >
-              <Text>Audio Recording Added!</Text>
-              <FontAwesome 
-              name="cancel" 
-              size={24} 
-              onPress={() => {deleteAudio()}}
-            />
+              <Image
+                source={require('../Components/Images/audioWav.png')}
+                style={{
+                  width:300,
+                  height:60,
+                   //borderColor:'#d35647',
+                   resizeMode:'contain',
+               }}
+              />
             </TouchableOpacity> : <></>}
 
             </View>
@@ -329,7 +348,7 @@ export default function ReflectScreen(props) {
           <TouchableOpacity
             style={{marginBottom: 80}}
             //need to be able to cancel reflection or memento
-            //onPress={() => {randomPrompt()}}
+            onPress={() => {reflection == "" ? navigation.popToTop(): cancelAlert()}}
           >
             <Text style={styles.buttonText}>Cancel</Text>
           </TouchableOpacity>

@@ -6,32 +6,29 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import DropDownPicker from 'react-native-dropdown-picker';
+import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Feather';
 
 
 
 export default function MementoAddScreen(props) {
+  let navigation = useNavigation();
   const visionList = props.route.params.visions;
 
   const [liked, setLiked] = useState(false);
   const [currentVision, setCurrentVision] = useState(props.route.params.currentVision);
   const [media, setMedia] = useState([]);
   const [hasText, setHasText] = useState(false);
-  const [numAudio, setNumAudio] = useState(0);
+  const [hasAudio, setHasAudio] = useState(false);
   const [hasImage, setHasImage] = useState(false);
   const [hasLocation, setHasLocation] = useState(false);
   const [caption, setCaption] = useState("");
 
+  const updateMementos = props.route.params.updateMementos;
 
-  //adding a reflection
-  const addMemento = () => {
+
+  const plainSubmit = () => {
     compileMedia();
-    if(currentVision.title == "All"){
-      visionAlert();
-    }else if(caption == "" || media.size == 0) {//need to account for errors
-      mementoAlert();
-    }else {
-      compileMedia();
       console.log("test");
       const newMemento = {
         title: currentVision.title,
@@ -42,6 +39,23 @@ export default function MementoAddScreen(props) {
         favorite: liked,
         media: media,
       };
+
+      updateMementos.addMemento(newMemento);
+      navigation.popToTop();
+
+  }
+  //adding a reflection
+  const addMemento = () => {
+    compileMedia();
+    console.log(hasImage)
+    if(currentVision.title == "All"){
+      visionAlert();
+    }else if(!hasImage && caption == "" && media.size == 0) {//need to account for errors
+      mementoAlert();
+    }else if (caption == "" && hasText) {
+      captionAlert();
+    }else {
+      plainSubmit();
     }
   }
 
@@ -56,13 +70,12 @@ export default function MementoAddScreen(props) {
         key:currKey});
       currKey++;
     }
-    if(numAudio > 0){
-      for(let i = 0; i < numAudio; i++){
-        toReturn.push({
-          type: "audio", 
-          key:currKey});
-        currKey++;
-      }
+    if(hasAudio > 0){
+      toReturn.push({
+        type: "audio", 
+        source:require('../Components/Images/audioWav.png'), 
+        key:currKey});
+      currKey++;
     }
     setMedia(toReturn);
     console.log(toReturn);
@@ -83,6 +96,32 @@ export default function MementoAddScreen(props) {
       "Please add media!",
       [{ text: "OK", onPress: () => console.log("OK Pressed"),}
       ],
+    );
+
+    const captionAlert = () =>
+    Alert.alert(
+      "No Caption Added",
+      "It seems like you forgot to add a caption. Would you like to add this memento without a caption?",
+      [{
+        text: "Keep Working"
+      },
+      { text: "Sumbit", 
+        onPress: () => plainSubmit(),
+       style: "cancel"
+      }],
+    );
+
+    const cancelAlert = () =>
+    Alert.alert(
+      "Delete Memento?",
+      "Continuing will delete the memento you're working on.",
+      [{
+        text: "Keep Working"
+      },
+      { text: "Delete Memento", 
+        onPress: () => navigation.popToTop(),
+       style: "cancel"
+      }],
     );
 
 
@@ -182,19 +221,26 @@ export default function MementoAddScreen(props) {
             </View> : <></>
             }
 
-          {numAudio > 0? 
+          {hasAudio? 
             <TouchableOpacity
-              onPress = {() => setNumAudio(parseInt(numAudio) - 1)}
+              //onPress = {() => setHasAudio()}
             >
-              <Text>{numAudio} Audio Recordings</Text>
+              <Image 
+                source={require('../Components/Images/audioWav.png')} 
+                style={{
+                    width:300,
+                     height:50,
+                     //borderColor:'#d35647',
+                     resizeMode:'cover',
+                 }}
+              />
             </TouchableOpacity> : <></>
             }
 
             {hasLocation? 
-            <TouchableOpacity
+              <TouchableOpacity
               onPress = {() => setHasLocation(false)}
-            
-            >
+              >
               <Image 
                 source={require('../Components/Images/location.png')} 
                 style={{
@@ -243,7 +289,7 @@ export default function MementoAddScreen(props) {
               name="microphone" 
               size={25} 
               color="white" 
-              onPress = {() => setNumAudio(parseInt(numAudio) + 1)}
+              onPress = {() => setHasAudio(hasAudio? false:true)}
             />
             </TouchableOpacity>
 
@@ -272,7 +318,9 @@ export default function MementoAddScreen(props) {
 
         <TouchableOpacity
           style={styles.newprompt}
-          //onPress={() => {randomPrompt()}}
+          onPress={() => {
+            (caption == ""  && !hasImage && !hasAudio && !hasLocation)
+          ? navigation.popToTop(): cancelAlert()}}
         >
           <Text style={styles.buttonText}>Cancel</Text>
         </TouchableOpacity>
