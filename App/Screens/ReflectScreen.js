@@ -184,16 +184,19 @@ export default function ReflectScreen(props) {
 
     //displaying audio
     const [hasAudio, setHasAudio] = useState(false);
-    const displayAudio = () => {
-      setHasAudio(true);
-      console.log("worked")
-    }
+    // const displayAudio = () => {
+    //   if(hasAudio){
+    //     setHasAudio(false);
+    //   }else{
+    //     setHasAudio(true);
+    //   }
+    // }
 
-    const deleteAudio = () => {
-      setHasAudio(false);
-      console.log("worked")
+    // const deleteAudio = () => {
+    //   setHasAudio(false);
+    //   console.log("worked")
 
-    }
+    // }
 
 
 
@@ -300,7 +303,7 @@ export default function ReflectScreen(props) {
               onChangeText={(reflection) => setReflection(reflection)}
             />
 
-            {hasAudio?
+            {/* {hasAudio?
             <TouchableOpacity
               style={{
                 //backgroundColor: "blue",
@@ -318,14 +321,15 @@ export default function ReflectScreen(props) {
                    resizeMode:'contain',
                }}
               />
-            </TouchableOpacity> : <></>}
+            </TouchableOpacity> : <></>} */}
 
             </View>
 
           </KeyboardAvoidingView>
 
-          {hasAudio==false?
-          <TouchableOpacity style={{alignItems: 'center',
+          <TouchableOpacity 
+          onPress={() => {setHasAudio(hasAudio ? false:true)}}
+          style={{alignItems: 'center',
           justifyContent: 'center',
           backgroundColor: currentVision.color,
           padding: 10,
@@ -333,13 +337,22 @@ export default function ReflectScreen(props) {
           width: 50,
           height: 50,
           borderRadius: 25,}}>
+            {hasAudio? <Image
+              source={require('../Components/Images/audioWav.png')}
+              style={{
+              width:300,
+              //marginBottom: 50,
+              //height:60,
+              //borderColor:'#d35647',
+             resizeMode:'contain',
+            }}/> : 
             <FontAwesome
-              name="microphone"
-              size={24}
-              color="white"
-              onPress={() => {displayAudio()}}
-            />
-          </TouchableOpacity> : <></>}
+            name="microphone"
+            size={24}
+            color="white"
+          />}  
+          </TouchableOpacity> 
+          
 
           <TouchableOpacity
             style={styles.save}

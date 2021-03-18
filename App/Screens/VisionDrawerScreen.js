@@ -4,11 +4,6 @@ import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import VerticalMenu from '../Components/VerticalMenu.js';
 //work on actually getting the data structure rather than defining it here, may not have to for prototype
 var visions= [
-    {
-        title: "All",
-        color: 'grey',
-        archived: false,
-      },
 
       // {
       //   title: "Be happy",
