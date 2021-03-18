@@ -40,9 +40,8 @@ var feedItems = [
     media: 
       [
         {type: "image", source:require('../Components/Images/stanford.jpeg'), key:'1'},
-        {type: "image", source:require('../Components/Images/stanford.jpeg'), key:'2'},
-        {type: "location", source:require('../Components/Images/location.png'), key:'5'}, 
-        {type: "audio", source:require('../Components/Images/audioIcon.png'), key:'6'},
+        {type: "location", source:require('../Components/Images/location.png'), key:'2'}, 
+        {type: "audio", source:require('../Components/Images/audioIcon.png'), key:'3'},
       ]
   },
   {
@@ -51,6 +50,9 @@ var feedItems = [
     color: '#83E39E',
     date: "1/19/2020",
     caption: 'Today I learned a brand new chord progression! I can now play "riptide by Vance Joy. ',
+    media: [
+      {type: "audio", source:require('../Components/Images/audioIcon.png'), key:'1'},
+    ],
     favorite: true,
   },
   {
@@ -68,10 +70,11 @@ var feedItems = [
     reflection: false,
     color: '#80C9FF',
     date: "1/19/2020",
-    caption: 'Got lunch with mom and dad today! it was SO SO SO much fun!',
+    caption: 'Made lunch with mom and dad today! it was SO SO SO much fun. I made a pest pasta and they made a side dish with vegetables',
     media: [
       {type: "image", source:require('../Components/Images/vegetables.jpeg'), key:'1'},
-      {type: "audio", source:require('../Components/Images/audioIcon.png'), key:'2'},
+      {type: "image", source:require('../Components/Images/lunch.jpeg'), key:'2'},
+      {type: "audio", source:require('../Components/Images/audioIcon.png'), key:'3'},
     ],
     favorite: false,
   },
@@ -81,8 +84,12 @@ var feedItems = [
     reflection: false,
     color: '#80C9FF',
     date: "1/19/2020",
-    caption: 'Family game night yeah-yuh!!! Theo and Gracielas team beat us terribly in hearts but we played just dance on the Wii afterwards, it was great!',
+    caption: 'Family game night yeah-yuh!!! Theo and Gracielas team beat us terribly in hearts but we played scrabble afterwards, it was so much fun!',
     favorite: false,
+    media: [
+      {type: "image", source:require('../Components/Images/games.jpeg'), key:'1'},
+      {type: "image", source:require('../Components/Images/games2.jpeg'), key:'2'},
+    ],
   },
 
   {
