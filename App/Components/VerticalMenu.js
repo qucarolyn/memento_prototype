@@ -76,7 +76,7 @@ export default function VerticalMenu(props) {
                             fontSize: 20,
                             color: "gray",
                             paddingVertical: 8,
-                            fontWeight: 'light',
+                            //fontWeight: 'light',
                             fontFamily: 'Futura',
                         }}>no visions here yet</Text>
         </View>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Button, FlatList, Image, TouchableOpacity} from "react-native";
+import { View, Text, ScrollView, StyleSheet, Button, FlatList, Image, TouchableOpacity} from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome } from '@expo/vector-icons';
 
@@ -23,6 +23,7 @@ export default function MementoDetailScreen(props) {
 
 
     return (
+      <ScrollView>
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
 
         <View style={{
@@ -57,21 +58,23 @@ export default function MementoDetailScreen(props) {
             <Text style={styles.prompt}>{memento.prompt}</Text>
             <Text style={styles.caption}>{memento.caption}</Text>
             <FlatList
-              //horizontal={true} 
-              showsHorizontalScrollIndicator={false} 
+              //horizontal={true}
+              showsHorizontalScrollIndicator={false}
               data={media}
               renderItem={ ({item, index}) => (
-              item.type == "image" || item.type == "location" ? 
-              <Image source={item.source} 
+              item.type == "image" || item.type == "location" ?
+              <Image source={item.source}
                 key = {index}
                 style={{
+                  width:'100%',
+                  height: 150,
                   //width:600,
-                  height:200,
+                  //height:200,
                   //borderWidth:1,
                   //borderColor:'#d35647',
                   //resizeMode:'contain',
                   margin:4
-               }}></Image> : 
+               }}></Image> :
                <Image source={require('../Components/Images/audioWav.png')}
                 key = {index}
                 style={{
@@ -92,6 +95,7 @@ export default function MementoDetailScreen(props) {
         />
 
       </View>
+      </ScrollView>
 
     );
 }

@@ -72,8 +72,8 @@ export default function MementoAddScreen(props) {
     }
     if(hasLocation) {
       const newMedia = {
-        type: "location", 
-        source:require('../Components/Images/location.png'), 
+        type: "location",
+        source:require('../Components/Images/location.png'),
         key:currKey}
       media.push(newMedia);
       currKey++;
@@ -81,8 +81,8 @@ export default function MementoAddScreen(props) {
     if(hasAudio){
       console.log("adding audio");
       media.push({
-        type: "audio", 
-        source:require('../Components/Images/audioWav.png'), 
+        type: "audio",
+        source:require('../Components/Images/audioWav.png'),
         key:currKey});
       currKey++;
       //console.log(toReturn);
@@ -115,7 +115,7 @@ export default function MementoAddScreen(props) {
       [{
         text: "Keep Working"
       },
-      { text: "Sumbit", 
+      { text: "Sumbit",
         onPress: () => plainSubmit(),
        style: "cancel"
       }],
@@ -128,7 +128,7 @@ export default function MementoAddScreen(props) {
       [{
         text: "Keep Working"
       },
-      { text: "Delete Memento", 
+      { text: "Delete Memento",
         onPress: () => navigation.popToTop(),
        style: "cancel"
       }],
@@ -213,14 +213,14 @@ export default function MementoAddScreen(props) {
             padding: 10,
             height: 330,
           }}>
-            
-            {hasImage? 
+
+            {hasImage?
             <View>
-            <Image 
-                source={require('../Components/Images/stanford.jpeg')} 
+            <Image
+                source={require('../Components/Images/stanford.jpeg')}
                 style={{
                     width:300,
-                    height:150,
+                    height:120,
                      //borderColor:'#d35647',
                      resizeMode:'cover',
                  }}
@@ -229,8 +229,8 @@ export default function MementoAddScreen(props) {
             }
 
             {/*caption*/}
-            {hasText? 
-            <View>
+            {hasText?
+            <View style={{marginVertical: 5}}>
             <TextInput
                   multiline
                   placeholder='add a caption for this memento...'
@@ -239,15 +239,17 @@ export default function MementoAddScreen(props) {
             </View> : <></>
             }
 
-          {hasAudio? 
+          {hasAudio?
             <TouchableOpacity
               //onPress = {() => setHasAudio()}
             >
-              <Image 
-                source={require('../Components/Images/audioWav.png')} 
+              <Image
+                source={require('../Components/Images/audioWav.png')}
                 style={{
                     width:300,
-                     height:50,
+                    marginVertical: 5,
+                    padding: 10,
+                     height:40,
                      //borderColor:'#d35647',
                      resizeMode:'cover',
                  }}
@@ -255,12 +257,12 @@ export default function MementoAddScreen(props) {
             </TouchableOpacity> : <></>
             }
 
-            {hasLocation? 
+            {hasLocation?
               <TouchableOpacity
               onPress = {() => setHasLocation(false)}
               >
-              <Image 
-                source={require('../Components/Images/location.png')} 
+              <Image
+                source={require('../Components/Images/location.png')}
                 style={{
                     width:300,
                      height:75,
@@ -283,10 +285,10 @@ export default function MementoAddScreen(props) {
             flexDirection: 'row'
           }}>
             <TouchableOpacity>
-            <FontAwesome 
-              name="photo" 
-              size={25} 
-              color="white" 
+            <FontAwesome
+              name="photo"
+              size={25}
+              color="white"
               onPress = {() => setHasImage(hasImage? false:true)}
             />
             </TouchableOpacity>
@@ -296,26 +298,26 @@ export default function MementoAddScreen(props) {
               name="format-text"
               size={26}
               color="white"
-              //if you want to change the color based on whether or not there is text, 
+              //if you want to change the color based on whether or not there is text,
               //you can use color = (hasText? "white":"grey")
               onPress = {() => setHasText(hasText? false:true)}
             />
             </TouchableOpacity>
 
             <TouchableOpacity>
-            <FontAwesome 
-              name="microphone" 
-              size={25} 
-              color="white" 
+            <FontAwesome
+              name="microphone"
+              size={25}
+              color="white"
               onPress = {() => setHasAudio(hasAudio? false:true)}
             />
             </TouchableOpacity>
 
             <TouchableOpacity>
-            <Entypo 
-              name="location" 
-              size={23} 
-              color="white" 
+            <Entypo
+              name="location"
+              size={23}
+              color="white"
               onPress = {() => setHasLocation(hasLocation? false:true)}
             />
             </TouchableOpacity>

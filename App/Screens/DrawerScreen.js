@@ -41,7 +41,7 @@ export default function DrawerScreen({route, navigation}) {
                 marginTop: 25,
                 marginHorizontal: 25,
               }}
-              onPress={() => navigation.navigate("Help")}
+              onPress={() => navigation.navigate("FAQ")}
               >
                     <Text
                         style = {{
