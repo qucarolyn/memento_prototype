@@ -195,11 +195,7 @@ export default function ReflectScreen(props) {
     // const deleteAudio = () => {
     //   setHasAudio(false);
     //   console.log("worked")
-
     // }
-
-
-
 
     //alerts
     const reflectionAlert = () =>
