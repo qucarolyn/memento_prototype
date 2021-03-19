@@ -140,7 +140,7 @@ export default function HomeFeedScreen({navigation}) {
           <View style={{flexDirection: 'row', alignItems: 'center', paddingLeft: 14}}>
 
           <TouchableOpacity onPress={() => navigation.navigate("VisionAdd", {updateVision: {addVision}})}>
-            <Text style={{fontSize: 20}}>+</Text>
+            <Text style={{fontSize: 20, color: '#3E71AE'}}>+  </Text>
           </TouchableOpacity>
 
           <HorizontalMenu

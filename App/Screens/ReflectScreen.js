@@ -323,7 +323,7 @@ export default function ReflectScreen(props) {
 
           </KeyboardAvoidingView>
 
-          <TouchableOpacity 
+          <TouchableOpacity
           onPress={() => {setHasAudio(hasAudio ? false:true)}}
           style={{alignItems: 'center',
           justifyContent: 'center',
@@ -334,21 +334,21 @@ export default function ReflectScreen(props) {
           height: 50,
           borderRadius: 25,}}>
             {hasAudio? <Image
-              source={require('../Components/Images/audioWav.png')}
+              source={require('../Components/Images/audioWavX.png')}
               style={{
               width:300,
               //marginBottom: 50,
               //height:60,
               //borderColor:'#d35647',
              resizeMode:'contain',
-            }}/> : 
+            }}/> :
             <FontAwesome
             name="microphone"
             size={24}
             color="white"
-          />}  
-          </TouchableOpacity> 
-          
+          />}
+          </TouchableOpacity>
+
 
           <TouchableOpacity
             style={styles.save}

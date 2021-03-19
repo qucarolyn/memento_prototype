@@ -91,10 +91,9 @@ export default function MementoDetailScreen(props) {
 
         </View>
 
-        <Button
-          //onPress={() => navigation.navigate("MementoScreen")}
-          title="Edit this Memento"
-        />
+        <TouchableOpacity style={styles.save}>
+          <Text style={{fontSize: 18, color: 'white', fontFamily: 'Futura',}}>Edit this Memento</Text>
+        </TouchableOpacity>
 
       </View>
 
@@ -111,6 +110,20 @@ const styles = StyleSheet.create({
     headerText2: {
       color: 'white',
       fontFamily: 'Futura'
+    },
+    save: {
+      backgroundColor: '#3E71AE',
+      height: 40,
+      borderRadius: 20,
+      width: 200,
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    buttonText: {
+      color: '#3E71AE',
+      fontSize: 14,
+      fontFamily: 'Futura',
+      textDecorationLine: 'underline',
     },
     prompt: {
       fontWeight: 'bold',
