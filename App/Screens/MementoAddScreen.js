@@ -28,6 +28,7 @@ export default function MementoAddScreen(props) {
   let media = [];
 
   const updateMementos = props.route.params.updateMementos;
+  const setVision = props.route.params.setVision;
 
 
   const plainSubmit = () => {
@@ -46,6 +47,7 @@ export default function MementoAddScreen(props) {
         media: media,
       };
       updateMementos.addMemento(newMemento);
+      setVision(currentVision);
       navigation.popToTop();
   }
   //adding a reflection
@@ -214,7 +216,7 @@ export default function MementoAddScreen(props) {
             height: 330,
           }}>
 
-            {(!hasImage && caption == "" && !hasAudio && !hasLocation) ?
+            {(!hasImage && !hasText && caption == "" && !hasAudio && !hasLocation) ?
             <Text style={styles.emptytext}>No media yet. Tap the buttons at the bottom to get started!</Text>
             :
             <></>
