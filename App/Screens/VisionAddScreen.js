@@ -23,6 +23,7 @@ export default function VisionAddScreen({route, navigation}) {
   };
 
   const { updateVision } = route.params; //call with vision to be added when submit button is hit
+  const visionCallback = props.setVisionCallback;
   //console.log (route);
 
   const addVision = () => {
@@ -43,7 +44,7 @@ export default function VisionAddScreen({route, navigation}) {
       };
       //console.log(updateVision);
       updateVision.addVision(newVision);
-      //console.log(updateVision);
+      //visionCallback(props.title);
       navigation.popToTop(); // Do I need to force a re render?
       //console.log(newVisions);
     }

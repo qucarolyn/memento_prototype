@@ -74,9 +74,7 @@ var feedItems = [
     media: [
       {type: "image", source:require('../Components/Images/vegetables.jpeg'), key:'1'},
       {type: "image", source:require('../Components/Images/lunch.jpeg'), key:'2'},
-      {type: "image", source:require('../Components/Images/lunch.jpeg'), key:'3'},
-      {type: "image", source:require('../Components/Images/lunch.jpeg'), key:'4'},
-      {type: "audio", source:require('../Components/Images/audioIcon.png'), key:'5'},
+      {type: "audio", source:require('../Components/Images/audioIcon.png'), key:'3'},
     ],
     favorite: false,
   },
@@ -156,7 +154,7 @@ export default function HomeFeedScreen({navigation}) {
             {currentVision: visions.find(element => element.title == activeVision),
              visions: visions,
              updateMementos: {addMemento},
-             setVision: addVision,
+             //setVision: addVision,
             })}
             style={styles.button}
           >

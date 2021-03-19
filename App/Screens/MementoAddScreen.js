@@ -28,7 +28,7 @@ export default function MementoAddScreen(props) {
   let media = [];
 
   const updateMementos = props.route.params.updateMementos;
-  const setVision = props.route.params.setVision;
+  //const setVision = props.route.params.setVision;
 
 
   const plainSubmit = () => {
@@ -47,7 +47,7 @@ export default function MementoAddScreen(props) {
         media: media,
       };
       updateMementos.addMemento(newMemento);
-      setVision(currentVision);
+      //setVision(currentVision);
       navigation.popToTop();
   }
   //adding a reflection
@@ -255,7 +255,7 @@ export default function MementoAddScreen(props) {
                 source={require('../Components/Images/audioWav.png')}
                 style={{
                     width:300,
-                    marginVertical: 5,
+                    marginVertical: 10,
                     padding: 10,
                      height:40,
                      //borderColor:'#d35647',
